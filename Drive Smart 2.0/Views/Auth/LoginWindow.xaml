@@ -8,13 +8,14 @@
         Title="LoginWindow" Height="520" Width="815" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Margin="0,0,0,-6">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="740*"/>
-            <ColumnDefinition Width="41*"/>
+            <ColumnDefinition Width="672*"/>
+            <ColumnDefinition Width="81*"/>
+            <ColumnDefinition Width="42*"/>
             <ColumnDefinition Width="20*"/>
         </Grid.ColumnDefinitions>
-        <Image Height="479" Width="793" Source="/Views/Auth/ChatGPT Image May 29, 2026, 03_23_41 PM.png" Stretch="UniformToFill" Grid.ColumnSpan="3" Margin="4,9,4,9"/>
-        <Rectangle Height="421" Margin="146,0,77,0" VerticalAlignment="Center" Fill="#FF02295D" Opacity="0.75" RadiusY="10" RadiusX="10"/>
-        <Rectangle HorizontalAlignment="Left" Height="77" Margin="146,35,0,0" VerticalAlignment="Top" Width="516" RenderTransformOrigin="0.5,0.5" Fill="#FF031932" RadiusX="10" RadiusY="10">
+        <Image Height="479" Width="793" Source="/Views/Auth/ChatGPT Image May 29, 2026, 03_23_41 PM.png" Stretch="UniformToFill" Grid.ColumnSpan="4" Margin="11,16,11,15"/>
+        <Rectangle Height="421" Margin="146,0,0,0" VerticalAlignment="Center" Fill="#FF02295D" Opacity="0.75" RadiusY="10" RadiusX="10"/>
+        <Rectangle HorizontalAlignment="Left" Height="67" Margin="146,45,0,0" VerticalAlignment="Top" Width="526" RenderTransformOrigin="0.5,0.5" Fill="#FF031932" RadiusX="10" RadiusY="10">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -24,10 +25,10 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <Label Content="DRIVE SMART" HorizontalAlignment="Left" Margin="293,50,0,0" VerticalAlignment="Top" Cursor="" FontFamily="Tahoma" FontWeight="Bold" FontSize="30" Foreground="#FFFDFDFD"/>
-        <Label Content="User Name" HorizontalAlignment="Left" Margin="169,147,0,0" VerticalAlignment="Top" Foreground="#FFFDFDFD" FontSize="16" FontFamily="Tahoma"/>
-        <Label Content="Password" HorizontalAlignment="Left" Margin="169,0,0,0" VerticalAlignment="Center" Foreground="#FFFDFDFD" FontSize="16" FontFamily="Tahoma"/>
-        <Rectangle HorizontalAlignment="Left" Height="40" Margin="169,173,0,0" VerticalAlignment="Top" Width="455" RenderTransformOrigin="0.5,0.5" Fill="#FFF6F8FE" RadiusX="10" RadiusY="10" Stroke="#FF041A33">
+        <Label Content="DRIVE SMART" HorizontalAlignment="Left" Margin="293,55,0,0" VerticalAlignment="Top" Cursor="" FontFamily="Tahoma" FontWeight="Bold" FontSize="30" Foreground="#FFFDFDFD"/>
+        <Label Content="User Name" HorizontalAlignment="Left" Margin="183,148,0,0" VerticalAlignment="Top" Foreground="#FFFDFDFD" FontSize="16" FontFamily="Tahoma"/>
+        <Label Content="Password" HorizontalAlignment="Left" Margin="183,0,0,0" VerticalAlignment="Center" Foreground="#FFFDFDFD" FontSize="16" FontFamily="Tahoma"/>
+        <Rectangle HorizontalAlignment="Left" Height="40" Margin="183,174,0,0" VerticalAlignment="Top" Width="455" RenderTransformOrigin="0.5,0.5" Fill="#FFF6F8FE" RadiusX="10" RadiusY="10" Stroke="#FF041A33">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -37,8 +38,8 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <TextBox x:Name="usernameLable" HorizontalAlignment="Left" Margin="174,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="439" Height="26" Background="#FFF6F8FE" FontFamily="Tahoma" FontSize="16" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}"/>
-        <Rectangle HorizontalAlignment="Left" Height="40" Margin="169,261,0,0" VerticalAlignment="Top" Width="455" RenderTransformOrigin="0.5,0.5" Fill="#FFF6F8FE" RadiusX="10" RadiusY="10" Stroke="#FF041A33">
+        <TextBox x:Name="usernameBox" HorizontalAlignment="Left" Margin="188,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="439" Height="26" Background="#FFF6F8FE" FontFamily="Tahoma" FontSize="16" BorderBrush="{x:Null}" SelectionBrush="{x:Null}" SelectionTextBrush="{x:Null}"/>
+        <Rectangle HorizontalAlignment="Left" Height="40" Margin="183,263,0,0" VerticalAlignment="Top" Width="455" RenderTransformOrigin="0.5,0.5" Fill="#FFF6F8FE" RadiusX="10" RadiusY="10" Stroke="#FF041A33">
             <Rectangle.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -48,9 +49,10 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <TextBox x:Name="passwordLable" HorizontalAlignment="Left" Margin="184,268,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="426" Height="26" Background="#FFF6F8FE" FontFamily="Tahoma" FontSize="16" BorderBrush="{x:Null}"/>
-        <Button x:Name="loginButton" Content="Log In" HorizontalAlignment="Left" Margin="169,365,0,0" VerticalAlignment="Top" Width="455" Background="#FF0149C2" Height="31" BorderBrush="{x:Null}" FontFamily="Tahoma" FontSize="18" Foreground="#FFFFFEFF" FontWeight="Bold"/>
-        <TextBlock HorizontalAlignment="Left" Margin="187,0,0,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Grid.Column="2"/>
-        <Label Content="For new employees," HorizontalAlignment="Left" Margin="213,401,0,0" VerticalAlignment="Top" Foreground="#FFFDFDFD" FontFamily="Tahoma"/>
+        <Button x:Name="loginButton" Content="Log In" HorizontalAlignment="Left" Margin="183,365,0,0" VerticalAlignment="Top" Width="455" Background="#FF0149C2" Height="31" BorderBrush="{x:Null}" FontFamily="Tahoma" FontSize="18" Foreground="#FFFFFEFF" FontWeight="Bold"/>
+        <Label Content="For new employees," HorizontalAlignment="Left" Margin="311,411,0,0" VerticalAlignment="Top" Foreground="#FFFDFDFD" FontFamily="Tahoma"/>
+        <PasswordBox x:Name="loginPassword" HorizontalAlignment="Left" Margin="199,270,0,0" VerticalAlignment="Top" Width="428" Height="23" Background="#FFF6F8FE" BorderBrush="{x:Null}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="427,415,0,0" TextWrapping="Wrap" Text="Request access" VerticalAlignment="Top" Cursor="Hand"  MouseLeftButtonDown="RegisterLink_Click" Foreground="#FFFDF2DF" FontFamily="Tahoma"/>
+
     </Grid>
 </Window>
