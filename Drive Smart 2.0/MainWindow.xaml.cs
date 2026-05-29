@@ -20,13 +20,14 @@ namespace Drive_Smart_2._0
         public MainWindow()
         {
             InitializeComponent();
-            systemstartButton.Click += systemstartButton_Click;
         }
 
         //click start button --. open login window 
         private void systemstartButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Clicked!");
+            LoginWindow loginWindow = new LoginWindow();
+            loginWindow.Show();
+            this.Close();
         }
     }
 }

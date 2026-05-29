@@ -14,6 +14,7 @@
     <None Remove="ChatGPT Image May 29, 2026, 04_00_19 PM.png" />
     <None Remove="Views\Auth\ChatGPT Image May 29, 2026, 03_23_41 PM.png" />
     <None Remove="Views\Auth\ChatGPT Image May 29, 2026, 04_00_19 PM.png" />
+    <None Remove="Views\Auth\ChatGPT Image May 29, 2026, 09_28_58 PM.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +30,7 @@
     <Resource Include="ChatGPT Image May 29, 2026, 04_00_19 PM.png" />
     <Resource Include="Views\Auth\ChatGPT Image May 29, 2026, 03_23_41 PM.png" />
     <Resource Include="Views\Auth\ChatGPT Image May 29, 2026, 04_00_19 PM.png" />
+    <Resource Include="Views\Auth\ChatGPT Image May 29, 2026, 09_28_58 PM.png" />
   </ItemGroup>
 
 </Project>
