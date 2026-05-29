@@ -41,3 +41,11 @@ DriveSmart
     ├── ReportService.cs
     └── DashboardService.cs
 ```
+brances 
+```
+git checkout -b feature-auth
+git checkout -b feature-vehicle
+git checkout -b feature-rental
+git checkout -b feature-reports
+git checkout -b feature-dashboard
+```
