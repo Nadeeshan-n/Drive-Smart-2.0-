@@ -1,5 +1,4 @@
-﻿using Drive_Smart_2._0.Views.Auth;
-using System.Text;
+﻿using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -20,14 +19,6 @@ namespace Drive_Smart_2._0
         public MainWindow()
         {
             InitializeComponent();
-        }
-
-        //click start button --. open login window 
-        private void systemstartButton_Click(object sender, RoutedEventArgs e)
-        {
-            LoginWindow loginWindow = new LoginWindow();
-            loginWindow.Show();
-            this.Close();
         }
     }
 }

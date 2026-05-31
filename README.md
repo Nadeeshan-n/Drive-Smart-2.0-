@@ -49,7 +49,3 @@ git checkout -b feature-rental
 git checkout -b feature-reports
 git checkout -b feature-dashboard
 ```
-clone the repo here
-```
-git clone https://github.com/Nadeeshan-n/Drive-Smart-2.0-.git
-```

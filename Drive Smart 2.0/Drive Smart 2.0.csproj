@@ -10,27 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="ChatGPT Image May 29, 2026, 03_23_41 PM.png" />
-    <None Remove="ChatGPT Image May 29, 2026, 04_00_19 PM.png" />
-    <None Remove="Views\Auth\ChatGPT Image May 29, 2026, 03_23_41 PM.png" />
-    <None Remove="Views\Auth\ChatGPT Image May 29, 2026, 04_00_19 PM.png" />
-    <None Remove="Views\Auth\ChatGPT Image May 29, 2026, 09_28_58 PM.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="BCrypt.Net-Next" Version="4.2.0" />
     <PackageReference Include="ClosedXML" Version="0.105.0" />
     <PackageReference Include="LiveChartsCore.SkiaSharpView.WPF" Version="2.0.4" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.16" />
     <PackageReference Include="QuestPDF" Version="2026.5.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="ChatGPT Image May 29, 2026, 03_23_41 PM.png" />
-    <Resource Include="ChatGPT Image May 29, 2026, 04_00_19 PM.png" />
-    <Resource Include="Views\Auth\ChatGPT Image May 29, 2026, 03_23_41 PM.png" />
-    <Resource Include="Views\Auth\ChatGPT Image May 29, 2026, 04_00_19 PM.png" />
-    <Resource Include="Views\Auth\ChatGPT Image May 29, 2026, 09_28_58 PM.png" />
   </ItemGroup>
 
 </Project>
