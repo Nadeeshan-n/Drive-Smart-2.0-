@@ -33,4 +33,8 @@
     <Resource Include="Views\Auth\ChatGPT Image May 29, 2026, 09_28_58 PM.png" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="VehicleManagement\" />
+  </ItemGroup>
+
 </Project>
