@@ -16,6 +16,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
+            <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="90*"/>
             <ColumnDefinition Width="411*"/>
             <ColumnDefinition Width="161*"/>
@@ -23,13 +24,13 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="1248*"/>
         </Grid.ColumnDefinitions>
-        <Image Grid.Column="4" Margin="108,-6,607,392" Grid.RowSpan="3" Source="/ChatGPT Image May 29, 2026, 04_00_19 PM.png" Stretch="Fill" Grid.ColumnSpan="4"/>
-        <Rectangle Grid.Column="2" HorizontalAlignment="Left" Height="131" Margin="4,2,0,0" Grid.Row="2" Stroke="#FFC9D9FB" VerticalAlignment="Top" Width="1900" Grid.ColumnSpan="6" Fill="#FF01152E"/>
+        <Image Grid.Column="5" Margin="108,-6,607,392" Grid.RowSpan="3" Source="/ChatGPT Image May 29, 2026, 04_00_19 PM.png" Stretch="Fill" Grid.ColumnSpan="4"/>
+        <Rectangle Grid.Column="2" HorizontalAlignment="Left" Height="131" Margin="4,2,0,0" Grid.Row="2" Stroke="#FFC9D9FB" VerticalAlignment="Top" Width="1900" Grid.ColumnSpan="7" Fill="#FF01152E"/>
 
-        <Label Grid.Column="2" Content="- - - - - - - - DRIVE SMART - - - - - - - -" HorizontalAlignment="Left" Margin="32,239,0,398" Grid.Row="1" FontSize="100" Grid.ColumnSpan="6" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFFFFEFE" Background="{x:Null}" Grid.RowSpan="2" Width="1848"/>
-        <Rectangle Grid.Column="2" HorizontalAlignment="Left" Height="10" Margin="0,170,0,0" Grid.Row="2" VerticalAlignment="Top" Width="1900" Grid.ColumnSpan="6" Fill="#FFC9D9FC"/>
-        <Label Grid.Column="6" Content="Vehicle Rental Company" HorizontalAlignment="Left" Margin="105,144,0,0" Grid.Row="2" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="36" FontStyle="Italic" Grid.ColumnSpan="2"/>
-        <Button x:Name="systemstartButton" Grid.Column="6" Content="Start" HorizontalAlignment="Left" Margin="113,337,0,0" Grid.Row="2" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="48" Width="361" Height="68" Background="#FF1361F0" Foreground="#FFFFFEFE" FontWeight="Bold" Click="systemstartButton_Click" Grid.ColumnSpan="2"/>
+        <Label Grid.Column="2" Content="- - - - - - - - DRIVE SMART - - - - - - - -" HorizontalAlignment="Left" Margin="32,239,0,398" Grid.Row="1" FontSize="100" Grid.ColumnSpan="7" FontFamily="Tahoma" FontWeight="Bold" Foreground="#FFFFFEFE" Background="{x:Null}" Grid.RowSpan="2" Width="1848"/>
+        <Rectangle Grid.Column="2" HorizontalAlignment="Left" Height="10" Margin="0,170,0,0" Grid.Row="2" VerticalAlignment="Top" Width="1900" Grid.ColumnSpan="7" Fill="#FFC9D9FC"/>
+        <Label Grid.Column="6" Content="Vehicle Rental Company" HorizontalAlignment="Left" Margin="105,144,0,0" Grid.Row="2" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="36" FontStyle="Italic" Grid.ColumnSpan="3"/>
+        <Button x:Name="systemstartButton" Grid.Column="6" Content="Start" HorizontalAlignment="Left" Margin="113,337,0,0" Grid.Row="2" VerticalAlignment="Top" FontFamily="Tahoma" FontSize="48" Width="361" Height="68" Background="#FF1361F0" Foreground="#FFFFFEFE" FontWeight="Bold" Click="systemstartButton_Click" Grid.ColumnSpan="3"/>
 
     </Grid>
 </Window>
