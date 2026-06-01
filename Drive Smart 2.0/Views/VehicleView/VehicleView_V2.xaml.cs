@@ -28,5 +28,10 @@ namespace Drive_Smart_2._0.Views.VehicleView
         {
 
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
