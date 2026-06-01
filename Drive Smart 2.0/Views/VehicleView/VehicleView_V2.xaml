@@ -64,6 +64,18 @@
             </StackPanel>
 
         </Border>
+        <Border Grid.Row="0"
+                    Background="White"
+                    CornerRadius="10" Margin="240,20,20,594">
+
+            <Grid Margin="20,0">
+                <TextBlock Text="Vehicle Catalog View"
+                               FontSize="28"
+                               FontWeight="Bold"
+                               VerticalAlignment="Center"/>
+            </Grid>
+
+        </Border>
 
         <!-- Main Content -->
         <Grid Margin="240,20,20,20"Margin="240,20,20,20">
