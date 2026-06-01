@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Drive_Smart_2._0.Views.VehicleView"
         mc:Ignorable="d"
-        Title="VehicleView" Height="450" Width="800">
-    <Grid>
-        <Button Content="Test&#xD;&#xA;" HorizontalAlignment="Left" Height="116" Margin="447,64,0,0" VerticalAlignment="Top" Width="320"/>
-
-    </Grid>
+        Title="VehicleView" Height="692" Width="1200" WindowStartupLocation="CenterScreen" WindowState="Maximized" Cursor="" RenderTransformOrigin="0.5,0.5">
+    <Window.RenderTransform>
+        <TransformGroup>
+            <ScaleTransform/>
+            <SkewTransform/>
+            <RotateTransform/>
+            <TranslateTransform X="0"/>
+        </TransformGroup>
+    </Window.RenderTransform>
 </Window>
