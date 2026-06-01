@@ -78,32 +78,6 @@
         </Border>
 
         <!-- Main Content -->
-        <Grid Margin="240,20,20,20"Margin="240,20,20,20">
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="70"/>
-                <RowDefinition Height="574.04"/>
-            </Grid.RowDefinitions>
-
-            <!-- Header -->
-            <Border Grid.Row="0"
-                    Background="White"
-                    CornerRadius="10">
-
-                <Grid Margin="20,0">
-                    <TextBlock Text="Vehicle Catalog View"
-                               FontSize="28"
-                               FontWeight="Bold"
-                               VerticalAlignment="Center"/>
-                </Grid>
-
-            </Border>
-
-            <!-- Statistics Cards -->
-
-            <!-- Recent Rentals Table -->
-
-        </Grid>
 
     </Grid>
 </Window>
