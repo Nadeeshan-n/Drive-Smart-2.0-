@@ -23,5 +23,10 @@ namespace Drive_Smart_2._0.Views.Auth
         {
             InitializeComponent();
         }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
