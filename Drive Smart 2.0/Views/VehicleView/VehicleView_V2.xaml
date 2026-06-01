@@ -20,12 +20,12 @@
                            Foreground="White"
                            Margin="0,20,0,30"/>
 
-                <Button Content="Dashboard"
+                <Button Content="Catalog"
                         Height="45"
                         Margin="0,5"
                         Background="#1E88E5"
                         Foreground="White"
-                        BorderThickness="0"/>
+                        BorderThickness="0" Click="Button_Click_1"/>
 
                 <Button Content="Vehicles"
                         Height="45"
@@ -76,34 +76,15 @@
             </Grid>
 
         </Border>
+        <Border Grid.Row="0"
+            Background="White"
+            CornerRadius="10" Margin="240,108,20,10">
+
+            <Grid Margin="20,0"/>
+
+        </Border>
 
         <!-- Main Content -->
-        <Grid Margin="240,20,20,20"Margin="240,20,20,20">
-
-            <Grid.RowDefinitions>
-                <RowDefinition Height="70"/>
-                <RowDefinition Height="574.04"/>
-            </Grid.RowDefinitions>
-
-            <!-- Header -->
-            <Border Grid.Row="0"
-                    Background="White"
-                    CornerRadius="10">
-
-                <Grid Margin="20,0">
-                    <TextBlock Text="Vehicle Catalog View"
-                               FontSize="28"
-                               FontWeight="Bold"
-                               VerticalAlignment="Center"/>
-                </Grid>
-
-            </Border>
-
-            <!-- Statistics Cards -->
-
-            <!-- Recent Rentals Table -->
-
-        </Grid>
 
     </Grid>
 </Window>
