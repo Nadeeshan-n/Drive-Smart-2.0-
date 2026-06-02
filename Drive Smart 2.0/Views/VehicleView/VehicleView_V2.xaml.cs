@@ -23,21 +23,19 @@ namespace Drive_Smart_2._0.Views.VehicleView
         public VehicleView_V2()
         {
             InitializeComponent();
-        }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
 
-        }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        { 
-            
+
+
+
+
+
+
+            // Database connection
+
             string connString =
                 "Host=ep-lucky-dust-ap0aolwl-pooler.c-7.us-east-1.aws.neon.tech; " +
                 "Database=neondb; " +
@@ -53,12 +51,38 @@ namespace Drive_Smart_2._0.Views.VehicleView
 
                 conn.Open();
 
-                MessageBox.Show("Connected Successfully!");
+                //MessageBox.Show("Connected Successfully!");
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {             
+            
         }
     
     }
