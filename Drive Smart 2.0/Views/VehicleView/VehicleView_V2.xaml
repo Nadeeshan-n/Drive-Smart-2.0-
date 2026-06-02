@@ -32,7 +32,7 @@
                         Margin="0,5"
                         Background="#1565C0"
                         Foreground="White"
-                        BorderThickness="0"/>
+                        BorderThickness="0" Click="Button_Click_2"/>
 
                 <Button Content="Customers"
                         Height="45"

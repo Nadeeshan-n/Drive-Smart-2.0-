@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -35,8 +36,30 @@ namespace Drive_Smart_2._0.Views.VehicleView
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
+        { 
+            
+            string connString =
+                "Host=ep-lucky-dust-ap0aolwl-pooler.c-7.us-east-1.aws.neon.tech; " +
+                "Database=neondb; " +
+                "Username=neondb_owner; " +
+                "Password=npg_Sq6ek0IbhQFK; " +
+                "SSL Mode=VerifyFull; " +
+                "Channel Binding=Require;";
 
+
+            try
+            {
+                using var conn = new NpgsqlConnection(connString);
+
+                conn.Open();
+
+                MessageBox.Show("Connected Successfully!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
+    
     }
 }
