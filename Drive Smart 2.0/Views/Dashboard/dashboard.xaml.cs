@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Drive_Smart_2._0.Views.VehicleView;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -57,6 +58,14 @@ namespace Drive_Smart_2._0.models
             {
                 monthlyincometxt.Text = "Rs. 0";
             }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PublicVehicleView publicVehicleView = new PublicVehicleView();
+            publicVehicleView.Show();
+            this.Close();
+
         }
     }
 }
