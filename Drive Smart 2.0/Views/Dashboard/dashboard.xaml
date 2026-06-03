@@ -6,6 +6,10 @@
         Background="#F5F9FF">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="97*"/>
+            <ColumnDefinition Width="303*"/>
+        </Grid.ColumnDefinitions>
 
         <!-- Sidebar -->
         <Border Width="220"
@@ -32,7 +36,7 @@
                         Margin="0,5"
                         Background="#1565C0"
                         Foreground="White"
-                        BorderThickness="0"/>
+                        BorderThickness="0" Click="Button_Click"/>
 
                 <Button Content="Customers"
                         Height="45"
@@ -66,7 +70,7 @@
         </Border>
 
         <!-- Main Content -->
-        <Grid Margin="240,20,20,20">
+        <Grid Margin="240,20,20,20" Grid.ColumnSpan="2">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="70"/>
@@ -109,7 +113,7 @@
                         Background="#2196F3"
                         CornerRadius="12">
                     <StackPanel VerticalAlignment="Center">
-                        <TextBlock Text="150"
+                        <TextBlock x:Name="totvehecles" Text="150"
                                    FontSize="32"
                                    FontWeight="Bold"
                                    Foreground="White"
@@ -122,10 +126,10 @@
 
                 <Border Grid.Column="1"
                         Margin="5"
-                        Background="#42A5F5"
+                        Background="#2196F3"
                         CornerRadius="12">
                     <StackPanel VerticalAlignment="Center">
-                        <TextBlock Text="95"
+                        <TextBlock x:Name="availablevehecletxt" Text="95"
                                    FontSize="32"
                                    FontWeight="Bold"
                                    Foreground="White"
@@ -138,10 +142,10 @@
 
                 <Border Grid.Column="2"
                         Margin="5"
-                        Background="#64B5F6"
+                        Background="#2196F3"
                         CornerRadius="12">
                     <StackPanel VerticalAlignment="Center">
-                        <TextBlock Text="45"
+                        <TextBlock x:Name="rentedvehecletxt" Text="45"
                                    FontSize="32"
                                    FontWeight="Bold"
                                    Foreground="White"
@@ -154,10 +158,10 @@
 
                 <Border Grid.Column="3"
                         Margin="5"
-                        Background="#90CAF9"
+                        Background="#2196F3"
                         CornerRadius="12">
                     <StackPanel VerticalAlignment="Center">
-                        <TextBlock Text="Rs. 250K"
+                        <TextBlock x:Name="monthlyincometxt" Text="Rs. 250K"
                                    FontSize="28"
                                    FontWeight="Bold"
                                    Foreground="White"
@@ -183,31 +187,73 @@
                                FontWeight="Bold"
                                Margin="0,0,0,10"/>
 
-                    <DataGrid AutoGenerateColumns="False"
-                              Height="300">
+                    <DataGrid x:Name="dgVehicles"
+          AutoGenerateColumns="False"
+          Height="300"
+          IsReadOnly="True"
+          AlternatingRowBackground="#F5F9FF"
+          GridLinesVisibility="Horizontal"
+          HeadersVisibility="Column">
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="Rental ID"
-                                                Binding="{Binding RentalID}"/>
+                            <DataGridTextColumn Header="ID"
+                            Binding="{Binding Id}"
+                            Width="50"/>
+                            <DataGridTextColumn Header="Brand"
+                            Binding="{Binding Brand}"
+                            Width="100"/>
+                            <DataGridTextColumn Header="Model"
+                            Binding="{Binding Model}"
+                            Width="120"/>
+                            <DataGridTextColumn Header="Plate Number"
+                            Binding="{Binding PlateNumber}"
+                            Width="120"/>
+                            <DataGridTextColumn Header="Year"
+                            Binding="{Binding Year}"
+                            Width="60"/>
+                            <DataGridTextColumn Header="Daily Rate (Rs.)"
+                            Binding="{Binding DailyRate}"
+                            Width="120"/>
 
-                            <DataGridTextColumn Header="Customer"
-                                                Binding="{Binding CustomerName}"/>
-
-                            <DataGridTextColumn Header="Vehicle"
-                                                Binding="{Binding VehicleName}"/>
-
-                            <DataGridTextColumn Header="Start Date"
-                                                Binding="{Binding StartDate}"/>
-
-                            <DataGridTextColumn Header="Return Date"
-                                                Binding="{Binding ReturnDate}"/>
-
-                            <DataGridTextColumn Header="Status"
-                                                Binding="{Binding Status}"/>
+                            <!-- Status column with color -->
+                            <DataGridTemplateColumn Header="Status" Width="100">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Border CornerRadius="8"
+                            Padding="6,2"
+                            HorizontalAlignment="Center">
+                                            <Border.Style>
+                                                <Style TargetType="Border">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding Status}" Value="Available">
+                                                            <Setter Property="Background" Value="#E8F5E9"/>
+                                                        </DataTrigger>
+                                                        <DataTrigger Binding="{Binding Status}" Value="Rented">
+                                                            <Setter Property="Background" Value="#FFF3E0"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Border.Style>
+                                            <TextBlock Text="{Binding Status}">
+                                                <TextBlock.Style>
+                                                    <Style TargetType="TextBlock">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Status}" Value="Available">
+                                                                <Setter Property="Foreground" Value="#2E7D32"/>
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding Status}" Value="Rented">
+                                                                <Setter Property="Foreground" Value="#E65100"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </TextBlock.Style>
+                                            </TextBlock>
+                                        </Border>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
-
                     </DataGrid>
-
                 </StackPanel>
 
             </Border>
