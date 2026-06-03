@@ -2,6 +2,7 @@
 using Drive_Smart_2._0.Views.Auth;
 using Drive_Smart_2._0.Views.VehicleView;
 using Drive_Smart_2._0.Views.VehicleView.Database;
+using Drive_Smart_2._0.Views.Payment;
 using System.Configuration;
 using System.Data;
 using System.Windows;
@@ -42,7 +43,10 @@ namespace Drive_Smart_2._0
             //---------------------------------------------------------
 
 
+            payment_details pay =  new payment_details();
+            pay.Show();
         }
+
     }
 
 }
