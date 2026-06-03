@@ -45,7 +45,7 @@ namespace Drive_Smart_2._0.Views.VehicleView
 
                     conn.Open();
 
-                    MessageBox.Show("Connected Successfully!");
+                    MessageBox.Show("Database Connected Successfully!");
                 }
                 catch (Exception ex)
                 {
