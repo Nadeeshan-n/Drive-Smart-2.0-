@@ -42,6 +42,10 @@ namespace Drive_Smart_2._0
 
             payment_details pay =  new payment_details();
             pay.Show();
+
+            dashboard dashboardWindow = new dashboard();
+            dashboardWindow.Show();
+
         }
 
     }
