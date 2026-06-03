@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Drive_Smart_2._0.Views.Auth"
         mc:Ignorable="d"
-        Title="Employee_Register" Height="1095" Width="815" ResizeMode="NoResize" >
+        Title="Employee_Register" Height="700" Width="650" ResizeMode="NoResize" >
     <Grid Margin="0,-8,0,7" HorizontalAlignment="Center" Width="815">
         <Grid.RowDefinitions>
             <RowDefinition Height="7*"/>
