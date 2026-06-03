@@ -28,7 +28,8 @@ namespace Drive_Smart_2._0.models
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             PublicVehicleView publicVehicleView = new PublicVehicleView();
-
+            publicVehicleView.Show();
+            this.Close();
 
         }
     }

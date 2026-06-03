@@ -14,6 +14,8 @@ namespace Drive_Smart_2._0
     {
         protected override void OnStartup(StartupEventArgs e)
         {
+
+            // This is the dashboard view 
             base.OnStartup(e);
             var dash = new Window1();
             dash.Show();
@@ -28,8 +30,8 @@ namespace Drive_Smart_2._0
             //PublicVehicleView window = new PublicVehicleView();
             //window.Show();
             
-            AdminVehicleView adminVehicleView = new AdminVehicleView();
-            adminVehicleView.Show();
+            //AdminVehicleView adminVehicleView = new AdminVehicleView();
+            //adminVehicleView.Show();
 
             //---------------------------------------------------------
             // End of Amishka's Code                                 |
