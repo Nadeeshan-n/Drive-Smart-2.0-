@@ -165,7 +165,7 @@
                 </TransformGroup>
             </Rectangle.RenderTransform>
         </Rectangle>
-        <ComboBox HorizontalAlignment="Left" Margin="194,709,0,0" Grid.Row="1" VerticalAlignment="Top" Width="438" SelectionChanged="ComboBox_SelectionChanged" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Tahoma" FontSize="16" IsDropDownOpen="True" Text="Administrator">
+        <ComboBox HorizontalAlignment="Left" Margin="194,709,0,0" Grid.Row="1" VerticalAlignment="Top" Width="438" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Tahoma" FontSize="16" IsDropDownOpen="True" Text="Administrator">
             <ComboBoxItem Content="Administrator"/>
             <ComboBoxItem Content="Manager"/>
             <ComboBoxItem/>

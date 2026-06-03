@@ -21,6 +21,9 @@ namespace Drive_Smart_2._0
             var dash = new EmployeeRegister();
             dash.Show();
 
+            EmployeeRegister employeeRegister = new EmployeeRegister();
+            employeeRegister.Show();
+
 
             //---------------------------------------------------------
             // Amishka's code dont put your a@# here [starts here]   |
