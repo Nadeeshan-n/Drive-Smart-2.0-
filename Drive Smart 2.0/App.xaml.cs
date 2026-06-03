@@ -1,5 +1,6 @@
 ﻿using Drive_Smart_2._0.models;
 using Drive_Smart_2._0.Views.VehicleView;
+using Drive_Smart_2._0.Views.VehicleView.Database;
 using System.Configuration;
 using System.Data;
 using System.Windows;
@@ -23,8 +24,9 @@ namespace Drive_Smart_2._0
             //---------------------------------------------------------
 
 
-            /*VehicleView_V2 window = new VehicleView_V2();
-            window.Show();*/
+            PublicVehicleView window = new PublicVehicleView();
+            window.Show();
+            //VehicleDatabase.InitializeDatabase();
 
 
             //---------------------------------------------------------

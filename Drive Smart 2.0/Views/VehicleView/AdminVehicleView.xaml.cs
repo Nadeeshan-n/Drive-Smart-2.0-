@@ -18,9 +18,9 @@ namespace Drive_Smart_2._0.Views.VehicleView
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class VehicleView_V2 : Window
+    public partial class AdminVehicleView : Window
     {
-        public VehicleView_V2()
+        public AdminVehicleView()
         {
             InitializeComponent();
 
