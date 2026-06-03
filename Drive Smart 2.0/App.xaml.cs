@@ -23,11 +23,11 @@ namespace Drive_Smart_2._0
             // Amishka's code dont put your a@# here [starts here]   |
             //---------------------------------------------------------
 
+            VehicleDatabase.InitializeDatabase();
 
             PublicVehicleView window = new PublicVehicleView();
             window.Show();
-            VehicleDatabase.InitializeDatabase();
-
+            
             AdminVehicleView adminVehicleView = new AdminVehicleView();
             adminVehicleView.Show();
 
