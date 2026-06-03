@@ -1,0 +1,162 @@
+﻿<Window x:Class="Drive_Smart_2._0.Views.Payment.payment_details"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Drive_Smart_2._0.Views.Payment"
+        mc:Ignorable="d"
+        Title="Payment Details Processing" Height="700" Width="1200"
+        WindowStartupLocation="CenterScreen" Background="#F4F6F9">
+
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="FieldLabel">
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#333333"/>
+            <Setter Property="Margin" Value="0,0,0,6"/>
+            <Setter Property="FontSize" Value="14"/>
+        </Style>
+
+        <Style TargetType="Control" x:Key="FormInput">
+            <Setter Property="Padding" Value="12,10"/>
+            <Setter Property="BorderBrush" Value="#CCCCCC"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="TextBox" x:Key="ReadOnlyDetail" BasedOn="{StaticResource FormInput}">
+            <Setter Property="Background" Value="#EAECEF"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="BorderBrush" Value="#D1D5DB"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Border Margin="40" Background="White" CornerRadius="12" BorderThickness="1" BorderBrush="#E5E7EB">
+            <Grid Margin="40">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,25">
+                    <Border Width="55" Height="55" Background="#1E62D0" CornerRadius="10" Margin="0,0,20,0">
+                        <Grid>
+                            <Rectangle Width="28" Height="20" RadiusX="2" RadiusY="2" Stroke="White" StrokeThickness="2"/>
+                            <Line X1="4" Y1="6" X2="24" Y2="6" Stroke="White" StrokeThickness="2" Margin="0,5,0,0"/>
+                        </Grid>
+                    </Border>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Customer Profile Lookup &amp; Payment Portal" FontSize="24" FontWeight="Bold" Foreground="#0F172A"/>
+                        <TextBlock Text="Lookup system customer details cleanly using only Customer ID references." FontSize="14" Foreground="#64748B" Margin="0,4,0,0"/>
+                    </StackPanel>
+                </StackPanel>
+
+                <Separator Grid.Row="1" Background="#E5E7EB" Margin="0,0,0,30"/>
+
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinition Width="*"/>
+                        <Grid.ColumnDefinition Width="60"/>
+                        <Grid.ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" Orientation="Vertical">
+
+                        <TextBlock Style="{StaticResource FieldLabel}">
+                            <Run Text="Customer ID"/> <Run Text="*" Foreground="Red"/>
+                        </TextBlock>
+                        <Grid Margin="0,0,0,20">
+                            <Grid.ColumnDefinitions>
+                                <Grid.ColumnDefinition Width="*"/>
+                                <Grid.ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="TxtSearchCustomerId" Style="{StaticResource FormInput}" Height="42"/>
+                            <Button Grid.Column="1" x:Name="BtnLookup" Content="Lookup" Width="100" Margin="15,0,0,0" Height="42"
+                                    Background="White" BorderBrush="#1E62D0" Foreground="#1E62D0" FontWeight="SemiBold" Click="BtnLookup_Click"/>
+                        </Grid>
+
+                        <TextBlock Text="Fetched Profile Information" FontSize="15" FontWeight="Bold" Foreground="#1E62D0" Margin="0,10,0,15"/>
+
+                        <TextBlock Text="Full Name" Style="{StaticResource FieldLabel}"/>
+                        <TextBox x:Name="TxtFullName" Style="{StaticResource ReadOnlyDetail}" Margin="0,0,0,20"/>
+
+                        <TextBlock Text="Email Address" Style="{StaticResource FieldLabel}"/>
+                        <TextBox x:Name="TxtEmail" Style="{StaticResource ReadOnlyDetail}" Margin="0,0,0,20"/>
+
+                        <TextBlock Text="Contact &amp; Location Details" Style="{StaticResource FieldLabel}"/>
+                        <TextBox x:Name="TxtContactInfo" Style="{StaticResource ReadOnlyDetail}" Margin="0,0,0,20"/>
+
+                        <TextBlock Text="Current Account Balance ($)" Style="{StaticResource FieldLabel}"/>
+                        <TextBox x:Name="TxtBalance" Style="{StaticResource ReadOnlyDetail}" FontWeight="Bold" Foreground="#0F172A"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2" Orientation="Vertical">
+                        <TextBlock Text="New Payment Transaction Entry" FontSize="15" FontWeight="Bold" Foreground="#1E62D0" Margin="0,0,0,15"/>
+
+                        <TextBlock Style="{StaticResource FieldLabel}">
+                            <Run Text="Invoice / Reference System Number"/> <Run Text="*" Foreground="Red"/>
+                        </TextBlock>
+                        <TextBox x:Name="TxtInvoiceNum" Style="{StaticResource FormInput}" Margin="0,0,0,20"/>
+
+                        <Grid Margin="0,0,0,20">
+                            <Grid.ColumnDefinitions>
+                                <Grid.ColumnDefinition Width="*"/>
+                                <Grid.ColumnDefinition Width="20"/>
+                                <Grid.ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Style="{StaticResource FieldLabel}">
+                                    <Run Text="Amount (USD)"/> <Run Text="*" Foreground="Red"/>
+                                </TextBlock>
+                                <TextBox x:Name="TxtAmount" Style="{StaticResource FormInput}"/>
+                            </StackPanel>
+
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Style="{StaticResource FieldLabel}">
+                                    <Run Text="Payment Date"/> <Run Text="*" Foreground="Red"/>
+                                </TextBlock>
+                                <DatePicker x:Name="DpPaymentDate" Height="42" VerticalContentAlignment="Center"/>
+                            </StackPanel>
+                        </Grid>
+
+                        <TextBlock Style="{StaticResource FieldLabel}">
+                            <Run Text="Payment Method Setting"/> <Run Text="*" Foreground="Red"/>
+                        </TextBlock>
+                        <ComboBox x:Name="CboPaymentMethod" Height="42" Style="{StaticResource FormInput}" Margin="0,0,0,20">
+                            <ComboBoxItem Content="Direct Bank Deposit" IsSelected="True"/>
+                            <ComboBoxItem Content="Hand Cash Deposit"/>
+                        </ComboBox>
+
+                        <TextBlock Text="Internal System Memo / Notes (Optional)" Style="{StaticResource FieldLabel}"/>
+                        <TextBox x:Name="TxtNotes" Height="85" AcceptsReturn="True" TextWrapping="Wrap" Style="{StaticResource FormInput}"/>
+                    </StackPanel>
+                </Grid>
+
+                <Grid Grid.Row="3" Margin="0,20,0,0">
+                    <Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinition Width="Auto"/>
+                        <Grid.ColumnDefinition Width="*"/>
+                        <Grid.ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Button Grid.Column="0" x:Name="BtnCancel" Content="✕ Cancel Transaction" Width="180" Height="45"
+                            Background="White" BorderBrush="#DC2626" Foreground="#DC2626" FontSize="14" FontWeight="SemiBold" Click="BtnCancel_Click"/>
+
+                    <Button Grid.Column="2" x:Name="BtnProcess" Content="🖴 Process System Payment" Width="240" Height="45"
+                            Background="#1E62D0" Foreground="White" BorderThickness="0" FontSize="14" FontWeight="Bold" Click="BtnProcess_Click">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="6"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
+    
