@@ -18,9 +18,9 @@ namespace Drive_Smart_2._0
         {
 
             
-            //base.OnStartup(e);
-            //var dash = new EmployeeRegister();
-            //dash.Show();
+            base.OnStartup(e);
+            var dash = new EmployeeRegister();
+            dash.Show();
 
 
             //---------------------------------------------------------
@@ -40,8 +40,8 @@ namespace Drive_Smart_2._0
             //---------------------------------------------------------
 
 
-            //payment_details pay =  new payment_details();
-            //pay.Show();
+            payment_details pay =  new payment_details();
+            pay.Show();
 
             dashboard dashboardWindow = new dashboard();
             dashboardWindow.Show();
