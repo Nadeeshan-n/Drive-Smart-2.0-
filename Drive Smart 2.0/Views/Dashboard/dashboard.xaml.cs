@@ -16,11 +16,50 @@ namespace Drive_Smart_2._0.models
 {
     public partial class Window1 : Window
     {
+        private void LoadVehicleTable()
+        {
+            var list = new List<Vehicle>();
+
+            try
+            {
+                using var conn = VehicleDatabase.GetConnection();
+                conn.Open();
+                var cmd = conn.CreateCommand();
+                cmd.CommandText = @"
+                    SELECT Id, Brand, Model, PlateNumber, 
+                           Year, Color, DailyRate, Status 
+                    FROM Vehicles 
+                    ORDER BY Status, Brand";
+
+                using var reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    list.Add(new Vehicle
+                    {
+                        Id = reader.GetInt32(0),
+                        Brand = reader.GetString(1),
+                        Model = reader.GetString(2),
+                        PlateNumber = reader.GetString(3),
+                        Year = reader.GetInt32(4),
+                        Color = reader.GetString(5),
+                        DailyRate = reader.GetDouble(6),
+                        Status = reader.GetString(7)
+                    });
+                }
+            }
+            catch (SqliteException ex)
+            {
+                MessageBox.Show("Could not load vehicles:\n" + ex.Message);
+            }
+
+            dgVehicles.ItemsSource = list;
+        }
         public Window1()
         {
             InitializeComponent();
             VehicleDatabase.InitializeDatabase();
             LoadStats();
+            LoadVehicleTable();
         }
 
         private void LoadStats()
