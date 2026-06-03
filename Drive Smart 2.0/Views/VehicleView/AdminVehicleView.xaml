@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Admin - Vehicle Management"
         Height="700" Width="1200"
-        Background="#F5F9FF">
+        Background="#F5F9FF" SnapsToDevicePixels="True" WindowStartupLocation="CenterScreen" WindowState="Maximized">
 
     <Grid>
         <Grid.ColumnDefinitions>
