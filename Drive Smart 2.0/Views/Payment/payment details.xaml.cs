@@ -23,5 +23,25 @@ namespace Drive_Smart_2._0.Views.Payment
         {
             InitializeComponent();
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void LOOK_UP1_Copy_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

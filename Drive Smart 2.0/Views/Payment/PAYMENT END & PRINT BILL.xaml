@@ -1,0 +1,100 @@
+﻿<Window x:Class="Drive_Smart_2._0.Views.Payment.PAYMENT_END___PRINT_BILL"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Drive_Smart_2._0.Views.Payment"
+        mc:Ignorable="d"
+        Title="PAYMENT_END___PRINT_BILL" Height="450" Width="800">
+    <Grid Width="1200" Height="700">
+        <Border Width="220"
+            Background="#1565C0"
+            HorizontalAlignment="Left" Margin="0,0,0,-250">
+
+            <StackPanel Margin="15">
+
+                <TextBlock Text="RENTAL SYSTEM"
+                    FontSize="22"
+                    FontWeight="Bold"
+                    Foreground="White"
+                    />
+
+                <Button Content="Dashboard"
+                    Height="45"
+                    Margin="0,5"
+                    Background="#1E88E5"
+                    Foreground="White"
+                    BorderThickness="0"/>
+
+                <Button Content="Vehicles"
+                    Height="45"
+                    Margin="0,5"
+                    Background="#1565C0"
+                    Foreground="White"
+                    BorderThickness="0"/>
+
+                <Button Content="Customers"
+                    Height="45"
+                    Margin="0,5"
+                    Background="#1565C0"
+                    Foreground="White"
+                    BorderThickness="0"/>
+
+                <Button Content="Bookings"
+                    Height="45"
+                    Margin="0,5"
+                    Background="#1565C0"
+                    Foreground="White"
+                    BorderThickness="0"/>
+
+                <Button Content="Payments"
+                    Height="45"
+                    Margin="0,5"
+                    Background="#1565C0"
+                    Foreground="White"
+                    BorderThickness="0"/>
+
+                <Button Content="Reports"
+                    Height="45"
+                    Margin="0,5"
+                    Background="#1565C0"
+                    Foreground="White"
+                    BorderThickness="0"/>
+            </StackPanel>
+
+        </Border>
+        <Image Margin="335,26,526,381"/>
+        <Image Margin="307,64,498,420" Source="/Image2.png" Stretch="Fill"/>
+        <Button x:Name="LOOK_UP1_Copy" Content="PROCED TO  PAYMENT" Margin="754,509,145,128" RenderTransformOrigin="0.5,0.5" Foreground="#FF01060C" Background="#FF424BD4" Click="LOOK_UP1_Copy_Click" FontFamily="Verdana" FontSize="20" FontStyle="Italic" FontWeight="Bold">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.625"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="LOOK_UP1_Copy1" Content="PRINT INVOICE" Margin="341,308,705,350" RenderTransformOrigin="0.5,0.5" Foreground="#FF01060C" Background="#FF424BD4" Click="LOOK_UP1_Copy_Click" FontFamily="Verdana" FontStyle="Italic" FontWeight="Bold">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.625"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Button x:Name="LOOK_UP1_Copy2" Content="BACK TO DASHBORD" Margin="537,308,509,350" RenderTransformOrigin="0.5,0.5" Foreground="#FF01060C" Background="#FF424BD4" Click="LOOK_UP1_Copy_Click" FontFamily="Verdana" FontStyle="Italic" FontWeight="Bold">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.625"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+
+    </Grid>
+</Window>

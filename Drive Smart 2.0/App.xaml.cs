@@ -1,4 +1,5 @@
 ﻿using Drive_Smart_2._0.models;
+using Drive_Smart_2._0.Views.Payment;
 using System.Configuration;
 using System.Data;
 using System.Windows;
@@ -13,9 +14,10 @@ namespace Drive_Smart_2._0
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            var dash = new Window1();
-            dash.Show();
+            payment_details pay =  new payment_details();
+            pay.Show();
         }
+
     }
 
 }
