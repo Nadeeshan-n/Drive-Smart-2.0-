@@ -15,18 +15,13 @@ using System.Windows.Shapes;
 namespace Drive_Smart_2._0.Views.Auth
 {
     /// <summary>
-    /// Interaction logic for Employee_Register.xaml
+    /// Interaction logic for login.xaml
     /// </summary>
-    public partial class Employee_Register : Window
+    public partial class login : Window
     {
-        public Employee_Register()
+        public login()
         {
             InitializeComponent();
-        }
-
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }
