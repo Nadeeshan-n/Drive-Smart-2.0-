@@ -25,8 +25,8 @@ namespace Drive_Smart_2._0
 
             VehicleDatabase.InitializeDatabase();
 
-            PublicVehicleView window = new PublicVehicleView();
-            window.Show();
+            //PublicVehicleView window = new PublicVehicleView();
+            //window.Show();
             
             AdminVehicleView adminVehicleView = new AdminVehicleView();
             adminVehicleView.Show();
