@@ -18,9 +18,9 @@ namespace Drive_Smart_2._0.Views.VehicleView
     /// <summary>
     /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class VehicleView_V2 : Window
+    public partial class PublicVehicleView : Window
     {
-        public VehicleView_V2()
+        public PublicVehicleView()
         {
             InitializeComponent();
 
@@ -29,7 +29,7 @@ namespace Drive_Smart_2._0.Views.VehicleView
             //--------------------------
             // DATABSE CONNECION START |
             //--------------------------
-
+            /*
             string connString =
                 "Host=ep-lucky-dust-ap0aolwl-pooler.c-7.us-east-1.aws.neon.tech; " +
                 "Database=neondb; " +
@@ -51,7 +51,7 @@ namespace Drive_Smart_2._0.Views.VehicleView
                 {
                     MessageBox.Show(ex.Message);
                 }
-
+            */
             //------------------------
             // DATABSE CONNECION END |
             //------------------------
