@@ -15,20 +15,13 @@ using System.Windows.Shapes;
 namespace Drive_Smart_2._0.Views.Auth
 {
     /// <summary>
-    /// Interaction logic for LoginWindow.xaml
+    /// Interaction logic for login.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class login : Window
     {
-        public LoginWindow()
+        public login()
         {
             InitializeComponent();
-        }
-
-        private void RegisterLink_Click(object sender, MouseButtonEventArgs e)
-        {
-            EmployeeRegister employeeRegister = new EmployeeRegister();
-            employeeRegister.Show();
-            this.Close();
         }
     }
 }

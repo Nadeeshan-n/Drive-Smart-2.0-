@@ -1,4 +1,5 @@
 ﻿using Drive_Smart_2._0.models;
+using Drive_Smart_2._0.Views.Auth;
 using Drive_Smart_2._0.Views.VehicleView;
 using Drive_Smart_2._0.Views.VehicleView.Database;
 using System.Configuration;
@@ -15,7 +16,7 @@ namespace Drive_Smart_2._0
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            var dash = new Window1();
+            var dash = new EmployeeRegister();
             dash.Show();
 
 
