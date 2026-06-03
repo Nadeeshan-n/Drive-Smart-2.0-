@@ -6,85 +6,114 @@
         Background="#F5F9FF">
 
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
         <!-- Sidebar -->
-        <Border Width="220"
-                Background="#1565C0"
-                HorizontalAlignment="Left">
-
+        <Border Background="#1565C0" Grid.Column="0">
             <StackPanel Margin="15">
-
-                <TextBlock Text="RENTAL SYSTEM"
-                           FontSize="22"
-                           FontWeight="Bold"
-                           Foreground="White"
-                           Margin="0,20,0,30"/>
-
-                <Button Content="Catalog"
-                        Height="45"
-                        Margin="0,5"
-                        Background="#1E88E5"
-                        Foreground="White"
-                        BorderThickness="0" Click="Button_Click_1"/>
-
-                <Button Content="Vehicles"
-                        Height="45"
-                        Margin="0,5"
-                        Background="#1565C0"
-                        Foreground="White"
-                        BorderThickness="0" Click="Button_Click_2"/>
-
-                <Button Content="Customers"
-                        Height="45"
-                        Margin="0,5"
-                        Background="#1565C0"
-                        Foreground="White"
-                        BorderThickness="0"/>
-
-                <Button Content="Bookings"
-                        Height="45"
-                        Margin="0,5"
-                        Background="#1565C0"
-                        Foreground="White"
-                        BorderThickness="0"/>
-
-                <Button Content="Payments"
-                        Height="45"
-                        Margin="0,5"
-                        Background="#1565C0"
-                        Foreground="White"
-                        BorderThickness="0"/>
-
-                <Button Content="Reports"
-                        Height="45"
-                        Margin="0,5"
-                        Background="#1565C0"
-                        Foreground="White"
-                        BorderThickness="0"/>
+                <TextBlock Text="RENTAL SYSTEM" FontSize="22" FontWeight="Bold"
+                           Foreground="White" Margin="0,20,0,30"/>
+                <Button Content="Catalog"   Height="45" Margin="0,5" Background="#1E88E5" Foreground="White" BorderThickness="0"/>
+                <Button Content="Vehicles"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0" Click="Button_Click_2"/>
+                <Button Content="Customers" Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
+                <Button Content="Bookings"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
+                <Button Content="Payments"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
+                <Button Content="Reports"   Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
             </StackPanel>
-
-        </Border>
-        <Border Grid.Row="0"
-                    Background="White"
-                    CornerRadius="10" Margin="240,20,20,594">
-
-            <Grid Margin="20,0">
-                <TextBlock Text="Vehicle Catalog View"
-                               FontSize="28"
-                               FontWeight="Bold"
-                               VerticalAlignment="Center"/>
-            </Grid>
-
-        </Border>
-        <Border Grid.Row="0"
-            Background="White"
-            CornerRadius="10" Margin="240,108,20,10">
-
-            <Grid Margin="20,0"/>
-
         </Border>
 
         <!-- Main Content -->
+        <Grid Grid.Column="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
+            <!-- Header -->
+            <Border Background="White" CornerRadius="10" Grid.Row="0">
+                <TextBlock Text="Vehicle Catalog" FontSize="26" FontWeight="Bold"
+                           VerticalAlignment="Center" Margin="20,0"/>
+            </Border>
+
+            <!-- Scrollable Tile Grid -->
+            <ScrollViewer Grid.Row="1" Margin="0,10,0,0"
+                          VerticalScrollBarVisibility="Auto">
+                <ItemsControl x:Name="icVehicles">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border Width="210" Margin="10"
+                                    Background="White"
+                                    CornerRadius="12"
+                                    BorderBrush="#E0E0E0"
+                                    BorderThickness="1">
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="8" ShadowDepth="2"
+                                                      Opacity="0.1" Color="Black"/>
+                                </Border.Effect>
+                                <StackPanel>
+                                    <!-- Car Image -->
+                                    <Border Height="140" CornerRadius="12,12,0,0"
+                                            ClipToBounds="True" Background="#EEEEEE">
+                                        <Image Source="{Binding FullImagePath}"
+                                               Stretch="UniformToFill"/>
+                                    </Border>
+
+                                    <!-- Info -->
+                                    <StackPanel Margin="12,10,12,12">
+                                        <TextBlock Text="{Binding BrandModel}"
+                                                   FontSize="15" FontWeight="Bold"
+                                                   Foreground="#1A1A1A"/>
+                                        <TextBlock Text="{Binding PlateNumber}"
+                                                   FontSize="12" Foreground="#888"
+                                                   Margin="0,2,0,0"/>
+                                        <Grid Margin="0,6,0,0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="*"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Text="Year" FontSize="10" Foreground="#AAAAAA"/>
+                                                <TextBlock Text="{Binding Year}" FontSize="13" FontWeight="SemiBold"/>
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1">
+                                                <TextBlock Text="Color" FontSize="10" Foreground="#AAAAAA"/>
+                                                <TextBlock Text="{Binding Color}" FontSize="13" FontWeight="SemiBold"/>
+                                            </StackPanel>
+                                        </Grid>
+                                        <Separator Margin="0,8"/>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"/>
+                                                <ColumnDefinition Width="Auto"/>
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Grid.Column="0">
+                                                <TextBlock Text="Daily Rate" FontSize="10" Foreground="#AAAAAA"/>
+                                                <TextBlock Text="{Binding DailyRate, StringFormat={}{0:C}}"
+                                                           FontSize="15" FontWeight="Bold" Foreground="#1565C0"/>
+                                            </StackPanel>
+                                            <Border Grid.Column="1" CornerRadius="6" Padding="8,4"
+                                                    Background="{Binding StatusColor}">
+                                                <TextBlock Text="{Binding Status}"
+                                                           FontSize="11" Foreground="White"
+                                                           FontWeight="SemiBold"/>
+                                            </Border>
+                                        </Grid>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Window>

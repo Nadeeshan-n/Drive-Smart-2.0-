@@ -7,7 +7,6 @@ namespace Drive_Smart_2._0.Views.VehicleView.Database
 {
     public class VehicleDatabase
     {
-        // Goes up from bin/Debug/net8.0-windows/ back to the project root
         private static readonly string ProjectRoot = Path.GetFullPath(
             Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\")
         );
@@ -17,6 +16,11 @@ namespace Drive_Smart_2._0.Views.VehicleView.Database
         );
 
         public static readonly string DbPath = Path.Combine(DbFolder, "vehicles.db");
+
+        // Images saved here
+        public static readonly string ImagesFolder = Path.Combine(
+            ProjectRoot, "Views", "VehicleView", "Images"
+        );
 
         public static SqliteConnection GetConnection()
         {
@@ -28,6 +32,7 @@ namespace Drive_Smart_2._0.Views.VehicleView.Database
             try
             {
                 Directory.CreateDirectory(DbFolder);
+                Directory.CreateDirectory(ImagesFolder);
 
                 using var conn = GetConnection();
                 conn.Open();
@@ -42,9 +47,19 @@ namespace Drive_Smart_2._0.Views.VehicleView.Database
                         Year        INTEGER,
                         Color       TEXT,
                         DailyRate   REAL    NOT NULL,
-                        Status      TEXT    NOT NULL DEFAULT 'Available'
+                        Status      TEXT    NOT NULL DEFAULT 'Available',
+                        ImagePath   TEXT
                     );";
                 cmd.ExecuteNonQuery();
+
+                // Add ImagePath column if upgrading from old DB
+                try
+                {
+                    var alter = conn.CreateCommand();
+                    alter.CommandText = "ALTER TABLE Vehicles ADD COLUMN ImagePath TEXT";
+                    alter.ExecuteNonQuery();
+                }
+                catch { /* Column already exists, ignore */ }
             }
             catch (Exception ex)
             {
