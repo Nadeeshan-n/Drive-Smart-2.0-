@@ -26,15 +26,9 @@ namespace Drive_Smart_2._0.Views.VehicleView
 
 
 
-
-
-
-
-
-
-
-
-            // Database connection
+            //--------------------------
+            // DATABSE CONNECION START |
+            //--------------------------
 
             string connString =
                 "Host=ep-lucky-dust-ap0aolwl-pooler.c-7.us-east-1.aws.neon.tech; " +
@@ -45,27 +39,22 @@ namespace Drive_Smart_2._0.Views.VehicleView
                 "Channel Binding=Require;";
 
 
-            try
-            {
-                using var conn = new NpgsqlConnection(connString);
+                try
+                {
+                    using var conn = new NpgsqlConnection(connString);
 
-                conn.Open();
+                    conn.Open();
 
-                //MessageBox.Show("Connected Successfully!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+                    MessageBox.Show("Database Connected Successfully!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
 
-
-
-
-
-
-
-
-
+            //------------------------
+            // DATABSE CONNECION END |
+            //------------------------
 
 
         }
