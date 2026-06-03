@@ -61,12 +61,17 @@ namespace Drive_Smart_2._0.Views.VehicleView
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            new AdminVehicleView().Show();
-            this.Close();
+            //new AdminVehicleView().Show();
+            //this.Close();
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            AdminVehicleView adminVehicleView = new AdminVehicleView();
+            adminVehicleView.Show();
+            this.Close();
 
-
+        }
     }
 
     public class VehicleTile

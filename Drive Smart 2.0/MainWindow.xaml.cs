@@ -27,6 +27,10 @@ namespace Drive_Smart_2._0
             LoginWindow loginWindow = new LoginWindow();
             loginWindow.Show();
             Close();
+
+            
+
+
         }
     }
 }
