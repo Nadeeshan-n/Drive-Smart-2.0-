@@ -15,11 +15,18 @@ namespace Drive_Smart_2._0
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-
-            // This is the dashboard view 
             base.OnStartup(e);
-            var dash = new EmployeeRegister();
-            dash.Show();
+
+            // Open EmployeeRegister window on startup
+            EmployeeRegister employeeRegisterWindow = new EmployeeRegister();
+            employeeRegisterWindow.Show();
+
+
+            login log = new login();
+            log.Show();
+            // This is the dashboard view 
+
+
 
 
             //---------------------------------------------------------
@@ -28,9 +35,11 @@ namespace Drive_Smart_2._0
 
             VehicleDatabase.InitializeDatabase();
 
+
+
             //PublicVehicleView window = new PublicVehicleView();
             //window.Show();
-            
+
             //AdminVehicleView adminVehicleView = new AdminVehicleView();
             //adminVehicleView.Show();
 

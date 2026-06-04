@@ -189,7 +189,7 @@
                             <TextBlock Text="Email Address" Style="{StaticResource FormLabelStyle}"/>
                             <Border Style="{StaticResource InputBorderStyle}">
                                 <TextBox x:Name="EmailAddress"
-                                         Style="{StaticResource FormTextBoxStyle}" TextChanged="EmailAddress_TextChanged"/>
+                                         Style="{StaticResource FormTextBoxStyle}" TextChanged="EmailAddress_TextChanged" Background="{x:Null}"/>
                             </Border>
                         </StackPanel>
 
@@ -252,7 +252,7 @@
 
                         <StackPanel Grid.Row="6">
                             <TextBlock Text="Addresses" Style="{StaticResource FormLabelStyle}"/>
-                            <Border Height="174"
+                            <Border Height="117"
                                     Style="{StaticResource InputBorderStyle}"
                                     Padding="10">
                                 <TextBox x:Name="Address"
@@ -299,5 +299,7 @@
                         FontSize="14" Click="Employee_Register_Click"/>
             </Grid>
         </Grid>
+        <Grid Grid.Column="1"/>
+        <Grid Grid.Column="1"/>
     </Grid>
 </Window>

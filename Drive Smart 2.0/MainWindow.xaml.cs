@@ -24,11 +24,11 @@ namespace Drive_Smart_2._0
 
         private void systemstartButton_Click(object sender, RoutedEventArgs e)
         {
-            LoginWindow loginWindow = new LoginWindow();
+            login loginWindow = new login();
             loginWindow.Show();
             Close();
 
-            
+
 
 
         }
