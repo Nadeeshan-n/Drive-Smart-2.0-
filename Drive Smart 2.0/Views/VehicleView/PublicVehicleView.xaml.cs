@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -10,6 +11,8 @@ namespace Drive_Smart_2._0.Views.VehicleView
 {
     public partial class PublicVehicleView : Window
     {
+        private List<VehicleTile> _allVehicles = new();
+
         public PublicVehicleView()
         {
             InitializeComponent();
@@ -56,7 +59,30 @@ namespace Drive_Smart_2._0.Views.VehicleView
                 });
             }
 
-            icVehicles.ItemsSource = list;
+            _allVehicles = list;
+            icVehicles.ItemsSource = _allVehicles;
+        }
+
+        private void txtSearch_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            string query = txtSearch.Text.Trim().ToLower();
+
+            if (string.IsNullOrEmpty(query))
+            {
+                icVehicles.ItemsSource = _allVehicles;
+            }
+            else
+            {
+                var filtered = _allVehicles.Where(v =>
+                    v.BrandModel.ToLower().Contains(query) ||
+                    v.PlateNumber.ToLower().Contains(query) ||
+                    v.Color.ToLower().Contains(query) ||
+                    v.Status.ToLower().Contains(query) ||
+                    v.Year.ToString().Contains(query)
+                ).ToList();
+
+                icVehicles.ItemsSource = filtered;
+            }
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -70,7 +96,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
             AdminVehicleView adminVehicleView = new AdminVehicleView();
             adminVehicleView.Show();
             this.Close();
-
         }
     }
 
@@ -91,6 +116,9 @@ namespace Drive_Smart_2._0.Views.VehicleView
             : new SolidColorBrush(System.Windows.Media.Color.FromRgb(229, 57, 53));
     }
 }
+
+
+
 
 //--------------------------
 // DATABSE CONNECION START |

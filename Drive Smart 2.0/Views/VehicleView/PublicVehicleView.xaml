@@ -34,9 +34,28 @@
             </Grid.RowDefinitions>
 
             <!-- Header -->
-            <Border Background="White" CornerRadius="10" Grid.Row="0">
-                <TextBlock Text="Vehicle Catalog" FontSize="26" FontWeight="Bold"
-                           VerticalAlignment="Center" Margin="20,0"/>
+            <Border Background="White" CornerRadius="10" Grid.Row="0" Padding="20,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Vehicle Catalog" FontSize="26" FontWeight="Bold"
+                   VerticalAlignment="Center" Grid.Column="0"/>
+                    <Border Grid.Column="1" Background="#F5F9FF" BorderBrush="#D0D9EE"
+                BorderThickness="1" CornerRadius="8" Padding="10,0"
+                VerticalAlignment="Center">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="🔍" VerticalAlignment="Center" Margin="0,0,6,0" FontSize="14"/>
+                            <TextBox x:Name="txtSearch"
+                         Width="220" Height="34"
+                         VerticalContentAlignment="Center"
+                         BorderThickness="0" Background="Transparent"
+                         FontSize="14" Foreground="#444"
+                         TextChanged="txtSearch_TextChanged"/>
+                        </StackPanel>
+                    </Border>
+                </Grid>
             </Border>
 
             <!-- Scrollable Tile Grid -->
