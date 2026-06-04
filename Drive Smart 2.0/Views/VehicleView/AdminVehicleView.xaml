@@ -126,7 +126,7 @@
                         <DataGridTextColumn Header="Plate No."  Binding="{Binding PlateNumber}"  Width="*"/>
                         <DataGridTextColumn Header="Year"       Binding="{Binding Year}"         Width="60"/>
                         <DataGridTextColumn Header="Color"      Binding="{Binding Color}"        Width="*"/>
-                        <DataGridTextColumn Header="Daily Rate" Binding="{Binding DailyRate, StringFormat={}{0:C}}" Width="*"/>
+                        <DataGridTextColumn Header="Daily Rate" Binding="{Binding DailyRate, StringFormat={}{0:N2}LKR}" Width="*"/>
                         <DataGridTextColumn Header="Status"     Binding="{Binding Status}"       Width="*"/>
                         <DataGridTextColumn Header="Image"      Binding="{Binding ImagePath}"    Width="*"/>
                     </DataGrid.Columns>

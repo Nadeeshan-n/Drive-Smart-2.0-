@@ -14,7 +14,7 @@ using System.Windows;
 
 namespace Drive_Smart_2._0.models
 {
-    public partial class Window1 : Window
+    public partial class dashboard : Window
     {
         private void LoadVehicleTable()
         {
@@ -54,7 +54,7 @@ namespace Drive_Smart_2._0.models
 
             dgVehicles.ItemsSource = list;
         }
-        public Window1()
+        public dashboard()
         {
             InitializeComponent();
             VehicleDatabase.InitializeDatabase();

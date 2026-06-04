@@ -98,7 +98,7 @@
                                             </Grid.ColumnDefinitions>
                                             <StackPanel Grid.Column="0">
                                                 <TextBlock Text="Daily Rate" FontSize="10" Foreground="#AAAAAA"/>
-                                                <TextBlock Text="{Binding DailyRate, StringFormat={}{0:C}}"
+                                                <TextBlock Text="{Binding DailyRate, StringFormat={}{0:N2} LKR}"
                                                            FontSize="15" FontWeight="Bold" Foreground="#1565C0"/>
                                             </StackPanel>
                                             <Border Grid.Column="1" CornerRadius="6" Padding="8,4"
