@@ -3,7 +3,9 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Admin - Vehicle Management"
         Height="700" Width="1200"
-        Background="#F5F9FF" SnapsToDevicePixels="True" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        Background="#F5F9FF"
+        WindowStartupLocation="CenterScreen"
+        WindowState="Maximized">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -76,8 +78,11 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
 
+                        <!-- Labels Row -->
                         <TextBlock Text="Brand"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="0,0,0,4"/>
                         <TextBlock Text="Model"      Grid.Column="1" Grid.Row="0" FontWeight="SemiBold" Margin="8,0,0,4"/>
                         <TextBlock Text="Plate No."  Grid.Column="2" Grid.Row="0" FontWeight="SemiBold" Margin="8,0,0,4"/>
@@ -85,22 +90,72 @@
                         <TextBlock Text="Color"      Grid.Column="4" Grid.Row="0" FontWeight="SemiBold" Margin="8,0,0,4"/>
                         <TextBlock Text="Daily Rate" Grid.Column="5" Grid.Row="0" FontWeight="SemiBold" Margin="8,0,0,4"/>
 
-                        <TextBox x:Name="txtBrand" Grid.Column="0" Grid.Row="1" Height="34" Padding="6" Margin="0,0,6,0"/>
-                        <TextBox x:Name="txtModel" Grid.Column="1" Grid.Row="1" Height="34" Padding="6" Margin="0,0,6,0"/>
-                        <TextBox x:Name="txtPlate" Grid.Column="2" Grid.Row="1" Height="34" Padding="6" Margin="0,0,6,0"/>
+                        <!-- Input Row -->
+                        <TextBox x:Name="txtBrand" Grid.Column="0" Grid.Row="1" Height="34" Padding="6" Margin="0,0,6,0"
+                                 TextChanged="txtBrand_TextChanged"/>
+                        <TextBox x:Name="txtModel" Grid.Column="1" Grid.Row="1" Height="34" Padding="6" Margin="0,0,6,0"
+                                 TextChanged="txtModel_TextChanged"/>
+
+                        <!-- Plate with dot indicator -->
+                        <Grid Grid.Column="2" Grid.Row="1" Margin="0,0,6,0">
+                            <TextBox x:Name="txtPlate" Height="34" Padding="6,6,28,6"
+                                     TextChanged="txtPlate_TextChanged"
+                                     CharacterCasing="Upper"/>
+                            <TextBlock x:Name="txtPlateIndicator" Text="●"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Center"
+                                       Margin="0,0,8,0" FontSize="14"
+                                       Foreground="LightGray"/>
+                        </Grid>
+
                         <TextBox x:Name="txtYear"  Grid.Column="3" Grid.Row="1" Height="34" Padding="6" Margin="0,0,6,0"/>
                         <TextBox x:Name="txtColor" Grid.Column="4" Grid.Row="1" Height="34" Padding="6" Margin="0,0,6,0"/>
                         <TextBox x:Name="txtRate"  Grid.Column="5" Grid.Row="1" Height="34" Padding="6"/>
 
-                        <!-- Buttons -->
-                        <StackPanel Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="2"
+                        <!-- Category + Plate Hint Row -->
+                        <StackPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" Margin="0,10,6,0">
+                            <TextBlock Text="Category" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                            <ComboBox x:Name="cmbCategory" Height="34"
+                                      SelectionChanged="cmbCategory_SelectionChanged">
+                                <ComboBoxItem Content="Car"            IsSelected="True"/>
+                                <ComboBoxItem Content="Motorcycle/Bike"/>
+                                <ComboBoxItem Content="Van"/>
+                                <ComboBoxItem Content="Lorry/Truck"/>
+                                <ComboBoxItem Content="Three-Wheeler"/>
+                                <ComboBoxItem Content="Bus"/>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2" Margin="8,10,0,0">
+                            <TextBlock Text="Plate Format Guide" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                            <Border Background="#EEF2FF" CornerRadius="6" Padding="10,6">
+                                <TextBlock x:Name="txtPlateHint"
+                                           Text="e.g.  AB-1234  or  ABC-1234"
+                                           FontSize="12" Foreground="#333"
+                                           FontFamily="Consolas"/>
+                            </Border>
+                        </StackPanel>
+
+                        <!-- Validation Message Row -->
+                        <Border Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="3"
+                                Margin="0,8,0,0" Padding="10,6"
+                                Background="#FFF3E0" CornerRadius="6"
+                                x:Name="borderValidation"
+                                Visibility="Collapsed">
+                            <TextBlock x:Name="txtValidationMsg"
+                                       Foreground="#E65100" FontSize="12"
+                                       TextWrapping="Wrap"/>
+                        </Border>
+
+                        <!-- Buttons Row -->
+                        <StackPanel Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="4"
                                     Orientation="Horizontal" Margin="0,12,0,0">
-                            <Button x:Name="btnAdd"          Content="➕ Add"            Width="100" Height="36" Margin="0,0,8,0" Background="#1E88E5" Foreground="White" BorderThickness="0" Click="btnAdd_Click"/>
-                            <Button x:Name="btnModify"       Content="✏️ Modify"         Width="100" Height="36" Margin="0,0,8,0" Background="#FB8C00" Foreground="White" BorderThickness="0" Click="btnModify_Click"/>
-                            <Button x:Name="btnDuplicate"    Content="📋 Duplicate"      Width="100" Height="36" Margin="0,0,8,0" Background="#43A047" Foreground="White" BorderThickness="0" Click="btnDuplicate_Click"/>
-                            <Button x:Name="btnRemove"       Content="🗑️ Remove"         Width="100" Height="36" Margin="0,0,8,0" Background="#E53935" Foreground="White" BorderThickness="0" Click="btnRemove_Click"/>
-                            <Button x:Name="btnClear"        Content="✖ Clear"           Width="80"  Height="36" Margin="0,0,8,0" Background="#9E9E9E" Foreground="White" BorderThickness="0" Click="btnClear_Click"/>
-                            <Button x:Name="btnToggleStatus" Content="🔄 Toggle Status"  Width="130" Height="36" Background="#6A1B9A" Foreground="White" BorderThickness="0" Click="btnToggleStatus_Click"/>
+                            <Button x:Name="btnAdd"          Content="➕ Add"           Width="100" Height="36" Margin="0,0,8,0" Background="#1E88E5" Foreground="White" BorderThickness="0" Click="btnAdd_Click"/>
+                            <Button x:Name="btnModify"       Content="✏️ Modify"        Width="100" Height="36" Margin="0,0,8,0" Background="#FB8C00" Foreground="White" BorderThickness="0" Click="btnModify_Click"/>
+                            <Button x:Name="btnDuplicate"    Content="📋 Duplicate"     Width="100" Height="36" Margin="0,0,8,0" Background="#43A047" Foreground="White" BorderThickness="0" Click="btnDuplicate_Click"/>
+                            <Button x:Name="btnRemove"       Content="🗑️ Remove"        Width="100" Height="36" Margin="0,0,8,0" Background="#E53935" Foreground="White" BorderThickness="0" Click="btnRemove_Click"/>
+                            <Button x:Name="btnClear"        Content="✖ Clear"          Width="80"  Height="36" Margin="0,0,8,0" Background="#9E9E9E" Foreground="White" BorderThickness="0" Click="btnClear_Click"/>
+                            <Button x:Name="btnToggleStatus" Content="🔄 Toggle Status" Width="130" Height="36" Background="#6A1B9A" Foreground="White" BorderThickness="0" Click="btnToggleStatus_Click"/>
                         </StackPanel>
                     </Grid>
                 </Grid>
@@ -120,15 +175,15 @@
                           AlternatingRowBackground="#F0F4FF"
                           SelectionChanged="dgVehicles_SelectionChanged">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="ID"         Binding="{Binding Id}"          Width="45"/>
+                        <DataGridTextColumn Header="ID"         Binding="{Binding Id}"          Width="40"/>
                         <DataGridTextColumn Header="Brand"      Binding="{Binding Brand}"        Width="*"/>
                         <DataGridTextColumn Header="Model"      Binding="{Binding Model}"        Width="*"/>
                         <DataGridTextColumn Header="Plate No."  Binding="{Binding PlateNumber}"  Width="*"/>
-                        <DataGridTextColumn Header="Year"       Binding="{Binding Year}"         Width="60"/>
+                        <DataGridTextColumn Header="Category"   Binding="{Binding Category}"     Width="*"/>
+                        <DataGridTextColumn Header="Year"       Binding="{Binding Year}"         Width="55"/>
                         <DataGridTextColumn Header="Color"      Binding="{Binding Color}"        Width="*"/>
-                        <DataGridTextColumn Header="Daily Rate" Binding="{Binding DailyRate, StringFormat={}{0:N2}LKR}" Width="*"/>
+                        <DataGridTextColumn Header="Daily Rate" Binding="{Binding DailyRateDisplay}" Width="*"/>
                         <DataGridTextColumn Header="Status"     Binding="{Binding Status}"       Width="*"/>
-                        <DataGridTextColumn Header="Image"      Binding="{Binding ImagePath}"    Width="*"/>
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>

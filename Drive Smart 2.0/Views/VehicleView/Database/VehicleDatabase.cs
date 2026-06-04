@@ -16,16 +16,12 @@ namespace Drive_Smart_2._0.Views.VehicleView.Database
         );
 
         public static readonly string DbPath = Path.Combine(DbFolder, "vehicles.db");
-
-        // Images saved here
         public static readonly string ImagesFolder = Path.Combine(
             ProjectRoot, "Views", "VehicleView", "Images"
         );
 
         public static SqliteConnection GetConnection()
-        {
-            return new SqliteConnection($"Data Source={DbPath}");
-        }
+            => new SqliteConnection($"Data Source={DbPath}");
 
         public static void InitializeDatabase()
         {
@@ -48,18 +44,22 @@ namespace Drive_Smart_2._0.Views.VehicleView.Database
                         Color       TEXT,
                         DailyRate   REAL    NOT NULL,
                         Status      TEXT    NOT NULL DEFAULT 'Available',
-                        ImagePath   TEXT
+                        ImagePath   TEXT,
+                        Category    TEXT    NOT NULL DEFAULT 'Car'
                     );";
                 cmd.ExecuteNonQuery();
 
-                // Add ImagePath column if upgrading from old DB
-                try
+                // Upgrade existing DB — add columns if missing
+                foreach (var col in new[] { "ImagePath TEXT", "Category TEXT NOT NULL DEFAULT 'Car'" })
                 {
-                    var alter = conn.CreateCommand();
-                    alter.CommandText = "ALTER TABLE Vehicles ADD COLUMN ImagePath TEXT";
-                    alter.ExecuteNonQuery();
+                    try
+                    {
+                        var alter = conn.CreateCommand();
+                        alter.CommandText = $"ALTER TABLE Vehicles ADD COLUMN {col}";
+                        alter.ExecuteNonQuery();
+                    }
+                    catch { /* already exists */ }
                 }
-                catch { /* Column already exists, ignore */ }
             }
             catch (Exception ex)
             {

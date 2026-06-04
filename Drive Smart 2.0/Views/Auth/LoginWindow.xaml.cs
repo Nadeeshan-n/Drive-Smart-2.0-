@@ -26,7 +26,7 @@ namespace Drive_Smart_2._0.Views.Auth
 
         private void RegisterLink_Click(object sender, MouseButtonEventArgs e)
         {
-            EmployeeRegister employeeRegister = new EmployeeRegister();
+            Employee_Register employeeRegister = new Employee_Register();
             employeeRegister.Show();
             this.Close();
         }
