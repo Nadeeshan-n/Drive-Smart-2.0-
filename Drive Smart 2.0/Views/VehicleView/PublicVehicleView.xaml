@@ -22,39 +22,54 @@
                 <Button Content="Customers" Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
                 <Button Content="Bookings"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
                 <Button Content="Payments"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
-                <Button Content="Admin Page Test&#xD;&#xA;"   Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0" Click="Button_Click"/>
+                <Button Content="Admin Page Test"   Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0" Click="Button_Click"/>
             </StackPanel>
         </Border>
 
         <!-- Main Content -->
         <Grid Grid.Column="1" Margin="20">
             <Grid.RowDefinitions>
-                <RowDefinition Height="60"/>
+                <RowDefinition Height="70"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
             <!-- Header -->
-            <Border Background="White" CornerRadius="10" Grid.Row="0" Padding="20,0">
-                <Grid>
+            <Border Background="White" CornerRadius="10" Grid.Row="0" Padding="15,0">
+                <Grid VerticalAlignment="Center">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
-                    <TextBlock Text="Vehicle Catalog" FontSize="26" FontWeight="Bold"
-                   VerticalAlignment="Center" Grid.Column="0"/>
-                    <Border Grid.Column="1" Background="#F5F9FF" BorderBrush="#D0D9EE"
-                BorderThickness="1" CornerRadius="8" Padding="10,0"
-                VerticalAlignment="Center">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="🔍" VerticalAlignment="Center" Margin="0,0,6,0" FontSize="14"/>
+
+                    <TextBlock Text="Vehicle Catalog"
+                               FontSize="26" FontWeight="Bold"
+                               VerticalAlignment="Center"
+                               Grid.Column="0"/>
+
+                    <Border Grid.Column="1"
+                            Background="#F0F4FF"
+                            BorderBrush="#C5D0E8"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            VerticalAlignment="Center"
+                            Padding="10,6">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBlock Text="🔍"
+                                       FontSize="14"
+                                       VerticalAlignment="Center"
+                                       Margin="0,0,6,0"/>
                             <TextBox x:Name="txtSearch"
-                         Width="220" Height="34"
-                         VerticalContentAlignment="Center"
-                         BorderThickness="0" Background="Transparent"
-                         FontSize="14" Foreground="#444"
-                         TextChanged="txtSearch_TextChanged"/>
+                                     Width="240"
+                                     Height="28"
+                                     BorderThickness="0"
+                                     Background="Transparent"
+                                     FontSize="13"
+                                     Foreground="#333"
+                                     VerticalContentAlignment="Center"
+                                     TextChanged="txtSearch_TextChanged"/>
                         </StackPanel>
                     </Border>
+
                 </Grid>
             </Border>
 

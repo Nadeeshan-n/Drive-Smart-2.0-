@@ -7,7 +7,9 @@
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized">
 
+   
     <Grid>
+        
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220"/>
             <ColumnDefinition Width="*"/>
@@ -18,12 +20,10 @@
             <StackPanel Margin="15">
                 <TextBlock Text="RENTAL SYSTEM" FontSize="22" FontWeight="Bold"
                            Foreground="White" Margin="0,20,0,30"/>
-                <Button Content="Catalog"   Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0" Click="Button_Click_1"/>
-                <Button Content="Vehicles"  Height="45" Margin="0,5" Background="#1E88E5" Foreground="White" BorderThickness="0"/>
-                <Button Content="Customers" Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
-                <Button Content="Bookings"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
-                <Button Content="Payments"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
-                <Button Content="Reports"   Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
+                <Button Content="Vehicle Manager"  Height="45" Margin="0,5" Background="#1E88E5" Foreground="White" BorderThickness="0" Click="Button_Click"/>
+                <Button Content="View Catalogs"   Height="45" Background="#1565C0" Foreground="White" BorderThickness="0" Click="Button_Click_1"/>
+                <Button Content="Dashboard&#xD;&#xA;" Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
+                <Button Content="Exit&#xD;&#xA;"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
             </StackPanel>
         </Border>
 
@@ -36,10 +36,30 @@
             </Grid.RowDefinitions>
 
             <!-- Header -->
-            <Border Background="White" CornerRadius="10" Grid.Row="0">
-                <TextBlock Text="Vehicle Management" FontSize="26" FontWeight="Bold"
-                           VerticalAlignment="Center" Margin="20,0"/>
+            <Border Background="White" CornerRadius="10" Grid.Row="0" Padding="15,0">
+                <Grid VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="Admin Panel Vehicle Manager"
+                   FontSize="26" FontWeight="Bold"
+                   VerticalAlignment="Center"
+                   Grid.Column="0"/>
+
+                    <Button Content="❓  Help"
+                Grid.Column="1"
+                Height="36"
+                Padding="16,0"
+                Background="#1565C0"
+                Foreground="White"
+                BorderThickness="0"
+                VerticalAlignment="Center"
+                Click="BtnHelp_Click"/>
+                </Grid>
             </Border>
+
 
             <!-- Form Panel -->
             <Border Background="White" CornerRadius="10" Grid.Row="1" Margin="0,10,0,10" Padding="20">
@@ -187,6 +207,16 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </Border>
+            
         </Grid>
+        
+        <Frame x:Name="AdminVehicleViewFrame"
+           Grid.Column="0"
+           Grid.ColumnSpan="2"
+           NavigationUIVisibility="Hidden"
+           Visibility="Collapsed"/>
+
     </Grid>
+
+
 </Window>

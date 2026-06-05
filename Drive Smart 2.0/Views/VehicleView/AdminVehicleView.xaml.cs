@@ -23,7 +23,7 @@ namespace Drive_Smart_2._0.Views.VehicleView
         // OLD FORMAT 2 : 2-3 digits + 4 digits       61-1234  |  100-1234
         // NEW FORMAT   : 3 letters + 4 digits         CAB-1234
         //
-        // Separator is optional — auto-inserted if missing
+        // Separator is optional — auto-inserted if missing (just testing)
         // ════════════════════════════════════════════════════════════════════
 
         private static readonly Dictionary<string, string> PlateCategoryMap =
@@ -644,6 +644,22 @@ namespace Drive_Smart_2._0.Views.VehicleView
         {
             new PublicVehicleView().Show();
             this.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void BtnHelp_Click(object sender, RoutedEventArgs e)
+        {
+            AdminVehicleViewFrame.Navigate(new AdminHelpView());
+            AdminVehicleViewFrame.Visibility = Visibility.Visible;
         }
     }
 
