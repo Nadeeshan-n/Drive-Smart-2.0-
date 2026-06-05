@@ -23,7 +23,7 @@
                 <Button Content="Vehicle Manager"  Height="45" Margin="0,5" Background="#1E88E5" Foreground="White" BorderThickness="0" Click="Button_Click"/>
                 <Button Content="View Catalogs"   Height="45" Background="#1565C0" Foreground="White" BorderThickness="0" Click="Button_Click_1"/>
                 <Button Content="Dashboard&#xD;&#xA;" Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
-                <Button Content="Exit&#xD;&#xA;"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
+                <Button Content="Exit&#xD;&#xA;"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0" Click="Button_Click_3"/>
             </StackPanel>
         </Border>
 

@@ -150,5 +150,10 @@
                 </ItemsControl>
             </ScrollViewer>
         </Grid>
+        <Frame x:Name="PublicVehicleViewFrame"
+           Grid.Column="0"
+           Grid.ColumnSpan="2"
+           NavigationUIVisibility="Hidden"
+           Visibility="Collapsed"/>
     </Grid>
 </Window>

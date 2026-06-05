@@ -7,6 +7,7 @@ using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
+
 namespace Drive_Smart_2._0.Views.VehicleView
 {
     public partial class PublicVehicleView : Window
@@ -95,7 +96,7 @@ namespace Drive_Smart_2._0.Views.VehicleView
         {
             AdminVehicleView adminVehicleView = new AdminVehicleView();
             adminVehicleView.Show();
-            this.Close();
+            
         }
     }
 

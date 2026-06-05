@@ -642,8 +642,8 @@ namespace Drive_Smart_2._0.Views.VehicleView
         // ── NAV ───────────────────────────────────────────────────────────
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            new PublicVehicleView().Show();
-            this.Close();
+            AdminVehicleViewFrame.Navigate(new PublicVehicleView());
+            AdminVehicleViewFrame.Visibility = Visibility.Visible;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -660,6 +660,11 @@ namespace Drive_Smart_2._0.Views.VehicleView
         {
             AdminVehicleViewFrame.Navigate(new AdminHelpView());
             AdminVehicleViewFrame.Visibility = Visibility.Visible;
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            System.Environment.Exit(0);
         }
     }
 
