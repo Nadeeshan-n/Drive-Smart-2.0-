@@ -6,11 +6,12 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Controls;
 
 
 namespace Drive_Smart_2._0.Views.VehicleView
 {
-    public partial class PublicVehicleView : Window
+    public partial class PublicVehicleView : Page
     {
         private List<VehicleTile> _allVehicles = new();
 
