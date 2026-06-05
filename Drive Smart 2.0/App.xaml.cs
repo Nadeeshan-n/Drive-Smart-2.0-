@@ -40,8 +40,11 @@ namespace Drive_Smart_2._0
             //PublicVehicleView publicVehicleView = new PublicVehicleView();
             //publicVehicleView.Show();
 
-            AdminVehicleView adminVehicleView = new AdminVehicleView();
-            adminVehicleView.Show();
+            //AdminVehicleView adminVehicleView = new AdminVehicleView();
+            //adminVehicleView.Show();
+
+            VVMainWindow vVMainWindow = new VVMainWindow();
+            vVMainWindow.Show();
 
             //---------------------------------------------------------
             // End of Amishka's Code                                 |

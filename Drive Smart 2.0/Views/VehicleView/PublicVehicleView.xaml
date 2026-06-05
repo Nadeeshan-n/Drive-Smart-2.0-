@@ -17,11 +17,7 @@
                 <TextBlock Text="RENTAL SYSTEM" FontSize="22" FontWeight="Bold"
                            Foreground="White" Margin="0,20,0,30"/>
                 <Button Content="Catalog"   Height="45" Margin="0,5" Background="#1E88E5" Foreground="White" BorderThickness="0"/>
-                <Button Content="Vehicles"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0" Click="Button_Click_2"/>
-                <Button Content="Customers" Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
-                <Button Content="Bookings"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
-                <Button Content="Payments"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
-                <Button Content="Admin Page Test"   Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0" Click="Button_Click"/>
+                <Button Content="Dashboard"   Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0" Click="Button_Click"/>
             </StackPanel>
         </Border>
 
@@ -149,5 +145,12 @@
                 </ItemsControl>
             </ScrollViewer>
         </Grid>
+
+        <Frame x:Name="PublicVehicleViewFrame"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="2"
+                   NavigationUIVisibility="Hidden"
+                   Visibility="Collapsed"/>
+
     </Grid>
 </Page>

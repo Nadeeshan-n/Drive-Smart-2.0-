@@ -62,11 +62,9 @@ namespace Drive_Smart_2._0.Views.VehicleView
 
         private void BtnClose_Click(object sender, RoutedEventArgs e)
         {
-            var parentWindow = Window.GetWindow(this);
-            if (parentWindow is AdminVehicleView adminView)
-            {
-                adminView.AdminVehicleViewFrame.Visibility = Visibility.Collapsed;
-            }
+            NavigationService.Navigate(new AdminVehicleView());
+
+            //NavigationService.Navigate(new SomeOtherPage());
         }
 
         // ── Section Loader ───────────────────────────────────────────────────

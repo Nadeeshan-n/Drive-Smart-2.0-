@@ -95,9 +95,12 @@ namespace Drive_Smart_2._0.Views.VehicleView
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AdminVehicleView adminVehicleView = new AdminVehicleView();
-            adminVehicleView.Show();
-            
+            VVMainWindow vVMainWindow = new VVMainWindow();
+            vVMainWindow.Show();
+
+            Window parentWindow = Window.GetWindow(this);
+            parentWindow?.Close();
+
         }
     }
 

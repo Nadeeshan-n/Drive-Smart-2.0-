@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 
 namespace Drive_Smart_2._0.Views.VehicleView
 {
-    public partial class AdminVehicleView : Window
+    public partial class AdminVehicleView : Page
     {
         private string _selectedImagePath = null;
 
@@ -644,8 +644,8 @@ namespace Drive_Smart_2._0.Views.VehicleView
         {
             //PublicVehicleView publicVehicleView = new PublicVehicleView();
 
-            AdminVehicleViewFrame.Navigate(new PublicVehicleView());
-            AdminVehicleViewFrame.Visibility = Visibility.Visible;
+            NavigationService.Navigate(new PublicVehicleView());
+
 
         }
 
@@ -661,13 +661,22 @@ namespace Drive_Smart_2._0.Views.VehicleView
 
         private void BtnHelp_Click(object sender, RoutedEventArgs e)
         {
-            AdminVehicleViewFrame.Navigate(new AdminHelpView());
-            AdminVehicleViewFrame.Visibility = Visibility.Visible;
+            NavigationService.Navigate(new AdminHelpView());
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             System.Environment.Exit(0);
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            VVMainWindow vVMainWindow = new VVMainWindow();
+            vVMainWindow.Show();
+
+            Window parentWindow = Window.GetWindow(this);
+            parentWindow?.Close();
+
         }
     }
 
