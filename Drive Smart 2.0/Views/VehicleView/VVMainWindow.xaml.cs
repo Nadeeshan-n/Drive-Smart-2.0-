@@ -45,5 +45,13 @@ namespace Drive_Smart_2._0.Views.VehicleView
             VVMainWindowFrame.Navigate(new AdminHelpView());
             VVMainWindowFrame.Visibility = Visibility.Visible;
         }
+
+        private void Button_Click4(object sender, RoutedEventArgs e)
+        {
+            VVMainWindowFrame.Navigate(new MaintenanceView());
+            VVMainWindowFrame.Visibility = Visibility.Visible;
+
+            
+        }
     }
 }

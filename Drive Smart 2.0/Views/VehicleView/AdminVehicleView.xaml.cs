@@ -95,7 +95,23 @@ namespace Drive_Smart_2._0.Views.VehicleView
             VehicleDatabase.InitializeDatabase();
             LoadVehicles();
             UpdatePlateHint();
+            LoadMaintenanceBadge();
         }
+
+
+
+        // ── Maintanance Batch ──────────────────────────────────────────────
+
+        private void LoadMaintenanceBadge()
+        {
+            int count = MaintenanceDatabase.GetUrgentCount();
+            maintenanceBadge.Visibility = count > 0
+                ? Visibility.Visible
+                : Visibility.Collapsed;
+            maintenanceBadgeCount.Text = count.ToString();
+        }
+
+
 
         // ── Category changed ──────────────────────────────────────────────
         private void cmbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -671,12 +687,7 @@ namespace Drive_Smart_2._0.Views.VehicleView
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            VVMainWindow vVMainWindow = new VVMainWindow();
-            vVMainWindow.Show();
-
-            Window parentWindow = Window.GetWindow(this);
-            parentWindow?.Close();
-
+            NavigationService.Navigate(new MaintenanceView());
         }
     }
 

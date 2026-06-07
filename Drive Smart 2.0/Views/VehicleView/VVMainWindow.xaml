@@ -16,6 +16,7 @@
            Grid.ColumnSpan="2"
            NavigationUIVisibility="Hidden"
            Visibility="Collapsed"/>
+        <Button x:Name="help_Copy" Content="Maintanance" HorizontalAlignment="Left" Margin="494,46,0,0" VerticalAlignment="Top" Height="54" Width="125" Click="Button_Click4"/>
     </Grid>
     
     
