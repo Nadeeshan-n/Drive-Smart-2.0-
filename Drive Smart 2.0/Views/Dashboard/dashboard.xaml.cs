@@ -105,6 +105,10 @@ namespace Drive_Smart_2._0.models
             //publicVehicleView.Show();
             //this.Close();
 
+            // Edited By amishka 
+            DashboardWindowFrame.Navigate(new PublicVehicleView());
+            DashboardWindowFrame.Visibility = Visibility.Visible;
+
         }
     }
 }
