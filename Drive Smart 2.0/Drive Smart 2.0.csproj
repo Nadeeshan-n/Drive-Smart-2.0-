@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Customer\Database\" />
     <Folder Include="Views\VehicleView\Images\" />
   </ItemGroup>
 
