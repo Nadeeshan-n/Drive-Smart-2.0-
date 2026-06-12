@@ -78,6 +78,9 @@ namespace Drive_Smart_2._0.Views.Auth
             SetFieldColor(EmployeeID, IsValidEmployeeID());
         }
 
+        
+
+
         private void NIC_TextChanged(object sender, TextChangedEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(NIC.Text))
@@ -187,6 +190,12 @@ namespace Drive_Smart_2._0.Views.Auth
                 NIC.SelectAll();
                 return;
             }
+            if (Gender.SelectedIndex == 0)
+            {
+                MessageBox.Show("Please select a gender.");
+                Gender.Focus();
+                return;
+            }
 
             if (string.IsNullOrWhiteSpace(EmailAddress.Text))
             {
@@ -221,6 +230,12 @@ namespace Drive_Smart_2._0.Views.Auth
             if (DateOfBirth.SelectedDate == null)
             {
                 MessageBox.Show("Please select Date Of Birth.");
+                return;
+            }
+            if (Position.SelectedIndex == 0)
+            {
+                MessageBox.Show("Please select a gender.");
+                Gender.Focus();
                 return;
             }
 

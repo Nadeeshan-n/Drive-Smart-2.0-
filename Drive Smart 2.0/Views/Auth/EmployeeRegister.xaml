@@ -100,7 +100,7 @@
 
                 <Button Content="Payments"
                         Background="#1565C0"
-                        Style="{StaticResource SidebarButtonStyle}" Click="Button_Click"/>
+                        Style="{StaticResource SidebarButtonStyle}"/>
 
                 <Button Content="Reports"
                         Background="#1565C0"
@@ -163,7 +163,7 @@
                             <TextBlock Text="Full Name" Style="{StaticResource FormLabelStyle}"/>
                             <Border x:Name="FullNameBorder" Style="{StaticResource InputBorderStyle}">
                                 <TextBox x:Name="FullName"
-                                         Style="{StaticResource FormTextBoxStyle}" TextChanged="FullName_TextChanged"/>
+                                         Style="{StaticResource FormTextBoxStyle}"/>
                             </Border>
                         </StackPanel>
 
@@ -183,6 +183,8 @@
                                     <ComboBoxItem Content="-- Select Gender --" IsSelected="True"/>
                                     <ComboBoxItem Content="Male"/>
                                     <ComboBoxItem Content="Female"/>
+                                    <ComboBoxItem Content="Other"/>
+                                    <ComboBoxItem/>
                                 </ComboBox>
                             </Border>
                         </StackPanel>
@@ -224,12 +226,14 @@
                         </Grid.RowDefinitions>
 
                         <StackPanel Grid.Row="0">
-                            <TextBlock Text="Positon" Style="{StaticResource FormLabelStyle}"/>
+                            <TextBlock Text="Position" Style="{StaticResource FormLabelStyle}"/>
                             <Border Style="{StaticResource InputBorderStyle}">
-                                <ComboBox x:Name="Position" Width="420" Margin="0,7,0,0" Text="Posision" Background="{x:Null}" BorderBrush="{x:Null}" Height="24" VerticalAlignment="Top">
-                                    <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="Admin" IsSelected="True"/>
+                                <ComboBox x:Name="Position" Width="420" Margin="0,7,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Height="24" VerticalAlignment="Top" Text="Select the Position">
+                                    <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="-- Select Position --" IsSelected="True"/>
+                                    <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="Admin"/>
                                     <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="Manager"/>
                                     <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="Intern"/>
+                                   
                                 </ComboBox>
                             </Border>
                         </StackPanel>
