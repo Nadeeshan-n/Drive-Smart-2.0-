@@ -18,8 +18,8 @@ namespace Drive_Smart_2._0
             base.OnStartup(e);
 
             //Open EmployeeRegister window on startup
-            EmployeeRegister employeeRegisterWindow = new EmployeeRegister();
-            employeeRegisterWindow.Show();
+            //EmployeeRegister employeeRegisterWindow = new EmployeeRegister();
+            //employeeRegisterWindow.Show();
 
 
             //login log = new login();
