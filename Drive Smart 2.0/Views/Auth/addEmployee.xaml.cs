@@ -15,13 +15,18 @@ using System.Windows.Shapes;
 namespace Drive_Smart_2._0.Views.Auth
 {
     /// <summary>
-    /// Interaction logic for EmployeeManagement.xaml
+    /// Interaction logic for addEmployee.xaml
     /// </summary>
-    public partial class EmployeeManagement : Window
+    public partial class addEmployee : Window
     {
-        public EmployeeManagement()
+        public addEmployee()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -1,0 +1,87 @@
+﻿<Window x:Class="Drive_Smart_2._0.Views.Auth.EmployeeManagementt"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Drive_Smart_2._0.Views.Auth"
+        mc:Ignorable="d"
+        Title="EmployeeManagementt" Height="700" Width="1200">
+    <Grid Margin="0,0,0,5">
+        <Border Background="#1565C0" Grid.Column="0" Margin="0,0,980,-5">
+            <StackPanel Margin="15">
+                <TextBlock Text="RENTAL SYSTEM" FontSize="22" FontWeight="Bold"
+                    Foreground="White" Margin="0,20,0,30"/>
+                <Button Content="Catalog"   Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0" Click="Button_Click_1"/>
+                <Button Content="Vehicles"  Height="45" Margin="0,5" Background="#1E88E5" Foreground="White" BorderThickness="0"/>
+                <Button Content="Customers" Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
+                <Button Content="Bookings"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
+                <Button Content="Payments"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
+                <Button Content="Reports"   Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
+            </StackPanel>
+        </Border>
+        <Border Background="#1565C0" Grid.Column="0" Margin="0,0,980,-5">
+            <StackPanel Margin="15">
+                <TextBlock Text="RENTAL SYSTEM" FontSize="22" FontWeight="Bold"
+                    Foreground="White" Margin="0,20,0,30"/>
+                <Button Content="Catalog"   Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0" Click="Button_Click_1"/>
+                <Button Content="Vehicles"  Height="45" Margin="0,5" Background="#1E88E5" Foreground="White" BorderThickness="0"/>
+                <Button Content="Customers" Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
+                <Button Content="Bookings"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
+                <Button Content="Payments"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
+                <Button Content="Reports"   Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
+            </StackPanel>
+        </Border>
+        <TextBlock Text="Employee ID"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="254,73,823,590"/>
+        <TextBox x:Name="empID" Grid.Column="0" Height="34" Padding="6" Margin="254,93,829,552" TextChanged="txtBrand_TextChanged"/>
+        <TextBlock Text="Employee Management" FontSize="26" FontWeight="Bold"
+            VerticalAlignment="Top" Margin="254,20,46,0"/>
+        <TextBlock Text="Full Name"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="392,73,685,590"/>
+        <TextBox x:Name="fullname" Grid.Column="0" Height="34" Padding="6" Margin="392,93,691,552" TextChanged="txtBrand_Copy_TextChanged"/>
+        <TextBlock      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="542,73,536,590" Text="NIC"/>
+        <TextBox x:Name="nic" Grid.Column="0" Height="34" Padding="6" Margin="542,93,542,552"/>
+        <TextBlock Text="Gnder"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="686,73,391,590"/>
+        <TextBox x:Name="gender" Grid.Column="0" Height="34" Padding="6" Margin="686,93,397,552"/>
+        <TextBlock Text="Email Address"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="824,73,253,590"/>
+        <TextBox x:Name="emailaddress" Grid.Column="0" Height="34" Padding="6" Margin="824,93,202,552"/>
+        <TextBlock      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="1015,73,62,590" Text="Phone Number"/>
+        <TextBox x:Name="txtBrand_Copy4" Grid.Column="0" Height="34" Padding="6" Margin="1013,93,70,552"/>
+        <TextBlock Text="Date Of BIth"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="254,139,823,524"/>
+        <TextBox x:Name="txtBrand_Copy5" Grid.Column="0" Height="34" Padding="6" Margin="254,159,829,486"/>
+        <TextBlock x:Name="Date_Of_Birth"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="392,139,685,524" Text="Posision"/>
+        <TextBox x:Name="txtBrand_Copy6" Grid.Column="0" Height="34" Padding="6" Margin="392,159,691,486"/>
+        <TextBlock x:Name="Date_Of_Birth_Copy"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="542,139,535,524" Text="Salary"/>
+        <TextBox x:Name="txtBrand_Copy" Grid.Column="0" Height="34" Padding="6" Margin="542,159,541,486"/>
+        <TextBlock x:Name="Date_Of_Birth_Copy1"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="686,139,391,524" Text="Joining Date"/>
+        <TextBox x:Name="txtBrand_Copy1" Grid.Column="0" Height="34" Padding="6" Margin="686,159,397,486" TextChanged="txtBrand_Copy1_TextChanged"/>
+        <TextBlock x:Name="Date_Of_Birth_Copy2"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="824,139,253,524" Text="Address"/>
+        <TextBox x:Name="txtBrand_Copy2" Grid.Column="0" Height="34" Padding="6" Margin="824,159,117,486" TextChanged="txtBrand_Copy2_TextChanged"/>
+        <DataGrid x:Name="EmployeeDataGrid"
+          Margin="254,212,70,68"
+          AutoGenerateColumns="False"
+          CanUserAddRows="False"
+          IsReadOnly="True"
+          VerticalScrollBarVisibility="Visible"
+          HorizontalScrollBarVisibility="Auto" Background="White" BorderBrush="{x:Null}">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Employee ID" Binding="{Binding EmployeeID}" />
+                <DataGridTextColumn Header="Full Name" Binding="{Binding FullName}" />
+                <DataGridTextColumn Header="NIC" Binding="{Binding NIC}" />
+                <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" />
+                <DataGridTextColumn Header="Email Address" Binding="{Binding Email}" />
+                <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}" />
+                <DataGridTextColumn Header="Date Of Birth" Binding="{Binding DateOfBirth}" />
+                <DataGridTextColumn Header="Position" Binding="{Binding Position}" />
+                <DataGridTextColumn Header="Salary" Binding="{Binding Salary}" />
+                <DataGridTextColumn Header="Joining Date" Binding="{Binding JoiningDate}" />
+                <DataGridTextColumn Header="Address" Binding="{Binding Address}" />
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+        <Button Content="➕ Add" HorizontalAlignment="Left" Margin="266,616,0,0" VerticalAlignment="Top" Width="98" Height="36" Background="#FF1E88E5" Foreground="White" Click="Button_Click_1"/>
+        <Button Content="✖ Delete" HorizontalAlignment="Left" Margin="506,616,0,0" VerticalAlignment="Top" Width="98" Height="36" Background="#FFFB4500" Foreground="White"/>
+        <Button Content="✏️ Modify"   HorizontalAlignment="Left" Margin="386,616,0,0" VerticalAlignment="Top" Width="98" Height="36" Background="#FFFB8C00" Foreground="White"/>
+    </Grid>
+</Window>

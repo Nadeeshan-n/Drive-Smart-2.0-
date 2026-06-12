@@ -17,13 +17,13 @@ namespace Drive_Smart_2._0
         {
             base.OnStartup(e);
 
-            // Open EmployeeRegister window on startup
+            //Open EmployeeRegister window on startup
             EmployeeRegister employeeRegisterWindow = new EmployeeRegister();
             employeeRegisterWindow.Show();
 
 
-            login log = new login();
-            log.Show();
+            //login log = new login();
+            //log.Show();
             // This is the dashboard view 
 
 

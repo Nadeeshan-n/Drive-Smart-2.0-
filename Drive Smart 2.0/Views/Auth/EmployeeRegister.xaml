@@ -69,7 +69,8 @@
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
 
         <Border Grid.Column="0"
@@ -99,7 +100,7 @@
 
                 <Button Content="Payments"
                         Background="#1565C0"
-                        Style="{StaticResource SidebarButtonStyle}"/>
+                        Style="{StaticResource SidebarButtonStyle}" Click="Button_Click"/>
 
                 <Button Content="Reports"
                         Background="#1565C0"
@@ -108,7 +109,7 @@
         </Border>
 
         <Grid Grid.Column="1"
-              Margin="20,16,20,20">
+              Margin="20,16,9,20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -152,7 +153,7 @@
 
                         <StackPanel Grid.Row="0">
                             <TextBlock Text="Employee ID" Style="{StaticResource FormLabelStyle}"/>
-                            <Border Style="{StaticResource InputBorderStyle}">
+                            <Border x:Name="EmployeeIDBorder" Style="{StaticResource InputBorderStyle}">
                                 <TextBox x:Name="EmployeeID"
                                          Style="{StaticResource FormTextBoxStyle}" TextChanged="EmployeeID_TextChanged"/>
                             </Border>
@@ -160,15 +161,15 @@
 
                         <StackPanel Grid.Row="2">
                             <TextBlock Text="Full Name" Style="{StaticResource FormLabelStyle}"/>
-                            <Border Style="{StaticResource InputBorderStyle}">
+                            <Border x:Name="FullNameBorder" Style="{StaticResource InputBorderStyle}">
                                 <TextBox x:Name="FullName"
-                                         Style="{StaticResource FormTextBoxStyle}"/>
+                                         Style="{StaticResource FormTextBoxStyle}" TextChanged="FullName_TextChanged"/>
                             </Border>
                         </StackPanel>
 
                         <StackPanel Grid.Row="4">
                             <TextBlock Text="NIC" Style="{StaticResource FormLabelStyle}"/>
-                            <Border Style="{StaticResource InputBorderStyle}">
+                            <Border x:Name="NICBorder" Style="{StaticResource InputBorderStyle}">
                                 <TextBox x:Name="NIC"
                                          Style="{StaticResource FormTextBoxStyle}" TextChanged="NIC_TextChanged"/>
                             </Border>
@@ -176,10 +177,11 @@
 
                         <StackPanel Grid.Row="6">
                             <TextBlock Text="Gender" Style="{StaticResource FormLabelStyle}"/>
-                            <Border Style="{StaticResource InputBorderStyle}">
+                            <Border x:Name="GenderBorder" Style="{StaticResource InputBorderStyle}">
                                 <ComboBox x:Name="Gender"
                                           Style="{StaticResource FormComboBoxStyle}">
-                                    <ComboBoxItem Content="Male" IsSelected="True"/>
+                                    <ComboBoxItem Content="-- Select Gender --" IsSelected="True"/>
+                                    <ComboBoxItem Content="Male"/>
                                     <ComboBoxItem Content="Female"/>
                                 </ComboBox>
                             </Border>
@@ -187,23 +189,23 @@
 
                         <StackPanel Grid.Row="8">
                             <TextBlock Text="Email Address" Style="{StaticResource FormLabelStyle}"/>
-                            <Border Style="{StaticResource InputBorderStyle}">
+                            <Border x:Name="EmailBorder" Style="{StaticResource InputBorderStyle}">
                                 <TextBox x:Name="EmailAddress"
-                                         Style="{StaticResource FormTextBoxStyle}" TextChanged="EmailAddress_TextChanged" Background="{x:Null}"/>
+                                         Style="{StaticResource FormTextBoxStyle}" TextChanged="EmailAddress_TextChanged"/>
                             </Border>
                         </StackPanel>
 
                         <StackPanel Grid.Row="10">
                             <TextBlock Text="Phone Number" Style="{StaticResource FormLabelStyle}"/>
-                            <Border Style="{StaticResource InputBorderStyle}">
+                            <Border x:Name="PhoneNumberBorder" Style="{StaticResource InputBorderStyle}">
                                 <TextBox x:Name="PhoneNumber"
-                                         Style="{StaticResource FormTextBoxStyle}"/>
+                                         Style="{StaticResource FormTextBoxStyle}" TextChanged="PhoneNumber_TextChanged"/>
                             </Border>
                         </StackPanel>
 
                         <StackPanel Grid.Row="12">
                             <TextBlock Text="Date Of Birth" Style="{StaticResource FormLabelStyle}"/>
-                            <Border Style="{StaticResource InputBorderStyle}">
+                            <Border x:Name="DateOfBirthBorder" Style="{StaticResource InputBorderStyle}">
                                 <DatePicker x:Name="DateOfBirth"
                                             Style="{StaticResource FormDatePickerStyle}"/>
                             </Border>
@@ -222,9 +224,9 @@
                         </Grid.RowDefinitions>
 
                         <StackPanel Grid.Row="0">
-                            <TextBlock Text="Posision" Style="{StaticResource FormLabelStyle}"/>
+                            <TextBlock Text="Positon" Style="{StaticResource FormLabelStyle}"/>
                             <Border Style="{StaticResource InputBorderStyle}">
-                                <ComboBox Width="420" Margin="0,7,0,7" Text="Posision" Background="{x:Null}" BorderBrush="{x:Null}">
+                                <ComboBox x:Name="Position" Width="420" Margin="0,7,0,0" Text="Posision" Background="{x:Null}" BorderBrush="{x:Null}" Height="24" VerticalAlignment="Top">
                                     <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="Admin" IsSelected="True"/>
                                     <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="Manager"/>
                                     <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="Intern"/>
@@ -237,8 +239,8 @@
                                        IsEnabled="False"
                                        Style="{StaticResource FormLabelStyle}"/>
                             <Border Style="{StaticResource InputBorderStyle}">
-                                <TextBox x:Name="Posision_Copy1"
-                                         Style="{StaticResource FormTextBoxStyle}"/>
+                                <TextBox x:Name="Salary"
+                                         Style="{StaticResource FormTextBoxStyle}" TextChanged="Salary_TextChanged"/>
                             </Border>
                         </StackPanel>
 
@@ -299,7 +301,7 @@
                         FontSize="14" Click="Employee_Register_Click"/>
             </Grid>
         </Grid>
-        <Grid Grid.Column="1"/>
-        <Grid Grid.Column="1"/>
+        <Grid Grid.Column="1" Margin="0,0,111,144"/>
+        <Grid Grid.Column="1" Margin="0,0,97,102"/>
     </Grid>
 </Window>
