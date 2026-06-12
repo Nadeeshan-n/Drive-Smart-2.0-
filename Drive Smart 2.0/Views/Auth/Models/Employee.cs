@@ -1,4 +1,4 @@
-﻿namespace Drive_Smart_2._0.Auth.Models
+﻿namespace Drive_Smart_2._0.Models
 {
     public class Employee
     {

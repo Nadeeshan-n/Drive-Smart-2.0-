@@ -4,6 +4,8 @@ using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using Drive_Smart_2._0.Data;
+using Drive_Smart_2._0.Models;
 
 namespace Drive_Smart_2._0.Views.Auth
 {
@@ -12,6 +14,8 @@ namespace Drive_Smart_2._0.Views.Auth
         public EmployeeRegister()
         {
             InitializeComponent();
+            GenerateEmployeeID();
+            
         }
 
         // ==========================
@@ -149,6 +153,61 @@ namespace Drive_Smart_2._0.Views.Auth
         }
 
         // ==========================
+        // Generate the Username
+        // ==========================
+
+        private string GenerateUsername(string fullName,AppDbContext db)
+        {
+            var parts = fullName
+                .ToLower()
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+            string username =
+                parts.Length >= 2
+                ? $"{parts[0]}.{parts[1]}"
+                : parts[0];
+
+            int count =
+                db.Employees.Count(e =>
+                    e.Username.StartsWith(username));
+
+            if (count > 0)
+            {
+                username += (count + 1);
+            }
+
+            return username;
+        }
+
+
+        // ==========================
+        // Generate the EmployeeID
+        // ==========================
+
+
+        private void GenerateEmployeeID()
+        {
+            using var db = new AppDbContext();
+
+            string lastId = db.Employees
+                .OrderByDescending(e => e.EmployeeID)
+                .Select(e => e.EmployeeID)
+                .FirstOrDefault();
+
+            int nextNumber = 1;
+
+            if (!string.IsNullOrEmpty(lastId))
+            {
+                nextNumber =
+                    int.Parse(lastId.Substring(3)) + 1;
+            }
+
+            EmployeeID.Text =
+                $"EMP{nextNumber:D4}";
+        }
+
+
+        // ==========================
         // Register Button
         // ==========================
 
@@ -280,6 +339,92 @@ namespace Drive_Smart_2._0.Views.Auth
                 Address.Focus();
                 return;
             }
+
+
+            //update the database
+            try
+            {
+                using var db = new AppDbContext();
+
+                // Check duplicate Employee ID
+                if (db.Employees.Any(x => x.EmployeeID == EmployeeID.Text.Trim()))
+                {
+                    MessageBox.Show("Employee ID already exists.");
+                    return;
+                }
+
+                // Check duplicate NIC
+                if (db.Employees.Any(x => x.NIC == NIC.Text.Trim()))
+                {
+                    MessageBox.Show("NIC already exists.");
+                    return;
+                }
+
+                // Check duplicate Email
+                if (db.Employees.Any(x => x.Email == EmailAddress.Text.Trim()))
+                {
+                    MessageBox.Show("Email already exists.");
+                    return;
+                }
+
+                string username = GenerateUsername(
+                    FullName.Text.Trim(),
+                    db);
+
+                string nicPart =
+                    NIC.Text.Length >= 4
+                    ? NIC.Text.Substring(0, 4)
+                    : NIC.Text;
+
+                string rawPassword =
+                    $"DS@{EmployeeID.Text.Trim()}@{nicPart}";
+
+                var employee = new Employee
+                {
+                    EmployeeID = EmployeeID.Text.Trim(),
+                    FullName = FullName.Text.Trim(),
+                    NIC = NIC.Text.Trim(),
+                    Gender = ((ComboBoxItem)Gender.SelectedItem)?.Content.ToString(),
+                    Email = EmailAddress.Text.Trim(),
+                    Phone = PhoneNumber.Text.Trim(),
+                    DateOfBirth = DateOfBirth.SelectedDate!.Value,
+                    Position = ((ComboBoxItem)Position.SelectedItem)?.Content.ToString(),
+                    Salary = decimal.Parse(Salary.Text.Trim()),
+                    JoiningDate = JoiningDate.SelectedDate!.Value,
+                    Address = Address.Text.Trim(),
+
+                    Username = username,
+                    PasswordHash = BCrypt.Net.BCrypt.HashPassword(rawPassword),
+                    IsApproved = true,
+                    MustChangePassword = true
+                };
+
+                db.Employees.Add(employee);
+                db.SaveChanges();
+
+                MessageBox.Show(
+                    $"Employee Registered Successfully!\n\n" +
+                    $"Username : {username}\n" +
+                    $"Password : {rawPassword}\n\n" +
+                    $"Employee must change password on first login.",
+                    "Success",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+
+                Reset_Click(null, null);
+
+                // Optional
+                GenerateEmployeeID();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.Message,
+                    "Database Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+
 
             MessageBox.Show(
                 "Employee Registered Successfully!",
