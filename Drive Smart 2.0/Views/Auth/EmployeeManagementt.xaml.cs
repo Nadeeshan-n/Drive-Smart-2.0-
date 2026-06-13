@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
+
 namespace Drive_Smart_2._0.Views.Auth
 {
     /// <summary>
@@ -46,5 +47,13 @@ namespace Drive_Smart_2._0.Views.Auth
         {
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        private void CmbRole_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            // Handle role selection change if needed
+        }
     }
 }

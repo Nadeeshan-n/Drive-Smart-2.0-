@@ -25,12 +25,15 @@ namespace Drive_Smart_2._0
 
                 //MessageBox.Show("Step 3");
 
-                EmployeeRegister employeeRegister = new EmployeeRegister();
-                employeeRegister.Show();
+                //EmployeeRegister employeeRegister = new EmployeeRegister();
+                //employeeRegister.Show();
 
                 //MessageBox.Show("Step 4");
 
                 // new MainWindow().Show();
+
+                EmployeeManagementt emplyoeemanagement = new EmployeeManagementt();
+                emplyoeemanagement.Show();
             }
             catch (Exception ex)
             {

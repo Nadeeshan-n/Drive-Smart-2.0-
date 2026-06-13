@@ -5,83 +5,486 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Drive_Smart_2._0.Views.Auth"
         mc:Ignorable="d"
-        Title="EmployeeManagementt" Height="700" Width="1200">
-    <Grid Margin="0,0,0,5">
-        <Border Background="#1565C0" Grid.Column="0" Margin="0,0,980,-5">
+        Title="Employee Management"
+        Width="1200"
+        Height="714"
+        MinWidth="1000"
+        MinHeight="650"
+        WindowStartupLocation="CenterScreen"
+        FontFamily="Segoe UI"
+        Background="#F5F9FF"
+        SnapsToDevicePixels="True"
+        UseLayoutRounding="True">
+
+    <Window.Resources>
+        <Style x:Key="SidebarButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Margin" Value="0,5"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="18"/>
+            <Setter Property="BorderBrush" Value="#E3EAF3"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+
+        <Style x:Key="LabelStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="#111827"/>
+            <Setter Property="Margin" Value="0,0,0,6"/>
+        </Style>
+
+        <Style x:Key="InputBorderStyle" TargetType="Border">
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="Background" Value="#FFF7FAFF"/>
+            <Setter Property="BorderBrush" Value="#C7D2E0"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="10,0"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        </Style>
+
+        <Style x:Key="FormTextBoxStyle" TargetType="TextBox">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
+        <Style x:Key="FormComboBoxStyle" TargetType="ComboBox">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
+        <Style x:Key="FormDatePickerStyle" TargetType="DatePicker">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+
+        <Style x:Key="ActionButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="38"/>
+            <Setter Property="MinWidth" Value="110"/>
+            <Setter Property="Margin" Value="0,0,10,0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="#1565C0">
             <StackPanel Margin="15">
-                <TextBlock Text="RENTAL SYSTEM" FontSize="22" FontWeight="Bold"
-                    Foreground="White" Margin="0,20,0,30"/>
-                <Button Content="Catalog"   Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0" Click="Button_Click_1"/>
-                <Button Content="Vehicles"  Height="45" Margin="0,5" Background="#1E88E5" Foreground="White" BorderThickness="0"/>
-                <Button Content="Customers" Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
-                <Button Content="Bookings"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
-                <Button Content="Payments"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
-                <Button Content="Reports"   Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
+                <TextBlock Text="RENTAL SYSTEM"
+                           FontSize="22"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Margin="0,20,0,30"/>
+
+                <Button Content="Dashboard"
+                        Background="#1565C0"
+                        Style="{StaticResource SidebarButtonStyle}"/>
+
+                <Button Content="Employees"
+                        Background="#1E88E5"
+                        Style="{StaticResource SidebarButtonStyle}"/>
+
+                <Button Content="Customers"
+                        Background="#1565C0"
+                        Style="{StaticResource SidebarButtonStyle}"/>
+
+                <Button Content="Bookings"
+                        Background="#1565C0"
+                        Style="{StaticResource SidebarButtonStyle}"/>
+
+                <Button Content="Payments"
+                        Background="#1565C0"
+                        Style="{StaticResource SidebarButtonStyle}"/>
+
+                <Button Content="Reports"
+                        Background="#1565C0"
+                        Style="{StaticResource SidebarButtonStyle}"/>
             </StackPanel>
         </Border>
-        <Border Background="#1565C0" Grid.Column="0" Margin="0,0,980,-5">
-            <StackPanel Margin="15">
-                <TextBlock Text="RENTAL SYSTEM" FontSize="22" FontWeight="Bold"
-                    Foreground="White" Margin="0,20,0,30"/>
-                <Button Content="Catalog"   Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0" Click="Button_Click_1"/>
-                <Button Content="Vehicles"  Height="45" Margin="0,5" Background="#1E88E5" Foreground="White" BorderThickness="0"/>
-                <Button Content="Customers" Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
-                <Button Content="Bookings"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
-                <Button Content="Payments"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
-                <Button Content="Reports"   Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
-            </StackPanel>
-        </Border>
-        <TextBlock Text="Employee ID"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="254,73,823,590"/>
-        <TextBox x:Name="empID" Grid.Column="0" Height="34" Padding="6" Margin="254,93,829,552" TextChanged="txtBrand_TextChanged"/>
-        <TextBlock Text="Employee Management" FontSize="26" FontWeight="Bold"
-            VerticalAlignment="Top" Margin="254,20,46,0"/>
-        <TextBlock Text="Full Name"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="392,73,685,590"/>
-        <TextBox x:Name="fullname" Grid.Column="0" Height="34" Padding="6" Margin="392,93,691,552" TextChanged="txtBrand_Copy_TextChanged"/>
-        <TextBlock      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="542,73,536,590" Text="NIC"/>
-        <TextBox x:Name="nic" Grid.Column="0" Height="34" Padding="6" Margin="542,93,542,552"/>
-        <TextBlock Text="Gnder"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="686,73,391,590"/>
-        <TextBox x:Name="gender" Grid.Column="0" Height="34" Padding="6" Margin="686,93,397,552"/>
-        <TextBlock Text="Email Address"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="824,73,253,590"/>
-        <TextBox x:Name="emailaddress" Grid.Column="0" Height="34" Padding="6" Margin="824,93,202,552"/>
-        <TextBlock      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="1015,73,62,590" Text="Phone Number"/>
-        <TextBox x:Name="txtBrand_Copy4" Grid.Column="0" Height="34" Padding="6" Margin="1013,93,70,552"/>
-        <TextBlock Text="Date Of BIth"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="254,139,823,524"/>
-        <TextBox x:Name="txtBrand_Copy5" Grid.Column="0" Height="34" Padding="6" Margin="254,159,829,486"/>
-        <TextBlock x:Name="Date_Of_Birth"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="392,139,685,524" Text="Posision"/>
-        <TextBox x:Name="txtBrand_Copy6" Grid.Column="0" Height="34" Padding="6" Margin="392,159,691,486"/>
-        <TextBlock x:Name="Date_Of_Birth_Copy"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="542,139,535,524" Text="Salary"/>
-        <TextBox x:Name="txtBrand_Copy" Grid.Column="0" Height="34" Padding="6" Margin="542,159,541,486"/>
-        <TextBlock x:Name="Date_Of_Birth_Copy1"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="686,139,391,524" Text="Joining Date"/>
-        <TextBox x:Name="txtBrand_Copy1" Grid.Column="0" Height="34" Padding="6" Margin="686,159,397,486" TextChanged="txtBrand_Copy1_TextChanged"/>
-        <TextBlock x:Name="Date_Of_Birth_Copy2"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="824,139,253,524" Text="Address"/>
-        <TextBox x:Name="txtBrand_Copy2" Grid.Column="0" Height="34" Padding="6" Margin="824,159,117,486" TextChanged="txtBrand_Copy2_TextChanged"/>
-        <DataGrid x:Name="EmployeeDataGrid"
-          Margin="254,212,70,68"
-          AutoGenerateColumns="False"
-          CanUserAddRows="False"
-          IsReadOnly="True"
-          VerticalScrollBarVisibility="Visible"
-          HorizontalScrollBarVisibility="Auto" Background="White" BorderBrush="{x:Null}">
 
-            <DataGrid.Columns>
+        <!-- Main Area -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-                <DataGridTextColumn Header="Employee ID" Binding="{Binding EmployeeID}" />
-                <DataGridTextColumn Header="Full Name" Binding="{Binding FullName}" />
-                <DataGridTextColumn Header="NIC" Binding="{Binding NIC}" />
-                <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" />
-                <DataGridTextColumn Header="Email Address" Binding="{Binding Email}" />
-                <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}" />
-                <DataGridTextColumn Header="Date Of Birth" Binding="{Binding DateOfBirth}" />
-                <DataGridTextColumn Header="Position" Binding="{Binding Position}" />
-                <DataGridTextColumn Header="Salary" Binding="{Binding Salary}" />
-                <DataGridTextColumn Header="Joining Date" Binding="{Binding JoiningDate}" />
-                <DataGridTextColumn Header="Address" Binding="{Binding Address}" />
+            <!-- Header -->
+            <!-- Header -->
+            <Border Grid.Row="0" Style="{StaticResource CardStyle}" Padding="18,14">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="280"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="80"/>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="200"/>
+                    </Grid.ColumnDefinitions>
 
-            </DataGrid.Columns>
+                    <!-- Title -->
+                    <TextBlock Grid.Column="0"
+                   Text="Employee Management"
+                   FontSize="26"
+                   FontWeight="Bold"
+                   Foreground="#111827"
+                   VerticalAlignment="Center"/>
 
-        </DataGrid>
-        <Button Content="➕ Add" HorizontalAlignment="Left" Margin="266,616,0,0" VerticalAlignment="Top" Width="98" Height="36" Background="#FF1E88E5" Foreground="White" Click="Button_Click_1"/>
-        <Button Content="✖ Delete" HorizontalAlignment="Left" Margin="506,616,0,0" VerticalAlignment="Top" Width="98" Height="36" Background="#FFFB4500" Foreground="White"/>
-        <Button Content="✏️ Modify"   HorizontalAlignment="Left" Margin="386,616,0,0" VerticalAlignment="Top" Width="98" Height="36" Background="#FFFB8C00" Foreground="White"/>
+                    <!-- Search Box -->
+                    <Border Grid.Column="2"
+                Style="{StaticResource InputBorderStyle}">
+                        <TextBox x:Name="TxtSearch"
+                     Style="{StaticResource FormTextBoxStyle}"
+                     VerticalContentAlignment="Center"/>
+                    </Border>
+
+                    <!-- Search Button -->
+                    <Button Grid.Column="4"
+                x:Name="BtnSearch"
+                Content="Search"
+                Height="38"
+                Background="#1565C0"
+                Foreground="White"
+                BorderThickness="0"
+                FontWeight="SemiBold"
+                FontSize="13"
+                Cursor="Hand"
+                />
+
+                    <!-- Sort By ComboBox -->
+                    <ComboBox Grid.Column="6"
+                  x:Name="CmbSortBy"
+                  Height="38"
+                  FontSize="13"
+                  VerticalContentAlignment="Center"
+                  SelectedIndex="0">
+                        <ComboBoxItem Content="Sort By"/>
+                        <ComboBoxItem Content="Employee ID"/>
+                        <ComboBoxItem Content="Full Name"/>
+                        <ComboBoxItem Content="Position"/>
+                        <ComboBoxItem Content="Salary (Low to High)"/>
+                        <ComboBoxItem Content="Salary (High to Low)"/>
+                        <ComboBoxItem Content="Joining Date"/>
+                    </ComboBox>
+
+                </Grid>
+            </Border>
+
+            <!-- Search Row -->
+            <Border Grid.Row="2"
+        Style="{StaticResource CardStyle}"
+        Margin="0,0,0,12"
+        Grid.RowSpan="2">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="120"/>
+                        <ColumnDefinition Width="15"/>
+                        <ColumnDefinition Width="180"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Search TextBox -->
+                    <Border Grid.Column="0"
+                Style="{StaticResource InputBorderStyle}">
+                        <TextBox x:Name="txtSearch"
+                     Style="{StaticResource FormTextBoxStyle}"
+                     VerticalContentAlignment="Center"/>
+                    </Border>
+
+                    <!-- Search Button -->
+                    <Button Grid.Column="1"
+                Content="Search"
+                Background="#1565C0"
+                Foreground="White"
+                BorderThickness="0"
+                FontWeight="SemiBold"
+                Cursor="Hand"
+                Margin="0,0,0,0"/>
+
+                    <!-- Sort ComboBox -->
+                    <ComboBox Grid.Column="3"
+                  Height="38"
+                  VerticalContentAlignment="Center"
+                  FontSize="13"
+                  SelectedIndex="0">
+
+                        <ComboBoxItem Content="Sort By"/>
+                        <ComboBoxItem Content="Employee ID"/>
+                        <ComboBoxItem Content="Full Name"/>
+                        <ComboBoxItem Content="Position"/>
+                        <ComboBoxItem Content="Salary (Low to High)"/>
+                        <ComboBoxItem Content="Salary (High to Low)"/>
+                        <ComboBoxItem Content="Joining Date"/>
+
+                    </ComboBox>
+
+                </Grid>
+            </Border>
+
+
+            <!-- Form + Buttons + Grid -->
+            <!-- Form + Buttons + Grid -->
+            <Grid Grid.Row="2" Margin="0,0,0,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="12"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="12"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- ─── Form Fields ─── -->
+                <Border Grid.Row="0" Style="{StaticResource CardStyle}">
+                    <StackPanel>
+
+                        <!-- Row 1: Employee ID | Name | NIC | Gender | Position | Salary -->
+                        <Grid Margin="0,0,0,10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="140"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="120"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Employee ID -->
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Employee ID" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}">
+                                    <TextBox x:Name="TxtEmployeeID"
+                                 Style="{StaticResource FormTextBoxStyle}"/>
+                                </Border>
+                            </StackPanel>
+
+                            <!-- Full Name -->
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="Full Name" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}" Width="171">
+                                    <TextBox x:Name="TxtFullName"
+                                 Style="{StaticResource FormTextBoxStyle}"/>
+                                </Border>
+                            </StackPanel>
+
+                            <!-- NIC -->
+                            <StackPanel Grid.Column="4">
+                                <TextBlock Text="NIC" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}">
+                                    <TextBox x:Name="TxtNIC"
+                                 Style="{StaticResource FormTextBoxStyle}"/>
+                                </Border>
+                            </StackPanel>
+
+                            <!-- Gender -->
+                            <StackPanel Grid.Column="6">
+                                <TextBlock Text="Gender" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}">
+                                    <ComboBox x:Name="CmbGender"
+                                  Style="{StaticResource FormComboBoxStyle}">
+                                        <ComboBoxItem Content="Male" IsSelected="True"/>
+                                        <ComboBoxItem Content="Female"/>
+                                    </ComboBox>
+                                </Border>
+                            </StackPanel>
+
+                            <!-- Position -->
+                            <StackPanel Grid.Column="8">
+                                <TextBlock Text="Position" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}">
+                                    <ComboBox x:Name="CmbPosition"
+                                  Style="{StaticResource FormComboBoxStyle}">
+                                        <ComboBoxItem Content="Admin"/>
+                                        <ComboBoxItem Content="Manager" IsSelected="True"/>
+                                        <ComboBoxItem Content="Staff"/>
+                                    </ComboBox>
+                                </Border>
+                            </StackPanel>
+
+                            <!-- Salary -->
+                            <StackPanel Grid.Column="10">
+                                <TextBlock Text="Salary" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}">
+                                    <TextBox x:Name="TxtSalary"
+                                 Style="{StaticResource FormTextBoxStyle}"/>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+
+                        <!-- Row 2: DOB | Joining Date | Phone | Email | Address -->
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="140"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="140"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- Date of Birth -->
+                            <StackPanel Grid.Column="0">
+                                <TextBlock Text="Date of Birth" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}">
+                                    <DatePicker x:Name="DpDateOfBirth"
+                                    Style="{StaticResource FormDatePickerStyle}"/>
+                                </Border>
+                            </StackPanel>
+
+                            <!-- Joining Date -->
+                            <StackPanel Grid.Column="2">
+                                <TextBlock Text="Joining Date" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}">
+                                    <DatePicker x:Name="DpJoiningDate"
+                                    Style="{StaticResource FormDatePickerStyle}"/>
+                                </Border>
+                            </StackPanel>
+
+                            <!-- Phone -->
+                            <StackPanel Grid.Column="4">
+                                <TextBlock Text="Phone" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}">
+                                    <TextBox x:Name="TxtPhone"
+                                 Style="{StaticResource FormTextBoxStyle}"/>
+                                </Border>
+                            </StackPanel>
+
+                            <!-- Email -->
+                            <StackPanel Grid.Column="6">
+                                <TextBlock Text="Email" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}">
+                                    <TextBox x:Name="TxtEmail"
+                                 Style="{StaticResource FormTextBoxStyle}"/>
+                                </Border>
+                            </StackPanel>
+
+                            <!-- Address -->
+                            <StackPanel Grid.Column="8">
+                                <TextBlock Text="Address" Style="{StaticResource LabelStyle}"/>
+                                <Border Style="{StaticResource InputBorderStyle}">
+                                    <TextBox x:Name="TxtAddress"
+                                 Style="{StaticResource FormTextBoxStyle}"/>
+                                </Border>
+                            </StackPanel>
+                        </Grid>
+
+                    </StackPanel>
+                </Border>
+
+                <!-- ─── Action Buttons ─── -->
+                <Border Grid.Row="1" Style="{StaticResource CardStyle}" Padding="18,12" Grid.RowSpan="3">
+                    <StackPanel Orientation="Horizontal">
+
+                        <Button x:Name="BtnAdd"
+                    Content="＋  Add"
+                    Background="#1565C0"
+                    Style="{StaticResource ActionButtonStyle}"
+                    />
+
+                        <Button x:Name="BtnModify"
+                    Content="✎  Modify"
+                    Background="#F57C00"
+                    Style="{StaticResource ActionButtonStyle}"
+                    />
+
+                        <Button x:Name="BtnDelete"
+                    Content="🗑  Delete"
+                    Background="#C62828"
+                    Style="{StaticResource ActionButtonStyle}"
+                    />
+
+                        <Button x:Name="BtnResetPassword"
+                    Content="🔑  Reset Password"
+                    Background="#6A1B9A"
+                    Style="{StaticResource ActionButtonStyle}" Width="200"
+                    />
+
+                        <Button x:Name="BtnClear"
+                    Content="✕  Clear"
+                    Background="#546E7A"
+                    Style="{StaticResource ActionButtonStyle}"
+                    />
+
+                    </StackPanel>
+                </Border>
+
+                <!-- ─── DataGrid ─── -->
+                <Border Grid.Row="4" Style="{StaticResource CardStyle}" Padding="0">
+                    <DataGrid x:Name="DgEmployees"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  SelectionMode="Single"
+                  GridLinesVisibility="Horizontal"
+                  HeadersVisibility="Column"
+                  BorderThickness="0"
+                  Background="White"
+                  RowBackground="White"
+                  AlternatingRowBackground="#F5F9FF"
+                  ColumnHeaderHeight="40"
+                  RowHeight="38"
+                  FontSize="13" Margin="0,6,0,-1"
+                  >
+
+                        <DataGrid.ColumnHeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+                                <Setter Property="Background" Value="#1565C0"/>
+                                <Setter Property="Foreground" Value="White"/>
+                                <Setter Property="FontWeight" Value="SemiBold"/>
+                                <Setter Property="Padding" Value="12,0"/>
+                                <Setter Property="FontSize" Value="13"/>
+                            </Style>
+                        </DataGrid.ColumnHeaderStyle>
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Employee ID"  Binding="{Binding EmployeeID}"  Width="110"/>
+                            <DataGridTextColumn Header="Full Name"    Binding="{Binding FullName}"    Width="*"/>
+                            <DataGridTextColumn Header="NIC"          Binding="{Binding NIC}"         Width="130"/>
+                            <DataGridTextColumn Header="Gender"       Binding="{Binding Gender}"      Width="80"/>
+                            <DataGridTextColumn Header="Position"     Binding="{Binding Position}"    Width="100"/>
+                            <DataGridTextColumn Header="Salary"       Binding="{Binding Salary, StringFormat='Rs. {0:N2}'}" Width="120"/>
+                            <DataGridTextColumn Header="Phone"        Binding="{Binding Phone}"       Width="120"/>
+                            <DataGridTextColumn Header="Email"        Binding="{Binding Email}"       Width="180"/>
+                            <DataGridTextColumn Header="Joining Date" Binding="{Binding JoiningDate, StringFormat='dd/MM/yyyy'}" Width="120"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                </Border>
+
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

@@ -28,7 +28,7 @@ namespace Drive_Smart_2._0.Data
 
             Directory.CreateDirectory(
                 Path.GetDirectoryName(dbPath)!);
-            MessageBox.Show(dbPath);
+            //MessageBox.Show(dbPath);
 
             options.UseSqlite($"Data Source={dbPath}");
         }

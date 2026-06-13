@@ -66,7 +66,7 @@
         </Style>
     </Window.Resources>
 
-    <Grid Background="White">
+    <Grid Background="White" Margin="0,0,0,-6">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220"/>
             <ColumnDefinition/>
@@ -74,7 +74,7 @@
         </Grid.ColumnDefinitions>
 
         <Border Grid.Column="0"
-                Background="#1565C0">
+                Background="#1565C0" Height="690" VerticalAlignment="Center" Margin="0,0,5,0">
             <StackPanel Margin="15">
                 <TextBlock Text="RENTAL SYSTEM"
                            FontSize="22"
@@ -233,7 +233,7 @@
                                     <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="Admin"/>
                                     <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="Manager"/>
                                     <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="Intern"/>
-                                   
+
                                 </ComboBox>
                             </Border>
                         </StackPanel>
@@ -306,6 +306,6 @@
             </Grid>
         </Grid>
         <Grid Grid.Column="1" Margin="0,0,111,144"/>
-        <Grid Grid.Column="1" Margin="0,0,97,102"/>
+        <Grid Grid.Column="1" Margin="0,0,10,0"/>
     </Grid>
 </Window>
