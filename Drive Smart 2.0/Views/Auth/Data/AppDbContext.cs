@@ -11,10 +11,20 @@ namespace Drive_Smart_2._0.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            string dbFolder = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Database");
+            string projectRoot = Directory.GetCurrentDirectory();
+
+            string dbFolder = Path.Combine(
+                projectRoot,
+                "Views",
+                "Auth",
+                "Database");
+
             Directory.CreateDirectory(dbFolder);
 
-            string dbPath = Path.Combine(dbFolder, "EmployeeDB.db");
+            string dbPath = Path.Combine(
+                dbFolder,
+                "EmployeeDB.db");
+
             options.UseSqlite($"Data Source={dbPath}");
         }
     }

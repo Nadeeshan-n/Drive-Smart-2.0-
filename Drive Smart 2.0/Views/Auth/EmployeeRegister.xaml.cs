@@ -293,8 +293,8 @@ namespace Drive_Smart_2._0.Views.Auth
             }
             if (Position.SelectedIndex == 0)
             {
-                MessageBox.Show("Please select a gender.");
-                Gender.Focus();
+                MessageBox.Show("Please select a Position.");
+                Position.Focus();
                 return;
             }
 
@@ -349,6 +349,8 @@ namespace Drive_Smart_2._0.Views.Auth
                 // Check duplicate Employee ID
                 if (db.Employees.Any(x => x.EmployeeID == EmployeeID.Text.Trim()))
                 {
+                    string dbPath = System.IO.Path.GetFullPath("EmployeeDB.db");
+                    MessageBox.Show(dbPath);
                     MessageBox.Show("Employee ID already exists.");
                     return;
                 }

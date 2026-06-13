@@ -9,19 +9,37 @@ namespace Drive_Smart_2._0
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            base.OnStartup(e);
-
-            EmployeeRegister employeeRegister = new EmployeeRegister();
-            employeeRegister.Show();
-
-            VehicleDatabase.InitializeDatabase();
-
-            using (var db = new AppDbContext())
+            try
             {
-                db.Database.EnsureCreated();
-            }
+                base.OnStartup(e);
 
-            new MainWindow().Show();
+                //MessageBox.Show("Step 1");
+
+                VehicleDatabase.InitializeDatabase();
+
+                //MessageBox.Show("Step 2");
+                using (var db = new AppDbContext())
+                {
+                    db.Database.EnsureCreated();
+                }
+
+                //MessageBox.Show("Step 3");
+
+                EmployeeRegister employeeRegister = new EmployeeRegister();
+                employeeRegister.Show();
+
+                //MessageBox.Show("Step 4");
+
+                // new MainWindow().Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.ToString(),
+                    "Startup Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
         }
     }
 }
