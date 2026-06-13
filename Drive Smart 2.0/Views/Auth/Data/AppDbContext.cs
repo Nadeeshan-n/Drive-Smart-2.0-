@@ -2,6 +2,7 @@ using Drive_Smart_2._0.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.IO;
+using System.Windows;
 
 namespace Drive_Smart_2._0.Data
 {
@@ -11,19 +12,23 @@ namespace Drive_Smart_2._0.Data
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            string projectRoot = Directory.GetCurrentDirectory();
+            string projectRoot =
+                Directory.GetParent(AppContext.BaseDirectory)!
+                         .Parent!
+                         .Parent!
+                         .Parent!
+                         .FullName;
 
-            string dbFolder = Path.Combine(
+            string dbPath = Path.Combine(
                 projectRoot,
                 "Views",
                 "Auth",
-                "Database");
-
-            Directory.CreateDirectory(dbFolder);
-
-            string dbPath = Path.Combine(
-                dbFolder,
+                "Database",
                 "EmployeeDB.db");
+
+            Directory.CreateDirectory(
+                Path.GetDirectoryName(dbPath)!);
+            MessageBox.Show(dbPath);
 
             options.UseSqlite($"Data Source={dbPath}");
         }

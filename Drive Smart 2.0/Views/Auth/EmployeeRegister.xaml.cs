@@ -349,8 +349,7 @@ namespace Drive_Smart_2._0.Views.Auth
                 // Check duplicate Employee ID
                 if (db.Employees.Any(x => x.EmployeeID == EmployeeID.Text.Trim()))
                 {
-                    string dbPath = System.IO.Path.GetFullPath("EmployeeDB.db");
-                    MessageBox.Show(dbPath);
+                    
                     MessageBox.Show("Employee ID already exists.");
                     return;
                 }
