@@ -62,7 +62,7 @@
                 Height="40"
                 Background="#C62828"
                 Foreground="White"
-                BorderThickness="0"
+                BorderThickness="0" Click="BtnLogout_Click"
                 />
 
     </StackPanel>

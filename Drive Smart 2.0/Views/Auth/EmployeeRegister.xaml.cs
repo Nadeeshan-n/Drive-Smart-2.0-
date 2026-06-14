@@ -6,6 +6,7 @@ using System.Windows.Controls;
 using System.Windows.Media;
 using Drive_Smart_2._0.Data;
 using Drive_Smart_2._0.Models;
+using System.Text;
 
 namespace Drive_Smart_2._0.Views.Auth
 {
@@ -156,27 +157,16 @@ namespace Drive_Smart_2._0.Views.Auth
         // Generate the Username
         // ==========================
 
-        private string GenerateUsername(string fullName,AppDbContext db)
+        private string GenerateUsername(
+            string employeeId,
+            string fullName)
         {
-            var parts = fullName
-                .ToLower()
-                .Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            string firstName = fullName
+                .Trim()
+                .Split(' ', StringSplitOptions.RemoveEmptyEntries)[0]
+                .ToLower();
 
-            string username =
-                parts.Length >= 2
-                ? $"{parts[0]}.{parts[1]}"
-                : parts[0];
-
-            int count =
-                db.Employees.Count(e =>
-                    e.Username.StartsWith(username));
-
-            if (count > 0)
-            {
-                username += (count + 1);
-            }
-
-            return username;
+            return $"{employeeId.ToLower()}.{firstName}";
         }
 
 
@@ -213,11 +203,15 @@ namespace Drive_Smart_2._0.Views.Auth
 
         private void Employee_Register_Click(object sender, RoutedEventArgs e)
         {
+            
+            
             if (string.IsNullOrWhiteSpace(EmployeeID.Text))
             {
                 MessageBox.Show("Employee ID is required.");
                 EmployeeID.Focus();
                 return;
+
+
             }
 
             if (!IsValidEmployeeID())
@@ -368,9 +362,9 @@ namespace Drive_Smart_2._0.Views.Auth
                     return;
                 }
 
-                string username = GenerateUsername(
-                    FullName.Text.Trim(),
-                    db);
+                string username = GenerateUsername(   
+                    EmployeeID.Text.Trim(),
+                    FullName.Text.Trim());
 
                 string nicPart =
                     NIC.Text.Length >= 4

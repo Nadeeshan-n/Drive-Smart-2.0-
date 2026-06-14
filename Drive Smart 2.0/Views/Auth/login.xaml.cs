@@ -102,8 +102,13 @@ namespace Drive_Smart_2._0.Views.Auth
                     }
                 }
 
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
+                //MainWindow mainWindow = new MainWindow();
+                //mainWindow.Show();
+                EmployeeRegister employeeRegister = new EmployeeRegister();
+                employeeRegister.Show();
+
+                EmployeeManagementt employeeManagementt = new EmployeeManagementt();
+                employeeManagementt.Show();
 
                 Close();
             }
