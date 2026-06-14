@@ -32,11 +32,14 @@ namespace Drive_Smart_2._0
 
                 // new MainWindow().Show();
 
-                EmployeeManagementt emplyoeemanagement = new EmployeeManagementt();
-                emplyoeemanagement.Show();
+                //EmployeeManagementt emplyoeemanagement = new EmployeeManagementt();
+                //emplyoeemanagement.Show();
 
                 //ChangePasswordWindow changePassword = new ChangePasswordWindow();
                 //changePassword.Show();
+
+                login log = new login();
+                log.Show();
 
 
             }

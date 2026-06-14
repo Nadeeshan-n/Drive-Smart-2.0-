@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Drive_Smart_2._0.Models;
 
-namespace Drive_Smart_2._0.Views.Auth
+namespace Drive_Smart_2._0.Views.Auth.Helpers
 {
     public static class SessionManager
     {

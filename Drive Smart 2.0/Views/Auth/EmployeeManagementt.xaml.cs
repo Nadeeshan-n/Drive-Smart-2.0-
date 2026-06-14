@@ -343,6 +343,8 @@ namespace Drive_Smart_2._0.Views.Auth
                     var employee = db.Employees
                         .FirstOrDefault(x =>
                             x.EmployeeID == selectedEmployee.EmployeeID);
+                    var username = employee?.Username ?? "Unknown";
+
 
                     if (employee == null)
                     {
@@ -374,6 +376,7 @@ namespace Drive_Smart_2._0.Views.Auth
 
                     MessageBox.Show(
                         $"Password reset successfully.\n\n" +
+                        $"Username: {username}\n" +
                         $"Temporary Password:\n{rawPassword}\n\n" +
                         $"The employee must change this password at the next login.",
                         "Password Reset Successful",
