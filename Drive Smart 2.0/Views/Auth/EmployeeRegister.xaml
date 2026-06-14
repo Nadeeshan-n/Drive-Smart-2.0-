@@ -14,7 +14,7 @@
         FontFamily="Segoe UI"
         UseLayoutRounding="True"
         SnapsToDevicePixels="True">
-        
+
 
     <Window.Resources>
         <Style x:Key="SidebarButtonStyle" TargetType="Button">
@@ -252,7 +252,8 @@
                                     <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="-- Select Position --" IsSelected="True"/>
                                     <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="Admin"/>
                                     <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="Manager"/>
-                                    <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="Intern"/>
+                                    <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="Staff"/>
+                                    <ComboBoxItem/>
 
                                 </ComboBox>
                             </Border>
