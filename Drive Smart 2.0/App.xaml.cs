@@ -34,6 +34,11 @@ namespace Drive_Smart_2._0
 
                 EmployeeManagementt emplyoeemanagement = new EmployeeManagementt();
                 emplyoeemanagement.Show();
+
+                //ChangePasswordWindow changePassword = new ChangePasswordWindow();
+                //changePassword.Show();
+
+
             }
             catch (Exception ex)
             {

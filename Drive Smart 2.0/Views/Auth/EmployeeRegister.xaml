@@ -228,7 +228,7 @@
                         <StackPanel Grid.Row="0">
                             <TextBlock Text="Position" Style="{StaticResource FormLabelStyle}"/>
                             <Border Style="{StaticResource InputBorderStyle}">
-                                <ComboBox x:Name="Position" Width="420" Margin="0,7,0,0" Background="{x:Null}" BorderBrush="{x:Null}" Height="24" VerticalAlignment="Top" Text="Select the Position">
+                                <ComboBox x:Name="Position" Width="420" Background="{x:Null}" BorderBrush="{x:Null}" Height="24" VerticalAlignment="Center" Text="Select the Position">
                                     <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="-- Select Position --" IsSelected="True"/>
                                     <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="Admin"/>
                                     <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="Manager"/>

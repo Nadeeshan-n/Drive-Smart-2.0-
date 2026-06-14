@@ -431,7 +431,7 @@
                         <Button x:Name="BtnResetPassword"
                     Content="🔑  Reset Password"
                     Background="#6A1B9A"
-                    Style="{StaticResource ActionButtonStyle}" Width="200"
+                    Style="{StaticResource ActionButtonStyle}" Width="200" Click="BtnResetPassword_Click"
                     />
 
                         <Button x:Name="BtnClear"

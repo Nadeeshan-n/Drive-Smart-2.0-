@@ -305,5 +305,93 @@ namespace Drive_Smart_2._0.Views.Auth
                 }
             }
         }
+        //reset employee password
+        private void BtnResetPassword_Click(object sender, RoutedEventArgs e)
+        {
+            if (DgEmployees.SelectedItem is not Employee selectedEmployee)
+            {
+                MessageBox.Show("Please select an employee first.");
+                return;
+            }
+            /*if (selectedEmployee.EmployeeID == SessionManager.CurrentEmployee?.EmployeeID)
+            {
+                MessageBox.Show(
+                    "You cannot reset your own password here.\n" +
+                    "Please use the Change Password option instead.",
+                    "Not Allowed",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+                return;
+            }*/
+
+            var confirm = MessageBox.Show(
+                $"Reset password for {selectedEmployee.FullName}?\n\n" +
+                $"A new temporary password will be generated.\n" +
+                $"The employee will be required to change it on next login.",
+                "Confirm Password Reset",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
+
+
+            if (confirm != MessageBoxResult.Yes)
+                return;
+
+            try
+            {
+                using (var db = new AppDbContext())
+                {
+                    var employee = db.Employees
+                        .FirstOrDefault(x =>
+                            x.EmployeeID == selectedEmployee.EmployeeID);
+
+                    if (employee == null)
+                    {
+                        MessageBox.Show(
+                            "Employee not found.",
+                            "Error",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+                        return;
+                    }
+
+                    // Generate default password
+                    string nicPart =
+                        employee.NIC.Length >= 4
+                        ? employee.NIC.Substring(0, 4)
+                        : employee.NIC;
+
+                    string rawPassword =
+                        $"DS@{employee.EmployeeID}@{nicPart}";
+
+                    // Hash password
+                    employee.PasswordHash =
+                        BCrypt.Net.BCrypt.HashPassword(rawPassword);
+
+                    // Force password change on next login
+                    employee.MustChangePassword = true;
+
+                    db.SaveChanges();
+
+                    MessageBox.Show(
+                        $"Password reset successfully.\n\n" +
+                        $"Temporary Password:\n{rawPassword}\n\n" +
+                        $"The employee must change this password at the next login.",
+                        "Password Reset Successful",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
+                }
+
+                LoadEmployees();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    $"Error resetting password:\n\n{ex.Message}",
+                    "Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
+
+        }
     }
 }
