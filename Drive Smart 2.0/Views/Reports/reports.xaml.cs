@@ -1,17 +1,18 @@
+using Drive_Smart_2._0.Views.Auth.Helpers;
+using Drive_Smart_2._0.Views.Customer.Database;
+using Drive_Smart_2._0.Views.Payment;
+using Drive_Smart_2._0.Views.VehicleView.Database;
+using Microsoft.Data.Sqlite;
+using Microsoft.Win32;
+using QuestPDF.Fluent;
+using QuestPDF.Helpers;
+using QuestPDF.Infrastructure;
 using System;
 using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
-using Microsoft.Data.Sqlite;
-using Microsoft.Win32;
-using QuestPDF.Fluent;
-using QuestPDF.Helpers;
-using QuestPDF.Infrastructure;
-using Drive_Smart_2._0.Views.Payment;
-using Drive_Smart_2._0.Views.VehicleView.Database;
-using Drive_Smart_2._0.Views.Customer.Database;
 
 namespace Drive_Smart_2._0.Views.Reports
 {
@@ -50,6 +51,7 @@ namespace Drive_Smart_2._0.Views.Reports
         public reports()
         {
             InitializeComponent();
+            SidebarMenu.SetActivePage(ActivePage.Reports);
         }
 
         // ───────────────────────── data pulls ─────────────────────────

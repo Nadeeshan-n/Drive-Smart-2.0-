@@ -18,42 +18,48 @@
             <Button x:Name="BtnHome"
                     Content="Home"
                     Background="#1565C0"
-                    Style="{StaticResource SidebarButtonStyle}"/>
+                    Style="{StaticResource SidebarButtonStyle}" Click="BtnHome_Click"/>
 
             <Button x:Name="BtnDashboard"
                     Content="Dashboard"
                     Background="#1565C0"
-                    Style="{StaticResource SidebarButtonStyle}"/>
+                    Style="{StaticResource SidebarButtonStyle}" Click="BtnDashboard_Click"/>
 
             <Button x:Name="BtnVehicles"
-                    Content="Vehicles"
+                    Content="Vehicle View"
                     Background="#1565C0"
-                    Style="{StaticResource SidebarButtonStyle}"/>
+                    Style="{StaticResource SidebarButtonStyle}" Click="BtnVehicles_Click"/>
+            <Button x:Name="BtnVehiclesRegister"
+                    Content="Vehicle Register"
+                    Background="#1565C0"
+                    Style="{StaticResource SidebarButtonStyle}" Click="BtnVehiclesRegister_Click"/>
+
+            <Button x:Name="BtnVehicleMaintenance"
+                    Content="Vehicle Maintenance"
+                    Background="#1565C0"
+                    Style="{StaticResource SidebarButtonStyle}" Click="BtnVehicleMaintenance_Click"/>
 
             <Button x:Name="BtnCustomers"
                     Content="Customers"
                     Background="#1565C0"
-                    Style="{StaticResource SidebarButtonStyle}"/>
+                    Style="{StaticResource SidebarButtonStyle}" Click="BtnCustomers_Click"/>
 
-            <Button x:Name="BtnBookings"
-                    Content="Bookings"
-                    Background="#1565C0"
-                    Style="{StaticResource SidebarButtonStyle}"/>
+            
 
             <Button x:Name="BtnPayments"
                     Content="Payments"
                     Background="#1565C0"
-                    Style="{StaticResource SidebarButtonStyle}"/>
+                    Style="{StaticResource SidebarButtonStyle}" Click="BtnPayments_Click"/>
 
             <Button x:Name="BtnReports"
                     Content="Reports"
                     Background="#1565C0"
-                    Style="{StaticResource SidebarButtonStyle}"/>
+                    Style="{StaticResource SidebarButtonStyle}" Click="BtnReports_Click"/>
 
             <Button x:Name="BtnEmployees"
                     Content="Employees"
                     Background="#1565C0"
-                    Style="{StaticResource SidebarButtonStyle}"/>
+                    Style="{StaticResource SidebarButtonStyle}" Click="BtnEmployees_Click"/>
 
             
 

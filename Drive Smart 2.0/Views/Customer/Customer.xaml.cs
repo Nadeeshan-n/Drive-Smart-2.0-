@@ -1,7 +1,9 @@
+using Drive_Smart_2._0.Views.Auth.Helpers;
+using Drive_Smart_2._0.Views.Customer.Database;
 using System;
 using System.Windows;
 using System.Windows.Controls;
-using Drive_Smart_2._0.Views.Customer.Database;
+
 
 namespace Drive_Smart_2._0.Views.Customer
 {
@@ -12,7 +14,9 @@ namespace Drive_Smart_2._0.Views.Customer
         public Customer()
         {
             InitializeComponent();
-            _db = new CustomerDatabase(); // creates DB + Customers table on first run
+            _db = new CustomerDatabase();
+            SidebarMenu.SetActivePage(ActivePage.Customers);
+            // creates DB + Customers table on first run
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -132,6 +136,12 @@ namespace Drive_Smart_2._0.Views.Customer
         private void txtCustomerName_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void BtnView_Click(object sender, RoutedEventArgs e)
+        {
+            Admin admin = new Admin();
+            admin.Show();
         }
     }
 }

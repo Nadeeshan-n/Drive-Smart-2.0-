@@ -1,17 +1,18 @@
-﻿using Drive_Smart_2._0.Views.VehicleView.Database;
+﻿using Drive_Smart_2._0.Views.Auth.Helpers;
+using Drive_Smart_2._0.Views.VehicleView.Database;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Controls;
 
 
 namespace Drive_Smart_2._0.Views.VehicleView
 {
-    public partial class PublicVehicleView : Page
+    public partial class PublicVehicleView : Window
     {
         private List<VehicleTile> _allVehicles = new();
 
@@ -19,6 +20,7 @@ namespace Drive_Smart_2._0.Views.VehicleView
         {
             InitializeComponent();
             LoadVehicles();
+            SidebarMenu.SetActivePage(ActivePage.Vehicles);
         }
 
         private void LoadVehicles()

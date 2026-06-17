@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Drive_Smart_2._0.Views.Payment"
+        xmlns:uc="clr-namespace:Drive_Smart_2._0.UserControls"
         mc:Ignorable="d"
         Title="Payment Confirmation" Height="700" Width="1200"
         FontFamily="Segoe UI">
@@ -105,16 +106,27 @@
         </Grid.ColumnDefinitions>
 
         <!-- Sidebar -->
-        <Border Grid.Column="0" Background="{StaticResource BrandPrimary}">
-            <StackPanel Margin="20,28,20,20">
-                <TextBlock Text="RENTAL SYSTEM" FontSize="20" FontWeight="Bold" Foreground="White" Margin="4,0,0,28"/>
-                <Button Content="Dashboard" Style="{StaticResource SidebarNavButton}"/>
-                <Button Content="Vehicles" Style="{StaticResource SidebarNavButton}"/>
-                <Button Content="Customers" Style="{StaticResource SidebarNavButton}"/>
-                <Button Content="Bookings" Style="{StaticResource SidebarNavButton}"/>
-                <Button Content="Payments" Style="{StaticResource SidebarNavButtonActive}"/>
-                <Button Content="Reports" Style="{StaticResource SidebarNavButton}"/>
-            </StackPanel>
+        <Border Grid.Column="0"
+            Background="#1565C0"
+            VerticalAlignment="Stretch"
+            Margin="0,0,5,0">
+
+            <Grid Margin="15">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Menu -->
+
+                <uc:SideBar x:Name="SidebarMenu" Grid.Row="0"/>
+
+                <!-- Logged User Section -->
+                <uc:SidebarControl Grid.Row="1" Height="184" Margin="14,0,13,0" VerticalAlignment="Top"/>
+
+            </Grid>
+
         </Border>
 
         <!-- Content -->

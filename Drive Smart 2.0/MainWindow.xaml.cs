@@ -1,5 +1,10 @@
+using Drive_Smart_2._0.models;
 using Drive_Smart_2._0.Views.Auth;
 using Drive_Smart_2._0.Views.Auth.Helpers;
+using Drive_Smart_2._0.Views.Customer;
+using Drive_Smart_2._0.Views.Payment;
+using Drive_Smart_2._0.Views.Reports;
+using Drive_Smart_2._0.Views.VehicleView;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -163,6 +168,8 @@ namespace Drive_Smart_2._0
                     BtnEmployees.Visibility = Visibility.Collapsed;
                     BtnPayments.Visibility = Visibility.Collapsed;
                     BtnReports.Visibility = Visibility.Collapsed;
+                    BtnVehicleMaintaince.Visibility = Visibility.Collapsed;
+                    BtnVehicleRegister.Visibility = Visibility.Collapsed;
                     //BtnSettings.Visibility = Visibility.Collapsed;
 
                     break;
@@ -186,6 +193,125 @@ namespace Drive_Smart_2._0
                 new EmployeeManagementt();
 
             employeeWindow.Show();
+            Window.GetWindow(this)?.Close();
+        }
+
+        
+
+    
+
+        private void BtnDashboard_Click_1(object sender, RoutedEventArgs e)
+        {
+            dashboard dash = new dashboard();
+            dash.Show();
+            Window.GetWindow(this)?.Close();
+
+        }
+
+        private void BtnCustomers_Click(object sender, RoutedEventArgs e)
+        {
+            Customer customer = new Customer();
+            customer.Show();
+            Window.GetWindow(this)?.Close();
+        }
+
+        private void BtnPayments_Click(object sender, RoutedEventArgs e)
+        {
+            if (SessionManager.CurrentEmployee?.Position != "Admin")
+            {
+                MessageBox.Show(
+                    "Access Denied",
+                    "Permission Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+
+                return;
+            }
+
+            payment_details pay = new payment_details();
+            pay.Show();
+            Window.GetWindow(this)?.Close();
+        }
+
+        private void BtnReports_Click(object sender, RoutedEventArgs e)
+        {
+            if (SessionManager.CurrentEmployee?.Position != "Admin")
+            {
+                MessageBox.Show(
+                    "Access Denied",
+                    "Permission Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+
+                return;
+            }
+
+            if (SessionManager.CurrentEmployee?.Position != "Admin")
+            {
+                MessageBox.Show(
+                    "Access Denied",
+                    "Permission Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+
+                return;
+            }
+
+            reports report = new reports();
+            report.Show();
+            Window.GetWindow(this)?.Close();
+
+        }
+
+        private void BtnVehicleMaintaince_Click(object sender, RoutedEventArgs e)
+        {
+            if (SessionManager.CurrentEmployee?.Position != "Admin")
+            {
+                MessageBox.Show(
+                    "Access Denied",
+                    "Permission Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+
+                return;
+
+
+
+
+
+
+            }
+
+            MaintenanceView maintenance = new MaintenanceView();
+            maintenance.Show();
+            Window.GetWindow(this)?.Close();
+        }
+
+        private void BtnVehicles_Click(object sender, RoutedEventArgs e)
+        {
+            PublicVehicleView vehicleView = new PublicVehicleView();
+            vehicleView.Show();
+            Window.GetWindow(this)?.Close();
+        }
+
+        private void BtnVehicleRegister_Click(object sender, RoutedEventArgs e)
+        {
+            if (SessionManager.CurrentEmployee?.Position != "Admin")
+            {
+                MessageBox.Show(
+                    "Access Denied",
+                    "Permission Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+
+                return;
+
+                
+            }
+
+            AdminVehicleView vehicleView = new AdminVehicleView();
+            vehicleView.Show();
+            Window.GetWindow(this)?.Close();
         }
     }
 }

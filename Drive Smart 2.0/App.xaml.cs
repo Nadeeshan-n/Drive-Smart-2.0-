@@ -36,8 +36,8 @@ namespace Drive_Smart_2._0
 
 
 
-            //PublicVehicleView window = new PublicVehicleView();
-            //window.Show();
+                //PublicVehicleView window = new PublicVehicleView();
+                //window.Show();
 
                 //ChangePasswordWindow changePassword = new ChangePasswordWindow();
                 //changePassword.Show();
@@ -45,12 +45,16 @@ namespace Drive_Smart_2._0
                 login log = new login();
                 log.Show();
 
+                //EmployeeManagementt emp = new EmployeeManagementt();
+                //emp.Show();
+
+                
+
             //---------------------------------------------------------
             // End of Amishka's Code                                 |
             //---------------------------------------------------------
 
-            payment_details paymentview = new payment_details();
-            paymentview.Show();
+            
 
             }
             catch (Exception ex)

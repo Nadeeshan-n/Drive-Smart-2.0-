@@ -12,7 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Drive_Smart_2._0.models;
+using Drive_Smart_2._0.Models;
+using Drive_Smart_2._0.Views.Auth;
 using Drive_Smart_2._0.Views.Auth.Helpers;
+using Drive_Smart_2._0.Views.Customer;
+using Drive_Smart_2._0.Views.Payment;
+using Drive_Smart_2._0.Views.Reports;
+using Drive_Smart_2._0.Views.VehicleView;
 
 
 
@@ -43,7 +50,6 @@ namespace Drive_Smart_2._0.UserControls
         BtnDashboard.Background = normalColor;
         BtnVehicles.Background = normalColor;
         BtnCustomers.Background = normalColor;
-        BtnBookings.Background = normalColor;
         BtnPayments.Background = normalColor;
         BtnReports.Background = normalColor;
         BtnEmployees.Background = normalColor;
@@ -64,8 +70,13 @@ namespace Drive_Smart_2._0.UserControls
                 BtnCustomers.Background = activeColor;
                 break;
 
-            case ActivePage.Bookings:
-                BtnBookings.Background = activeColor;
+            case ActivePage.VehicleRegister:
+                BtnVehiclesRegister.Background = activeColor;
+                break;
+
+
+            case ActivePage.VehicleMaintenance:
+                BtnVehicleMaintenance.Background = activeColor;
                 break;
 
             case ActivePage.Payments:
@@ -121,10 +132,77 @@ namespace Drive_Smart_2._0.UserControls
                     BtnReports.Visibility =
                         Visibility.Collapsed;
 
+                    BtnVehicleMaintenance.Visibility = Visibility.Collapsed;
+                    BtnVehiclesRegister.Visibility = Visibility.Collapsed;
+
                     
 
                     break;
+                }
             }
+
+        private void BtnHome_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            Window.GetWindow(this)?.Close();
         }
+
+        private void BtnDashboard_Click(object sender, RoutedEventArgs e)
+        {
+            dashboard dashboard = new dashboard();
+            dashboard.Show();
+            Window.GetWindow(this)?.Close();
+        }
+
+        private void BtnVehicles_Click(object sender, RoutedEventArgs e)
+        {
+            PublicVehicleView vehicleView = new PublicVehicleView();
+            vehicleView.Show();
+            Window.GetWindow(this)?.Close();
+        }
+
+        private void BtnVehiclesRegister_Click(object sender, RoutedEventArgs e)
+        {
+            AdminVehicleView register = new AdminVehicleView();
+            register.Show();
+            Window.GetWindow(this)?.Close();
+        }
+
+        private void BtnVehicleMaintenance_Click(object sender, RoutedEventArgs e)
+        {
+            MaintenanceView maintenance = new MaintenanceView();
+            maintenance.Show();
+            Window.GetWindow(this)?.Close();
+        }
+
+        private void BtnCustomers_Click(object sender, RoutedEventArgs e)
+        {
+            Customer customer = new Customer();
+            customer.Show();
+            Window.GetWindow(this)?.Close();
+        }
+
+        private void BtnPayments_Click(object sender, RoutedEventArgs e)
+        {
+            payment_details pay = new payment_details();
+            pay.Show();
+            Window.GetWindow(this)?.Close();
+        }
+
+        private void BtnReports_Click(object sender, RoutedEventArgs e)
+        {
+            reports report = new reports();
+            report.Show();
+            Window.GetWindow(this)?.Close();
+        }
+
+        private void BtnEmployees_Click(object sender, RoutedEventArgs e)
+        {
+            EmployeeManagement emp = new EmployeeManagement();
+            emp.Show();
+            Window.GetWindow(this)?.Close();
+        }
+    }
     
-}}
+}

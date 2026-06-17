@@ -11,10 +11,11 @@ namespace Drive_Smart_2._0.Views.Auth.Helpers
         Home,
         Dashboard,
         Vehicles,
+        VehicleRegister,
+        VehicleMaintenance,
         Customers,
-        Bookings,
         Payments,
         Reports,
-        Employees
+        Employees,
     }
 }

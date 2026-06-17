@@ -93,8 +93,8 @@
                      Margin="40,28,40,28">
 
             <!-- Dashboard -->
-            <Button Style="{StaticResource TileStyle}"
-                    Margin="8"
+            <Button x:Name="BtnDashboard" Style="{StaticResource TileStyle}" Click="BtnDashboard_Click_1"
+                    
                     >
                 <StackPanel HorizontalAlignment="Center">
                     <Border Width="64" Height="64" CornerRadius="16"
@@ -138,7 +138,7 @@
             <!-- Vehicles -->
             <Button x:Name="BtnVehicles"
                     Style="{StaticResource TileStyle}"
-                    Margin="8"
+                    Margin="8" Click="BtnVehicles_Click"
                     >
                 <StackPanel HorizontalAlignment="Center">
                     <Border Width="64" Height="64" CornerRadius="16"
@@ -148,19 +148,65 @@
                                    HorizontalAlignment="Center"
                                    VerticalAlignment="Center"/>
                     </Border>
-                    <TextBlock Text="Vehicles" FontSize="15"
+                    <TextBlock Text="Vehicle View" FontSize="15"
                                FontWeight="SemiBold" Foreground="#111827"
                                HorizontalAlignment="Center"/>
-                    <TextBlock Text="Fleet management" FontSize="12"
+                    <TextBlock Text="View only" FontSize="12"
                                Foreground="#6B7280" Margin="0,4,0,0"
                                HorizontalAlignment="Center"/>
                 </StackPanel>
             </Button>
 
+            <!-- Bookings -->
+            <Button x:Name="BtnVehicleMaintaince"
+                Style="{StaticResource TileStyle}"
+                Margin="8" Click="BtnVehicleMaintaince_Click"
+        >
+                <StackPanel HorizontalAlignment="Center">
+                    <Border Width="64" Height="64" CornerRadius="16"
+                Background="#FAECE7" Margin="0,0,0,12"
+                HorizontalAlignment="Center">
+                        <TextBlock Text="⚙" FontSize="30"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+                    </Border>
+                    <TextBlock Text="Vehicle Maintenance" FontSize="15"
+                   FontWeight="SemiBold" Foreground="#111827"
+                   HorizontalAlignment="Center"/>
+                    <TextBlock Text="Vehicle Maintenance" FontSize="12"
+                   Foreground="#6B7280" Margin="0,4,0,0"
+                   HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+            <!-- Vehicle Register -->
+            <Button x:Name="BtnVehicleRegister"
+        Style="{StaticResource TileStyle}"
+        Margin="8" Click="BtnVehicleRegister_Click"
+        >
+                <StackPanel HorizontalAlignment="Center">
+                    <Border Width="64" Height="64" CornerRadius="16"
+                Background="#F1EFE8" Margin="0,0,0,12"
+                HorizontalAlignment="Center">
+                        <TextBlock Text="🚗" FontSize="30"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+                    </Border>
+                    <TextBlock Text="Vehicle Register" FontSize="15"
+                   FontWeight="SemiBold" Foreground="#111827"
+                   HorizontalAlignment="Center"/>
+                    <TextBlock Text="Vehicle Register" FontSize="12"
+                   Foreground="#6B7280" Margin="0,4,0,0"
+                   HorizontalAlignment="Center"/>
+                </StackPanel>
+            </Button>
+
+
+
             <!-- Customers -->
             <Button x:Name="BtnCustomers"
                     Style="{StaticResource TileStyle}"
-                    Margin="8"
+                    Margin="8" Click="BtnCustomers_Click"
                     >
                 <StackPanel HorizontalAlignment="Center">
                     <Border Width="64" Height="64" CornerRadius="16"
@@ -179,32 +225,11 @@
                 </StackPanel>
             </Button>
 
-            <!-- Bookings -->
-            <Button x:Name="BtnBookings"
-                    Style="{StaticResource TileStyle}"
-                    Margin="8"
-                    >
-                <StackPanel HorizontalAlignment="Center">
-                    <Border Width="64" Height="64" CornerRadius="16"
-                            Background="#FAECE7" Margin="0,0,0,12"
-                            HorizontalAlignment="Center">
-                        <TextBlock Text="📅" FontSize="30"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                    </Border>
-                    <TextBlock Text="Bookings" FontSize="15"
-                               FontWeight="SemiBold" Foreground="#111827"
-                               HorizontalAlignment="Center"/>
-                    <TextBlock Text="Rental bookings" FontSize="12"
-                               Foreground="#6B7280" Margin="0,4,0,0"
-                               HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Button>
-
+            
             <!-- Payments -->
             <Button x:Name="BtnPayments"
                     Style="{StaticResource TileStyle}"
-                    Margin="8,8,8,8"
+                    Margin="8,8,8,8" Click="BtnPayments_Click"
                     >
                 <StackPanel HorizontalAlignment="Center">
                     <Border Width="64" Height="64" CornerRadius="16"
@@ -226,7 +251,7 @@
             <!-- Reports -->
             <Button x:Name="BtnReports"
                     Style="{StaticResource TileStyle}"
-                    Margin="8"
+                    Margin="8" Click="BtnReports_Click"
                     >
                 <StackPanel HorizontalAlignment="Center">
                     <Border Width="64" Height="64" CornerRadius="16"
@@ -245,28 +270,7 @@
                 </StackPanel>
             </Button>
 
-            <!-- Settings 
-            <Button x:Name="BtnSettings"
-                    Style="{StaticResource TileStyle}"
-                    Margin="8"
-                    >
-                <StackPanel HorizontalAlignment="Center">
-                    <Border Width="64" Height="64" CornerRadius="16"
-                            Background="#F1EFE8" Margin="0,0,0,12"
-                            HorizontalAlignment="Center">
-                        <TextBlock Text="⚙" FontSize="30"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                    </Border>
-                    <TextBlock Text="Settings" FontSize="15"
-                               FontWeight="SemiBold" Foreground="#111827"
-                               HorizontalAlignment="Center"/>
-                    <TextBlock Text="System configuration" FontSize="12"
-                               Foreground="#6B7280" Margin="0,4,0,0"
-                               HorizontalAlignment="Center"/>
-                </StackPanel>
-            </Button> -->
-
+            
         </UniformGrid>
 
         <!-- ── Footer ── -->

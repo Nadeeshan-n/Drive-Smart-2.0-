@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Drive_Smart_2._0.Views.Auth.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,9 +24,11 @@ namespace Drive_Smart_2._0.Views.Payment
         {
             InitializeComponent();
 
+
             // Make sure Payment.db (and its Payments table) exist before
             // the user tries to save anything.
             PaymentDatabase.Initialize();
+            SidebarMenu.SetActivePage(ActivePage.Payments);
         }
 
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
