@@ -1,0 +1,235 @@
+﻿<Page x:Class="Drive_Smart_2._0.Views.VehicleView.AdminVehicleView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Admin - Vehicle Management"
+      Background="#F5F9FF">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ═══ SIDEBAR ═══ -->
+        <Border Background="#1565C0" Grid.Column="0">
+            <StackPanel Margin="15">
+                <TextBlock Text="RENTAL SYSTEM" FontSize="22" FontWeight="Bold"
+                           Foreground="White" Margin="0,20,0,30"/>
+
+                <Button Content="Vehicle Manager" Height="45" Margin="0,5"
+                        Background="#1E88E5" Foreground="White"
+                        BorderThickness="0" Click="Button_Click"/>
+
+                <Grid Margin="0,5">
+                    <Button Content="Maintenance Manager" Height="45"
+                            Background="#1565C0" Foreground="White"
+                            BorderThickness="0" Click="Button_Click_4"/>
+                    <Border x:Name="maintenanceBadge"
+                            Background="Red" CornerRadius="10"
+                            HorizontalAlignment="Right" VerticalAlignment="Top"
+                            MinWidth="20" Height="20" Margin="0,2,4,0"
+                            Visibility="Collapsed" Padding="4,0">
+                        <TextBlock x:Name="maintenanceBadgeCount"
+                                   Text="0" Foreground="White"
+                                   FontSize="11" FontWeight="Bold"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                    </Border>
+                </Grid>
+
+                <Button Content="View Catalogs" Height="45" Margin="0,5"
+                        Background="#1565C0" Foreground="White"
+                        BorderThickness="0" Click="Button_Click_1"/>
+
+                <Button Content="Dashboard" Height="45" Margin="0,5"
+                        Background="#1565C0" Foreground="White"
+                        BorderThickness="0"/>
+
+                <Button Content="Exit" Height="45" Margin="0,5"
+                        Background="#1565C0" Foreground="White"
+                        BorderThickness="0" Click="Button_Click_3"/>
+            </StackPanel>
+        </Border>
+
+        <!-- ═══ MAIN CONTENT ═══ -->
+        <Grid Grid.Column="1" Margin="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <Border Background="White" CornerRadius="10" Grid.Row="0" Padding="15,0">
+                <Grid VerticalAlignment="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Admin Panel — Vehicle Manager"
+                               FontSize="26" FontWeight="Bold"
+                               VerticalAlignment="Center" Grid.Column="0"/>
+                    <Button Content="❓  Help" Grid.Column="1"
+                            Height="36" Padding="16,0"
+                            Background="#1565C0" Foreground="White"
+                            BorderThickness="0" VerticalAlignment="Center"
+                            Click="BtnHelp_Click"/>
+                </Grid>
+            </Border>
+
+            <!-- Form Panel -->
+            <Border Background="White" CornerRadius="10" Grid.Row="1"
+                    Margin="0,10,0,10" Padding="20">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="160"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Image Preview -->
+                    <StackPanel Grid.Column="0" Margin="0,0,16,0">
+                        <Border Width="140" Height="110" BorderBrush="#CCCCCC"
+                                BorderThickness="1" CornerRadius="8" ClipToBounds="True">
+                            <Image x:Name="imgPreview" Stretch="UniformToFill"/>
+                        </Border>
+                        <Button x:Name="btnPickImage" Content="📷 Choose Image"
+                                Height="32" Margin="0,8,0,0"
+                                Background="#1565C0" Foreground="White"
+                                BorderThickness="0" Click="btnPickImage_Click"/>
+                        <TextBlock x:Name="txtImageName" Text="No image selected"
+                                   FontSize="10" Foreground="Gray"
+                                   TextWrapping="Wrap" Margin="0,4,0,0"/>
+                    </StackPanel>
+
+                    <!-- Fields -->
+                    <Grid Grid.Column="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Labels -->
+                        <TextBlock Text="Brand"      Grid.Column="0" Grid.Row="0" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                        <TextBlock Text="Model"      Grid.Column="1" Grid.Row="0" FontWeight="SemiBold" Margin="8,0,0,4"/>
+                        <TextBlock Text="Plate No."  Grid.Column="2" Grid.Row="0" FontWeight="SemiBold" Margin="8,0,0,4"/>
+                        <TextBlock Text="Year"       Grid.Column="3" Grid.Row="0" FontWeight="SemiBold" Margin="8,0,0,4"/>
+                        <TextBlock Text="Color"      Grid.Column="4" Grid.Row="0" FontWeight="SemiBold" Margin="8,0,0,4"/>
+                        <TextBlock Text="Daily Rate" Grid.Column="5" Grid.Row="0" FontWeight="SemiBold" Margin="8,0,0,4"/>
+
+                        <!-- Inputs -->
+                        <TextBox x:Name="txtBrand" Grid.Column="0" Grid.Row="1"
+                                 Height="34" Padding="6" Margin="0,0,6,0"
+                                 TextChanged="txtBrand_TextChanged"/>
+                        <TextBox x:Name="txtModel" Grid.Column="1" Grid.Row="1"
+                                 Height="34" Padding="6" Margin="0,0,6,0"
+                                 TextChanged="txtModel_TextChanged"/>
+
+                        <Grid Grid.Column="2" Grid.Row="1" Margin="0,0,6,0">
+                            <TextBox x:Name="txtPlate" Height="34" Padding="6,6,28,6"
+                                     TextChanged="txtPlate_TextChanged"
+                                     CharacterCasing="Upper"/>
+                            <TextBlock x:Name="txtPlateIndicator" Text="●"
+                                       HorizontalAlignment="Right"
+                                       VerticalAlignment="Center"
+                                       Margin="0,0,8,0" FontSize="14"
+                                       Foreground="LightGray"/>
+                        </Grid>
+
+                        <TextBox x:Name="txtYear"  Grid.Column="3" Grid.Row="1" Height="34" Padding="6" Margin="0,0,6,0"/>
+                        <TextBox x:Name="txtColor" Grid.Column="4" Grid.Row="1" Height="34" Padding="6" Margin="0,0,6,0"/>
+                        <TextBox x:Name="txtRate"  Grid.Column="5" Grid.Row="1" Height="34" Padding="6"/>
+
+                        <!-- Category + Plate Hint -->
+                        <StackPanel Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" Margin="0,10,6,0">
+                            <TextBlock Text="Category" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                            <ComboBox x:Name="cmbCategory" Height="34"
+                                      SelectionChanged="cmbCategory_SelectionChanged">
+                                <ComboBoxItem Content="Car"             IsSelected="True"/>
+                                <ComboBoxItem Content="Motorcycle/Bike"/>
+                                <ComboBoxItem Content="Van"/>
+                                <ComboBoxItem Content="Lorry/Truck"/>
+                                <ComboBoxItem Content="Three-Wheeler"/>
+                                <ComboBoxItem Content="Bus"/>
+                            </ComboBox>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="3" Grid.ColumnSpan="3" Grid.Row="2" Margin="8,10,0,0">
+                            <TextBlock Text="Plate Format Guide" FontWeight="SemiBold" Margin="0,0,0,4"/>
+                            <Border Background="#EEF2FF" CornerRadius="6" Padding="10,6">
+                                <TextBlock x:Name="txtPlateHint"
+                                           Text="e.g.  AB-1234  or  CAB-1234"
+                                           FontSize="12" Foreground="#333"
+                                           FontFamily="Consolas"/>
+                            </Border>
+                        </StackPanel>
+
+                        <!-- Validation Message -->
+                        <Border Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="3"
+                                Margin="0,8,0,0" Padding="10,6"
+                                Background="#FFF3E0" CornerRadius="6"
+                                x:Name="borderValidation"
+                                Visibility="Collapsed">
+                            <TextBlock x:Name="txtValidationMsg"
+                                       Foreground="#E65100" FontSize="12"
+                                       TextWrapping="Wrap"/>
+                        </Border>
+
+                        <!-- Buttons -->
+                        <StackPanel Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="4"
+                                    Orientation="Horizontal" Margin="0,12,0,0">
+                            <Button x:Name="btnAdd"          Content="➕ Add"           Width="100" Height="36" Margin="0,0,8,0" Background="#1E88E5" Foreground="White" BorderThickness="0" Click="btnAdd_Click"/>
+                            <Button x:Name="btnModify"       Content="✏️ Modify"        Width="100" Height="36" Margin="0,0,8,0" Background="#FB8C00" Foreground="White" BorderThickness="0" Click="btnModify_Click"/>
+                            <Button x:Name="btnDuplicate"    Content="📋 Duplicate"     Width="100" Height="36" Margin="0,0,8,0" Background="#43A047" Foreground="White" BorderThickness="0" Click="btnDuplicate_Click"/>
+                            <Button x:Name="btnRemove"       Content="🗑️ Remove"        Width="100" Height="36" Margin="0,0,8,0" Background="#E53935" Foreground="White" BorderThickness="0" Click="btnRemove_Click"/>
+                            <Button x:Name="btnClear"        Content="✖ Clear"          Width="80"  Height="36" Margin="0,0,8,0" Background="#9E9E9E" Foreground="White" BorderThickness="0" Click="btnClear_Click"/>
+                            <Button x:Name="btnToggleStatus" Content="🔄 Toggle Status" Width="130" Height="36" Background="#6A1B9A" Foreground="White" BorderThickness="0" Click="btnToggleStatus_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <!-- DataGrid -->
+            <Border Background="White" CornerRadius="10" Grid.Row="2" Padding="10">
+                <DataGrid x:Name="dgVehicles"
+                          AutoGenerateColumns="False"
+                          CanUserAddRows="False"
+                          IsReadOnly="True"
+                          SelectionMode="Single"
+                          GridLinesVisibility="Horizontal"
+                          HeadersVisibility="Column"
+                          Background="White"
+                          RowBackground="White"
+                          AlternatingRowBackground="#F0F4FF"
+                          SelectionChanged="dgVehicles_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID"         Binding="{Binding Id}"              Width="40"/>
+                        <DataGridTextColumn Header="Brand"      Binding="{Binding Brand}"            Width="*"/>
+                        <DataGridTextColumn Header="Model"      Binding="{Binding Model}"            Width="*"/>
+                        <DataGridTextColumn Header="Plate No."  Binding="{Binding PlateNumber}"      Width="*"/>
+                        <DataGridTextColumn Header="Category"   Binding="{Binding Category}"         Width="*"/>
+                        <DataGridTextColumn Header="Year"       Binding="{Binding Year}"             Width="55"/>
+                        <DataGridTextColumn Header="Color"      Binding="{Binding Color}"            Width="*"/>
+                        <DataGridTextColumn Header="Daily Rate" Binding="{Binding DailyRateDisplay}" Width="*"/>
+                        <DataGridTextColumn Header="Status"     Binding="{Binding Status}"           Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Border>
+        </Grid>
+
+        <Frame x:Name="AdminVehicleViewFrame"
+               Grid.Column="0" Grid.ColumnSpan="2"
+               NavigationUIVisibility="Hidden"
+               Visibility="Collapsed"/>
+    </Grid>
+</Page>

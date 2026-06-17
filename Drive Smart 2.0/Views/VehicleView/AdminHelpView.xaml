@@ -1,0 +1,205 @@
+﻿<Page
+    x:Class="Drive_Smart_2._0.Views.VehicleView.AdminHelpView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:Drive_Smart_2._0.Views.VehicleView"
+    Title="Help Center"
+    Background="#F0F4FF">
+
+    <Page.Resources>
+
+        <Style x:Key="NavButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="42"/>
+            <Setter Property="Margin" Value="0,3"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="14,0"/>
+            <Setter Property="Background" Value="#1565C0"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#1976D2"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="NavButtonActiveStyle" TargetType="Button" BasedOn="{StaticResource NavButtonStyle}">
+            <Setter Property="Background" Value="#1E88E5"/>
+        </Style>
+
+        <Style x:Key="CloseButtonStyle" TargetType="Button">
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="Padding" Value="16,0"/>
+            <Setter Property="Background" Value="#EF5350"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="6"
+                                Padding="{TemplateBinding Padding}">
+                            <ContentPresenter VerticalAlignment="Center"
+                                              HorizontalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#E53935"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="CardStyle" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="BorderBrush" Value="#DCE4F5"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+
+        <Style x:Key="TipStyle" TargetType="Border">
+            <Setter Property="Background" Value="#E3F2FD"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Padding" Value="14,10"/>
+            <Setter Property="Margin" Value="0,0,0,14"/>
+        </Style>
+
+        <Style x:Key="SectionHeaderStyle" TargetType="Border">
+            <Setter Property="Background" Value="#1565C0"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="20,16"/>
+            <Setter Property="Margin" Value="0,0,0,16"/>
+        </Style>
+
+        <Style x:Key="SubheadingStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="#1565C0"/>
+            <Setter Property="Margin" Value="0,14,0,8"/>
+        </Style>
+
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="260"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- ── Sidebar ── -->
+        <Border Background="#1565C0" Grid.Column="0">
+            <StackPanel>
+
+                <Border Background="#0D47A1" Padding="20,25">
+                    <StackPanel>
+                        <TextBlock Text="?" FontSize="36" FontWeight="Bold"
+                                   Foreground="White" HorizontalAlignment="Center"/>
+                        <TextBlock Text="Help Center" FontSize="18" FontWeight="Bold"
+                                   Foreground="White" HorizontalAlignment="Center"
+                                   Margin="0,6,0,0"/>
+                        <TextBlock Text="Admin Panel Guide" FontSize="11"
+                                   Foreground="#90CAF9" HorizontalAlignment="Center"
+                                   Margin="0,4,0,0"/>
+                    </StackPanel>
+                </Border>
+
+                <StackPanel x:Name="spNav" Margin="12,16,12,0">
+                    <Button x:Name="btnNavGettingStarted"
+                            Content="🚀  Getting Started"
+                            Style="{StaticResource NavButtonActiveStyle}"
+                            Tag="GettingStarted"
+                            Click="NavButton_Click"/>
+                    <Button x:Name="btnNavVehicles"
+                            Content="🚗  Managing Vehicles"
+                            Style="{StaticResource NavButtonStyle}"
+                            Tag="Vehicles"
+                            Click="NavButton_Click"/>
+                    <Button x:Name="btnNavImages"
+                            Content="🖼️  Adding Images"
+                            Style="{StaticResource NavButtonStyle}"
+                            Tag="Images"
+                            Click="NavButton_Click"/>
+                    <Button x:Name="btnNavEdit"
+                            Content="✏️  Editing Records"
+                            Style="{StaticResource NavButtonStyle}"
+                            Tag="Edit"
+                            Click="NavButton_Click"/>
+                    <Button x:Name="btnNavDuplicate"
+                            Content="📋  Duplicating Vehicles"
+                            Style="{StaticResource NavButtonStyle}"
+                            Tag="Duplicate"
+                            Click="NavButton_Click"/>
+                    <Button x:Name="btnNavErrors"
+                            Content="⚠️  Common Errors"
+                            Style="{StaticResource NavButtonStyle}"
+                            Tag="Errors"
+                            Click="NavButton_Click"/>
+                    <Button x:Name="btnNavFAQ"
+                            Content="❓  FAQ"
+                            Style="{StaticResource NavButtonStyle}"
+                            Tag="FAQ"
+                            Click="NavButton_Click"/>
+                </StackPanel>
+
+                <TextBlock Text="Drive Smart v2.0" FontSize="11"
+                           Foreground="#5C8AC7" HorizontalAlignment="Center"
+                           Margin="0,30,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- ── Main Content ── -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="65"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Top Bar -->
+            <Border Background="White" Grid.Row="0" Padding="25,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock x:Name="txtPageTitle"
+                               Text="Getting Started"
+                               FontSize="22" FontWeight="Bold"
+                               Foreground="#1A237E"
+                               VerticalAlignment="Center"
+                               Grid.Column="0"/>
+                    <Button Content="✕  Close"
+                            Style="{StaticResource CloseButtonStyle}"
+                            Grid.Column="1"
+                            VerticalAlignment="Center"
+                            Click="BtnClose_Click"/>
+                </Grid>
+            </Border>
+
+            <!-- Scrollable Content -->
+            <ScrollViewer Grid.Row="1" Padding="25,20,25,25"
+                          VerticalScrollBarVisibility="Auto">
+                <StackPanel x:Name="spContent"/>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Page>
