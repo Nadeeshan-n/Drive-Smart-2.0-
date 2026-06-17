@@ -34,14 +34,22 @@ namespace Drive_Smart_2._0
             //---------------------------------------------------------
 
             VehicleDatabase.InitializeDatabase();
+            MaintenanceDatabase.InitializeDatabase();
 
 
-
-            //PublicVehicleView window = new PublicVehicleView();
-            //window.Show();
+            //PublicVehicleView publicVehicleView = new PublicVehicleView();
+            //publicVehicleView.Show();
 
             //AdminVehicleView adminVehicleView = new AdminVehicleView();
             //adminVehicleView.Show();
+
+            VVMainWindow vVMainWindow = new VVMainWindow();
+            vVMainWindow.Show();
+
+            //AuditLogWindow auditLogWindow = new AuditLogWindow();
+            //auditLogWindow.Show();
+
+
 
             //---------------------------------------------------------
             // End of Amishka's Code                                 |

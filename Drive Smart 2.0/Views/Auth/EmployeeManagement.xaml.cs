@@ -21,7 +21,7 @@ namespace Drive_Smart_2._0.Views.Auth
     {
         public EmployeeManagement()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
     }
 }

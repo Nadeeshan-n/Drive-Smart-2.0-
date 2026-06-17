@@ -154,7 +154,7 @@
                             <TextBlock Text="Employee ID" Style="{StaticResource FormLabelStyle}"/>
                             <Border Style="{StaticResource InputBorderStyle}">
                                 <TextBox x:Name="EmployeeID"
-                                         Style="{StaticResource FormTextBoxStyle}" TextChanged="EmployeeID_TextChanged"/>
+                                         Style="{StaticResource FormTextBoxStyle}" />
                             </Border>
                         </StackPanel>
 
@@ -170,7 +170,7 @@
                             <TextBlock Text="NIC" Style="{StaticResource FormLabelStyle}"/>
                             <Border Style="{StaticResource InputBorderStyle}">
                                 <TextBox x:Name="NIC"
-                                         Style="{StaticResource FormTextBoxStyle}" TextChanged="NIC_TextChanged"/>
+                                         Style="{StaticResource FormTextBoxStyle}" />
                             </Border>
                         </StackPanel>
 
@@ -189,7 +189,7 @@
                             <TextBlock Text="Email Address" Style="{StaticResource FormLabelStyle}"/>
                             <Border Style="{StaticResource InputBorderStyle}">
                                 <TextBox x:Name="EmailAddress"
-                                         Style="{StaticResource FormTextBoxStyle}" TextChanged="EmailAddress_TextChanged" Background="{x:Null}"/>
+                                         Style="{StaticResource FormTextBoxStyle}" Background="{x:Null}"/>
                             </Border>
                         </StackPanel>
 
@@ -286,7 +286,7 @@
                         Foreground="#FF1565C0"
                         FontWeight="Bold"
                         FontSize="14"
-                        IsCancel="True" Click="Reset_Click"/>
+                        IsCancel="True"/>
 
                 <Button x:Name="Employee_Register"
                         Grid.Column="3"
@@ -296,7 +296,7 @@
                         BorderBrush="{x:Null}"
                         Foreground="White"
                         FontWeight="Bold"
-                        FontSize="14" Click="Employee_Register_Click"/>
+                        FontSize="14"/>
             </Grid>
         </Grid>
         <Grid Grid.Column="1"/>

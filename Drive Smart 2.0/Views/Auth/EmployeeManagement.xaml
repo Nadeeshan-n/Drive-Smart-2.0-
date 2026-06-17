@@ -16,7 +16,7 @@
             <StackPanel Margin="15">
                 <TextBlock Text="RENTAL SYSTEM" FontSize="22" FontWeight="Bold"
                            Foreground="White" Margin="0,20,0,30"/>
-                <Button Content="Catalog"   Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0" Click="Button_Click_1"/>
+                <Button Content="Catalog"   Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
                 <Button Content="Vehicles"  Height="45" Margin="0,5" Background="#1E88E5" Foreground="White" BorderThickness="0"/>
                 <Button Content="Customers" Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
                 <Button Content="Bookings"  Height="45" Margin="0,5" Background="#1565C0" Foreground="White" BorderThickness="0"/>
@@ -56,7 +56,7 @@
                         <Button x:Name="btnPickImage" Content="📷 Choose Image"
                                 Height="32" Margin="0,8,0,0"
                                 Background="#1565C0" Foreground="White"
-                                BorderThickness="0" Click="btnPickImage_Click"/>
+                                BorderThickness="0"/>
                         <TextBlock x:Name="txtImageName" Text="No image selected"
                                    FontSize="10" Foreground="Gray"
                                    TextWrapping="Wrap" Margin="0,4,0,0"/>
@@ -95,12 +95,12 @@
                         <!-- Buttons -->
                         <StackPanel Grid.Column="0" Grid.ColumnSpan="6" Grid.Row="2"
                                     Orientation="Horizontal" Margin="0,12,0,0">
-                            <Button x:Name="btnAdd"          Content="➕ Add"            Width="100" Height="36" Background="#1E88E5" Foreground="White" BorderThickness="0" Click="btnAdd_Click"/>
-                            <Button x:Name="btnModify"       Content="✏️ Modify"         Width="100" Height="36" Margin="0,0,8,0" Background="#FB8C00" Foreground="White" BorderThickness="0" Click="btnModify_Click"/>
-                            <Button x:Name="btnDuplicate"    Content="📋 Duplicate"      Width="100" Height="36" Margin="0,0,8,0" Background="#43A047" Foreground="White" BorderThickness="0" Click="btnDuplicate_Click"/>
-                            <Button x:Name="btnRemove"       Content="🗑️ Remove"         Width="100" Height="36" Margin="0,0,8,0" Background="#E53935" Foreground="White" BorderThickness="0" Click="btnRemove_Click"/>
-                            <Button x:Name="btnClear"        Content="✖ Clear"           Width="80"  Height="36" Margin="0,0,8,0" Background="#9E9E9E" Foreground="White" BorderThickness="0" Click="btnClear_Click"/>
-                            <Button x:Name="btnToggleStatus" Content="🔄 Toggle Status"  Width="130" Height="36" Background="#6A1B9A" Foreground="White" BorderThickness="0" Click="btnToggleStatus_Click"/>
+                            <Button x:Name="btnAdd"          Content="➕ Add"            Width="100" Height="36" Background="#1E88E5" Foreground="White" BorderThickness="0"/>
+                            <Button x:Name="btnModify"       Content="✏️ Modify"         Width="100" Height="36" Margin="0,0,8,0" Background="#FB8C00" Foreground="White" BorderThickness="0" />
+                            <Button x:Name="btnDuplicate"    Content="📋 Duplicate"      Width="100" Height="36" Margin="0,0,8,0" Background="#43A047" Foreground="White" BorderThickness="0"/>
+                            <Button x:Name="btnRemove"       Content="🗑️ Remove"         Width="100" Height="36" Margin="0,0,8,0" Background="#E53935" Foreground="White" BorderThickness="0"/>
+                            <Button x:Name="btnClear"        Content="✖ Clear"           Width="80"  Height="36" Margin="0,0,8,0" Background="#9E9E9E" Foreground="White" BorderThickness="0"/>
+                            <Button x:Name="btnToggleStatus" Content="🔄 Toggle Status"  Width="130" Height="36" Background="#6A1B9A" Foreground="White" BorderThickness="0"/>
                         </StackPanel>
                     </Grid>
                 </Grid>
@@ -117,8 +117,7 @@
                           HeadersVisibility="Column"
                           Background="White"
                           RowBackground="White"
-                          AlternatingRowBackground="#F0F4FF"
-                          SelectionChanged="dgVehicles_SelectionChanged">
+                          AlternatingRowBackground="#F0F4FF">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="ID"         Binding="{Binding Id}"          Width="45"/>
                         <DataGridTextColumn Header="Brand"      Binding="{Binding Brand}"        Width="*"/>
