@@ -67,10 +67,7 @@
             FontSize="28"
             FontWeight="Bold"
             VerticalAlignment="Top" Margin="266,21,74,0" Height="69"><Run Text="Customer Profile Lookup &amp; Payment Portal"/><LineBreak/></TextBlock>
-        <TextBox TextWrapping="Wrap" Text="                                                                             " Margin="266,135,543,519" TextChanged="TextBox_TextChanged"/>
-        <TextBlock
-            FontWeight="Bold"
-            VerticalAlignment="Top" Margin="266,36,74,0" Height="69" FontSize="14"><Run/><LineBreak/><Run Text="Lookup customer details and record a payment transaction."/><LineBreak/><Run/></TextBlock>
+        <TextBox x:Name="CustomerIdTextBox" TextWrapping="Wrap" Margin="266,135,543,519" TextChanged="TextBox_TextChanged"/>
         <TextBlock
             FontWeight="Bold"
             VerticalAlignment="Top" Margin="266,36,74,0" Height="69" FontSize="14"><Run/><LineBreak/><Run Text="Lookup customer details and record a payment transaction."/><LineBreak/><Run/></TextBlock>
@@ -90,16 +87,16 @@
         <TextBlock
             FontWeight="Bold"
             VerticalAlignment="Top" Margin="266,176,719,0" Height="25" Text="CUSTERMER NAME" FontSize="14"/>
-        <TextBox TextWrapping="Wrap" Text="                                                                             " Margin="266,201,543,453" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="CustomerNameTextBox" TextWrapping="Wrap" Margin="266,201,543,453" TextChanged="TextBox_TextChanged"/>
         <TextBlock
             FontWeight="Bold"
             VerticalAlignment="Top" Margin="266,242,719,0" Height="25" Text="TEL-NUMBER" FontSize="14"/>
-        <TextBox TextWrapping="Wrap" Text="                                                                             " Margin="266,267,543,387" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="TelNumberTextBox" TextWrapping="Wrap" Margin="266,267,543,387" TextChanged="TextBox_TextChanged"/>
         <TextBlock
             FontWeight="Bold"
             VerticalAlignment="Top" Margin="266,317,719,0" Height="25" Text="ADRESSS" FontSize="14"/>
-        <TextBox TextWrapping="Wrap" Text="                                                                             " Margin="266,347,543,307" TextChanged="TextBox_TextChanged"/>
-        <ComboBox Margin="1002,913,76,-244" RenderTransformOrigin="2.741,1.969" IsDropDownOpen="True" SelectedIndex="2" SelectionChanged="ComboBox_SelectionChanged">
+        <TextBox x:Name="AddressTextBox" TextWrapping="Wrap" Margin="266,347,543,307" TextChanged="TextBox_TextChanged"/>
+        <ComboBox x:Name="PaymentMethodComboBox" Margin="1002,913,76,-244" RenderTransformOrigin="2.741,1.969" SelectedIndex="0" SelectionChanged="ComboBox_SelectionChanged">
             <ComboBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -117,18 +114,18 @@
         <TextBlock
             FontWeight="Bold"
             VerticalAlignment="Top" Margin="748,140,237,0" Height="25" Text="VEHICLE NUMBER" FontSize="14"/>
-        <TextBox TextWrapping="Wrap" Text="                                                                             " Margin="748,165,61,489" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="VehicleNumberTextBox" TextWrapping="Wrap" Margin="748,165,61,489" TextChanged="TextBox_TextChanged"/>
         <TextBlock
             FontWeight="Bold"
             VerticalAlignment="Top" Margin="748,224,237,0" Height="25" Text="VEHICLE MODLE" FontSize="14"/>
-        <TextBox TextWrapping="Wrap" Text="                                                                             " Margin="748,249,61,405" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="VehicleModelTextBox" TextWrapping="Wrap" Margin="748,249,61,405" TextChanged="TextBox_TextChanged"/>
         <TextBlock
             FontWeight="Bold"
             VerticalAlignment="Top" Margin="748,304,237,0" Height="26" Text="RENTAL DURATION" FontSize="14"/>
-        <TextBox TextWrapping="Wrap" Text="                                                                             " Margin="748,330,61,324" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="RentalDurationTextBox" TextWrapping="Wrap" Margin="748,330,61,324" TextChanged="TextBox_TextChanged"/>
         <TextBlock
             VerticalAlignment="Top" Margin="748,380,237,0" Height="26" Text="TOTALE DUE RENT LKR" FontSize="14" FontFamily="Verdana" FontStyle="Italic" FontWeight="Bold"/>
-        <TextBox TextWrapping="Wrap" Text="                                                                             " Margin="748,406,61,248" TextChanged="TextBox_TextChanged"/>
+        <TextBox x:Name="TotalDueTextBox" TextWrapping="Wrap" Margin="748,406,61,248" TextChanged="TextBox_TextChanged"/>
         <Button x:Name="LOOK_UP1_Copy" Content="PROCED TO  PAYMENT" Margin="754,509,79,118" RenderTransformOrigin="0.5,0.5" Foreground="#FF01060C" Background="#FF424BD4" Click="LOOK_UP1_Copy_Click" FontFamily="Verdana" FontSize="20" FontStyle="Italic" FontWeight="Bold">
             <Button.RenderTransform>
                 <TransformGroup>
@@ -141,3 +138,4 @@
         </Button>
     </Grid>
 </Window>
+

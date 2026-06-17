@@ -27,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Views\Reports\" />
     <Folder Include="Views\VehicleView\Images\" />
   </ItemGroup>
 
