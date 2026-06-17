@@ -5,96 +5,229 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Drive_Smart_2._0.Views.Payment"
         mc:Ignorable="d"
-        Title="PAYMENT_END___PRINT_BILL" Height="450" Width="800">
-    <Grid Width="1200" Height="700">
-        <Border Width="220"
-            Background="#1565C0"
-            HorizontalAlignment="Left" Margin="0,0,0,-250">
+        Title="Payment Confirmation" Height="700" Width="1200"
+        FontFamily="Segoe UI">
 
-            <StackPanel Margin="15">
+    <Window.Resources>
+        <!-- Palette -->
+        <SolidColorBrush x:Key="BrandPrimary" Color="#1565C0"/>
+        <SolidColorBrush x:Key="BrandPrimaryLight" Color="#1E88E5"/>
+        <SolidColorBrush x:Key="BrandBorder" Color="#E0E4EA"/>
+        <SolidColorBrush x:Key="TextPrimary" Color="#1A1D23"/>
+        <SolidColorBrush x:Key="TextSecondary" Color="#5F6877"/>
+        <SolidColorBrush x:Key="SuccessGreen" Color="#2E7D32"/>
 
-                <TextBlock Text="RENTAL SYSTEM"
-                    FontSize="22"
-                    FontWeight="Bold"
-                    Foreground="White"
-                    />
+        <!-- Flat button base: removes the default Windows button chrome/bevel -->
+        <Style x:Key="FlatButtonBase" TargetType="Button">
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Chrome"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="4">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Chrome" Property="Opacity" Value="0.88"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="Chrome" Property="Opacity" Value="0.78"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
-                <Button Content="Dashboard"
-                    Height="45"
-                    Margin="0,5"
-                    Background="#1E88E5"
-                    Foreground="White"
-                    BorderThickness="0"/>
+        <Style x:Key="SidebarNavButton" TargetType="Button" BasedOn="{StaticResource FlatButtonBase}">
+            <Setter Property="Height" Value="44"/>
+            <Setter Property="Margin" Value="0,3"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="14,0,0,0"/>
+        </Style>
 
-                <Button Content="Vehicles"
-                    Height="45"
-                    Margin="0,5"
-                    Background="#1565C0"
-                    Foreground="White"
-                    BorderThickness="0"/>
+        <Style x:Key="SidebarNavButtonActive" TargetType="Button" BasedOn="{StaticResource SidebarNavButton}">
+            <Setter Property="Background" Value="#1E88E5"/>
+        </Style>
 
-                <Button Content="Customers"
-                    Height="45"
-                    Margin="0,5"
-                    Background="#1565C0"
-                    Foreground="White"
-                    BorderThickness="0"/>
+        <Style x:Key="PrimaryButton" TargetType="Button" BasedOn="{StaticResource FlatButtonBase}">
+            <Setter Property="Background" Value="{StaticResource BrandPrimary}"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
 
-                <Button Content="Bookings"
-                    Height="45"
-                    Margin="0,5"
-                    Background="#1565C0"
-                    Foreground="White"
-                    BorderThickness="0"/>
+        <Style x:Key="SecondaryButton" TargetType="Button" BasedOn="{StaticResource FlatButtonBase}">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="{StaticResource BrandPrimary}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BrandPrimary}"/>
+            <Setter Property="BorderThickness" Value="1.5"/>
+        </Style>
 
-                <Button Content="Payments"
-                    Height="45"
-                    Margin="0,5"
-                    Background="#1565C0"
-                    Foreground="White"
-                    BorderThickness="0"/>
+        <Style x:Key="CardBorder" TargetType="Border">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BrandBorder}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="CornerRadius" Value="8"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect BlurRadius="24" ShadowDepth="2" Opacity="0.07" Color="#1A1D23"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
 
-                <Button Content="Reports"
-                    Height="45"
-                    Margin="0,5"
-                    Background="#1565C0"
-                    Foreground="White"
-                    BorderThickness="0"/>
+        <!-- One reusable row for the receipt: label column + value column -->
+        <Style x:Key="ReceiptRow" TargetType="Grid">
+            <Setter Property="Margin" Value="0,0,0,10"/>
+        </Style>
+        <Style x:Key="ReceiptLabel" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Foreground" Value="{StaticResource TextSecondary}"/>
+        </Style>
+        <Style x:Key="ReceiptValue" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}"/>
+        </Style>
+    </Window.Resources>
+
+    <Grid Background="#F0F2F5">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="{StaticResource BrandPrimary}">
+            <StackPanel Margin="20,28,20,20">
+                <TextBlock Text="RENTAL SYSTEM" FontSize="20" FontWeight="Bold" Foreground="White" Margin="4,0,0,28"/>
+                <Button Content="Dashboard" Style="{StaticResource SidebarNavButton}"/>
+                <Button Content="Vehicles" Style="{StaticResource SidebarNavButton}"/>
+                <Button Content="Customers" Style="{StaticResource SidebarNavButton}"/>
+                <Button Content="Bookings" Style="{StaticResource SidebarNavButton}"/>
+                <Button Content="Payments" Style="{StaticResource SidebarNavButtonActive}"/>
+                <Button Content="Reports" Style="{StaticResource SidebarNavButton}"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Content -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Width="480">
+
+                <Image Source="/Views/Payment/Image1.png" Stretch="Uniform"
+                       Width="76" Height="76" HorizontalAlignment="Center" Margin="0,0,0,18"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,26">
+                    <Border Width="34" Height="34" CornerRadius="17" Background="{StaticResource SuccessGreen}">
+                        <TextBlock Text="&#10003;" FontSize="17" FontWeight="Bold" Foreground="White"
+                                   HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <TextBlock Text="Payment Successful" FontSize="22" FontWeight="Bold"
+                               Foreground="{StaticResource SuccessGreen}" VerticalAlignment="Center" Margin="12,0,0,0"/>
+                </StackPanel>
+
+                <Border x:Name="ReceiptCard" Style="{StaticResource CardBorder}" Padding="28">
+                    <StackPanel>
+                        <TextBlock Text="RECEIPT" FontSize="12" FontWeight="Bold"
+                                   Foreground="{StaticResource BrandPrimary}" Margin="0,0,0,16"/>
+
+                        <Grid Style="{StaticResource ReceiptRow}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Receipt No." Style="{StaticResource ReceiptLabel}"/>
+                            <TextBlock x:Name="ReceiptNumberText" Grid.Column="1" Style="{StaticResource ReceiptValue}"/>
+                        </Grid>
+
+                        <Grid Style="{StaticResource ReceiptRow}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Date" Style="{StaticResource ReceiptLabel}"/>
+                            <TextBlock x:Name="PaymentDateText" Grid.Column="1" Style="{StaticResource ReceiptValue}"/>
+                        </Grid>
+
+                        <Grid Style="{StaticResource ReceiptRow}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Customer ID" Style="{StaticResource ReceiptLabel}"/>
+                            <TextBlock x:Name="CustomerIdText" Grid.Column="1" Style="{StaticResource ReceiptValue}"/>
+                        </Grid>
+
+                        <Grid Style="{StaticResource ReceiptRow}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Customer Name" Style="{StaticResource ReceiptLabel}"/>
+                            <TextBlock x:Name="CustomerNameText" Grid.Column="1" Style="{StaticResource ReceiptValue}"/>
+                        </Grid>
+
+                        <Grid Style="{StaticResource ReceiptRow}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Vehicle" Style="{StaticResource ReceiptLabel}"/>
+                            <TextBlock x:Name="VehicleText" Grid.Column="1" Style="{StaticResource ReceiptValue}"/>
+                        </Grid>
+
+                        <Grid Style="{StaticResource ReceiptRow}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Rental Duration" Style="{StaticResource ReceiptLabel}"/>
+                            <TextBlock x:Name="RentalDurationText" Grid.Column="1" Style="{StaticResource ReceiptValue}"/>
+                        </Grid>
+
+                        <Grid Margin="0,0,0,14">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Payment Method" Style="{StaticResource ReceiptLabel}"/>
+                            <TextBlock x:Name="PaymentMethodText" Grid.Column="1" Style="{StaticResource ReceiptValue}"/>
+                        </Grid>
+
+                        <Border BorderThickness="0,1,0,0" BorderBrush="{StaticResource BrandBorder}" Margin="0,0,0,14"/>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Text="Total Paid (LKR)" FontSize="14" FontWeight="Bold" Foreground="{StaticResource TextPrimary}"/>
+                            <TextBlock x:Name="TotalDueText" Grid.Column="1" FontSize="17" FontWeight="Bold" Foreground="{StaticResource BrandPrimary}"/>
+                        </Grid>
+                    </StackPanel>
+                </Border>
             </StackPanel>
 
-        </Border>
-        <Image Margin="335,26,526,381"/>
-        <Image Margin="307,64,498,420" Source="/Views/Payment/Image1.png" Stretch="Fill"/>
-        <Button x:Name="LOOK_UP1_Copy" Content="PROCED TO  PAYMENT" Margin="754,509,145,128" RenderTransformOrigin="0.5,0.5" Foreground="#FF01060C" Background="#FF424BD4" Click="LOOK_UP1_Copy_Click" FontFamily="Verdana" FontSize="20" FontStyle="Italic" FontWeight="Bold">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.625"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
-        <Button x:Name="LOOK_UP1_Copy1" Content="PRINT INVOICE" Margin="341,308,705,350" RenderTransformOrigin="0.5,0.5" Foreground="#FF01060C" Background="#FF424BD4" Click="LOOK_UP1_Copy_Click" FontFamily="Verdana" FontStyle="Italic" FontWeight="Bold">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.625"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
-        <Button x:Name="LOOK_UP1_Copy2" Content="BACK TO DASHBORD" Margin="537,308,509,350" RenderTransformOrigin="0.5,0.5" Foreground="#FF01060C" Background="#FF424BD4" Click="LOOK_UP1_Copy_Click" FontFamily="Verdana" FontStyle="Italic" FontWeight="Bold">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.625"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
-
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,40">
+                <Button x:Name="PrintInvoiceButton" Content="Print Invoice" Width="180" Height="44"
+                        Style="{StaticResource SecondaryButton}" Margin="0,0,16,0"
+                        Click="PrintInvoiceButton_Click"/>
+                <Button x:Name="BackToDashboardButton" Content="Back to Dashboard" Width="200" Height="44"
+                        Style="{StaticResource PrimaryButton}"
+                        Click="BackToDashboardButton_Click"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>

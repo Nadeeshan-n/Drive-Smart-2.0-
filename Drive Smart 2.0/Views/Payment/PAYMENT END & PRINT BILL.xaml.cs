@@ -1,16 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Drive_Smart_2._0.Views.Payment
 {
@@ -19,19 +10,58 @@ namespace Drive_Smart_2._0.Views.Payment
     /// </summary>
     public partial class PAYMENT_END___PRINT_BILL : Window
     {
+        private PaymentRecord _record;
+        private long _receiptNumber;
+
         public PAYMENT_END___PRINT_BILL()
         {
             InitializeComponent();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        /// <summary>
+        /// Opens the bill screen pre-filled with the payment that was just saved.
+        /// </summary>
+        public PAYMENT_END___PRINT_BILL(PaymentRecord record, long receiptNumber) : this()
         {
+            _record = record;
+            _receiptNumber = receiptNumber;
 
+            ReceiptNumberText.Text = receiptNumber.ToString();
+            PaymentDateText.Text = record.PaymentDate.ToString("yyyy-MM-dd HH:mm");
+            CustomerIdText.Text = record.CustomerId;
+            CustomerNameText.Text = record.CustomerName;
+            VehicleText.Text = $"{record.VehicleNumber} ({record.VehicleModel})";
+            RentalDurationText.Text = record.RentalDuration;
+            PaymentMethodText.Text = record.PaymentMethod;
+            TotalDueText.Text = record.TotalDue.ToString("N2");
         }
 
-        private void LOOK_UP1_Copy_Click(object sender, RoutedEventArgs e)
+        private void PrintInvoiceButton_Click(object sender, RoutedEventArgs e)
         {
+            var printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == true)
+            {
+                // Prints exactly what's on the receipt card, so the printout
+                // matches what the customer sees on screen.
+                printDialog.PrintVisual(ReceiptCard, $"Receipt {_receiptNumber}");
+            }
+        }
 
+        private void BackToDashboardButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Assumes the app's MainWindow hosts the dashboard and stays open in
+            // the background while payment screens are shown on top of it, so
+            // "back to dashboard" = close every other window and bring it forward.
+            // If Dashboard is actually its own Window class, swap this body for:
+            //     new Dashboard().Show();
+            //     this.Close();
+            foreach (var window in Application.Current.Windows.OfType<Window>().ToList())
+            {
+                if (window != Application.Current.MainWindow)
+                    window.Close();
+            }
+
+            Application.Current.MainWindow?.Activate();
         }
     }
 }
