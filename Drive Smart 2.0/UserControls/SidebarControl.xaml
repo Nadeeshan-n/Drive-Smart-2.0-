@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="Drive_Smart_2._0.UserControls.SidebarControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Width="158" Height="184">
+
+    <StackPanel>
+
+        <!-- Divider -->
+        <Separator Margin="0,0,0,16"/>
+
+        <!-- User Card -->
+        <Border Background="#25FFFFFF"
+                CornerRadius="10"
+                Padding="12"
+                Margin="0,0,0,10">
+
+            <StackPanel>
+
+                <Grid HorizontalAlignment="Left"
+                      Margin="0,0,0,8">
+
+                    <Ellipse Width="40"
+                             Height="40"
+                             Fill="#42A5F5"/>
+
+                    <TextBlock x:Name="TxtInitials"
+                               Text="A"
+                               Foreground="White"
+                               FontWeight="Bold"
+                               FontSize="16"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                </Grid>
+
+                <TextBlock x:Name="TxtLoggedName"
+                           Text="Loading..."
+                           Foreground="White"
+                           FontSize="13"
+                           FontWeight="SemiBold"/>
+
+                <Border x:Name="RoleBadge"
+                        Background="#1E88E5"
+                        CornerRadius="4"
+                        Padding="6,2"
+                        Margin="0,4,0,0"
+                        HorizontalAlignment="Left">
+
+                    <TextBlock x:Name="TxtLoggedRole"
+                               Text="Staff"
+                               Foreground="White"
+                               FontSize="11"
+                               FontWeight="SemiBold"/>
+
+                </Border>
+
+            </StackPanel>
+
+        </Border>
+
+        <!-- Logout -->
+        <Button x:Name="BtnLogout"
+                Content="⏻ Logout"
+                Height="40"
+                Background="#C62828"
+                Foreground="White"
+                BorderThickness="0" Click="BtnLogout_Click"
+                />
+
+    </StackPanel>
+
+</UserControl>

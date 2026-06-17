@@ -1,64 +1,70 @@
-﻿using Drive_Smart_2._0.models;
+using Drive_Smart_2._0.Data;
 using Drive_Smart_2._0.Views.Auth;
-using Drive_Smart_2._0.Views.VehicleView;
 using Drive_Smart_2._0.Views.VehicleView.Database;
-using System.Configuration;
-using System.Data;
 using System.Windows;
 
 namespace Drive_Smart_2._0
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
     public partial class App : Application
     {
         protected override void OnStartup(StartupEventArgs e)
         {
-            base.OnStartup(e);
+            try
+            {
+                base.OnStartup(e);
 
-            // Open EmployeeRegister window on startup
-            EmployeeRegister employeeRegisterWindow = new EmployeeRegister();
-            employeeRegisterWindow.Show();
+                //MessageBox.Show("Step 1");
+
+                VehicleDatabase.InitializeDatabase();
+
+                //MessageBox.Show("Step 2");
+                using (var db = new AppDbContext())
+                {
+                    db.Database.EnsureCreated();
+                }
+
+                //MessageBox.Show("Step 3");
 
 
-            login log = new login();
-            log.Show();
-            // This is the dashboard view 
-
-            
-            dashboard dash = new dashboard();
-            dash.Show();
-
+                //MessageBox.Show("Step 4");
 
             //---------------------------------------------------------
             // Amishka's code dont put your a@# here [starts here]   |
             //---------------------------------------------------------
 
             VehicleDatabase.InitializeDatabase();
-            MaintenanceDatabase.InitializeDatabase();
 
 
-            //PublicVehicleView publicVehicleView = new PublicVehicleView();
-            //publicVehicleView.Show();
 
-            //AdminVehicleView adminVehicleView = new AdminVehicleView();
-            //adminVehicleView.Show();
+                //PublicVehicleView window = new PublicVehicleView();
+                //window.Show();
 
-            VVMainWindow vVMainWindow = new VVMainWindow();
-            vVMainWindow.Show();
+                //ChangePasswordWindow changePassword = new ChangePasswordWindow();
+                //changePassword.Show();
+                //
+                login log = new login();
+                log.Show();
 
-            //AuditLogWindow auditLogWindow = new AuditLogWindow();
-            //auditLogWindow.Show();
+                //EmployeeManagementt emp = new EmployeeManagementt();
+                //emp.Show();
 
-
+                
 
             //---------------------------------------------------------
             // End of Amishka's Code                                 |
             //---------------------------------------------------------
 
+            
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    ex.ToString(),
+                    "Startup Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
         }
     }
-
 }

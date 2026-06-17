@@ -1,4 +1,11 @@
-﻿using Drive_Smart_2._0.Views.VehicleView;
+﻿using Drive_Smart_2._0.Views.Auth.Helpers;
+using Drive_Smart_2._0.Views.VehicleView;
+using Drive_Smart_2._0.Views.VehicleView.Database;
+using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Painting;
+using Microsoft.Data.Sqlite;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,12 +15,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using Drive_Smart_2._0.Views.VehicleView.Database;
-using Microsoft.Data.Sqlite;
-using LiveChartsCore;
-using LiveChartsCore.SkiaSharpView;
-using LiveChartsCore.SkiaSharpView.Painting;
-using SkiaSharp;
 
 namespace Drive_Smart_2._0.models
 {
@@ -66,6 +67,7 @@ namespace Drive_Smart_2._0.models
             LoadStats();
             LoadVehicleTable();
             LoadRevenueCharts();
+            SidebarMenu.SetActivePage(ActivePage.Dashboard);
         }
 
         private void LoadStats()

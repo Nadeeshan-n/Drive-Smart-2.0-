@@ -1,4 +1,5 @@
-﻿using Drive_Smart_2._0.Views.VehicleView.Database;
+﻿using Drive_Smart_2._0.Views.Auth.Helpers;
+using Drive_Smart_2._0.Views.VehicleView.Database;
 using Microsoft.Data.Sqlite;
 using Microsoft.Win32;
 using System;
@@ -12,7 +13,7 @@ using System.Windows.Media.Imaging;
 
 namespace Drive_Smart_2._0.Views.VehicleView
 {
-    public partial class AdminVehicleView : Page
+    public partial class AdminVehicleView : Window
     {
         private string _selectedImagePath = null;
 
@@ -96,6 +97,7 @@ namespace Drive_Smart_2._0.Views.VehicleView
             LoadVehicles();
             UpdatePlateHint();
             LoadMaintenanceBadge();
+            SidebarMenu.SetActivePage(ActivePage.VehicleRegister);
         }
 
 
@@ -105,10 +107,10 @@ namespace Drive_Smart_2._0.Views.VehicleView
         private void LoadMaintenanceBadge()
         {
             int count = MaintenanceDatabase.GetUrgentCount();
-            maintenanceBadge.Visibility = count > 0
+            /*maintenanceBadge.Visibility = count > 0
                 ? Visibility.Visible
                 : Visibility.Collapsed;
-            maintenanceBadgeCount.Text = count.ToString();
+            maintenanceBadgeCount.Text = count.ToString();*/
         }
 
 
@@ -660,7 +662,7 @@ namespace Drive_Smart_2._0.Views.VehicleView
         {
             //PublicVehicleView publicVehicleView = new PublicVehicleView();
 
-            NavigationService.Navigate(new PublicVehicleView());
+            //NavigationService.Navigate(new PublicVehicleView());
 
 
         }
@@ -677,7 +679,7 @@ namespace Drive_Smart_2._0.Views.VehicleView
 
         private void BtnHelp_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AdminHelpView());
+            //NavigationService.Navigate(new AdminHelpView());
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
@@ -687,7 +689,7 @@ namespace Drive_Smart_2._0.Views.VehicleView
 
         private void Button_Click_4(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new MaintenanceView());
+            //NavigationService.Navigate(new MaintenanceView());
         }
     }
 

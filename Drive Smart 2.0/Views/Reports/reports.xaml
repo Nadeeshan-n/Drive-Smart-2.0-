@@ -1,0 +1,139 @@
+<Window x:Class="Drive_Smart_2._0.Views.Reports.reports"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Drive_Smart_2._0.Views.Reports"
+        xmlns:uc="clr-namespace:Drive_Smart_2._0.UserControls"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="reports" Height="700" Width="1200">
+    <Grid Width="1200" Height="700">
+        <Border Grid.Column="0"
+            Background="#1565C0"
+            Margin="0,0,965,0">
+
+            <Grid Margin="15">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Menu -->
+
+                <uc:SideBar x:Name="SidebarMenu" Grid.Row="0"/>
+
+                <!-- Logged User Section -->
+                <uc:SidebarControl Grid.Row="1" Height="184" Margin="14,0,13,0" VerticalAlignment="Top"/>
+
+            </Grid>
+
+        </Border>
+
+        <TextBlock Text="Reports" FontSize="28" FontWeight="Bold"
+                   Margin="266,30,40,0" Height="40" VerticalAlignment="Top"/>
+        <TextBlock Text="Generate a PDF report for each part of the system, then print it."
+                   FontSize="14" Margin="266,72,40,0" Height="24" VerticalAlignment="Top"/>
+
+        <!-- Vehicle Report -->
+        <Border Background="White" BorderBrush="#DDDDDD" BorderThickness="1" CornerRadius="6"
+                Margin="266,115,40,0" Height="90" VerticalAlignment="Top">
+            <Grid Margin="20,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="120"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                    <TextBlock Text="Vehicle Report" FontSize="18" FontWeight="Bold"/>
+                    <TextBlock Text="Every vehicle currently in the fleet." FontSize="12" Foreground="#666666"/>
+                </StackPanel>
+                <Button Grid.Column="1" Content="GENERATE PDF" Height="38" VerticalAlignment="Center"
+                        Background="#1565C0" Foreground="White" BorderThickness="0" FontWeight="Bold"
+                        Click="GenerateVehicleReport_Click"/>
+                <Button Grid.Column="3" Content="PRINT" Height="38" VerticalAlignment="Center"
+                        Background="#FF424BD4" Foreground="White" BorderThickness="0" FontWeight="Bold"
+                        Click="PrintVehicleReport_Click"/>
+            </Grid>
+        </Border>
+
+        <!-- Maintenance Report -->
+        <Border Background="White" BorderBrush="#DDDDDD" BorderThickness="1" CornerRadius="6"
+                Margin="266,215,40,0" Height="90" VerticalAlignment="Top">
+            <Grid Margin="20,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="120"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                    <TextBlock Text="Maintenance Report" FontSize="18" FontWeight="Bold"/>
+                    <TextBlock Text="All scheduled and completed maintenance records." FontSize="12" Foreground="#666666"/>
+                </StackPanel>
+                <Button Grid.Column="1" Content="GENERATE PDF" Height="38" VerticalAlignment="Center"
+                        Background="#1565C0" Foreground="White" BorderThickness="0" FontWeight="Bold"
+                        Click="GenerateMaintenanceReport_Click"/>
+                <Button Grid.Column="3" Content="PRINT" Height="38" VerticalAlignment="Center"
+                        Background="#FF424BD4" Foreground="White" BorderThickness="0" FontWeight="Bold"
+                        Click="PrintMaintenanceReport_Click"/>
+            </Grid>
+        </Border>
+
+        <!-- Customer Report -->
+        <Border Background="White" BorderBrush="#DDDDDD" BorderThickness="1" CornerRadius="6"
+                Margin="266,315,40,0" Height="90" VerticalAlignment="Top">
+            <Grid Margin="20,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="120"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                    <TextBlock Text="Customer Report" FontSize="18" FontWeight="Bold"/>
+                    <TextBlock Text="Every registered customer." FontSize="12" Foreground="#666666"/>
+                </StackPanel>
+                <Button Grid.Column="1" Content="GENERATE PDF" Height="38" VerticalAlignment="Center"
+                        Background="#1565C0" Foreground="White" BorderThickness="0" FontWeight="Bold"
+                        Click="GenerateCustomerReport_Click"/>
+                <Button Grid.Column="3" Content="PRINT" Height="38" VerticalAlignment="Center"
+                        Background="#FF424BD4" Foreground="White" BorderThickness="0" FontWeight="Bold"
+                        Click="PrintCustomerReport_Click"/>
+            </Grid>
+        </Border>
+
+        <!-- Payment Report -->
+        <Border Background="White" BorderBrush="#DDDDDD" BorderThickness="1" CornerRadius="6"
+                Margin="266,415,40,0" Height="90" VerticalAlignment="Top">
+            <Grid Margin="20,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="160"/>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="120"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                    <TextBlock Text="Payment Report" FontSize="18" FontWeight="Bold"/>
+                    <TextBlock Text="Every recorded payment / booking transaction." FontSize="12" Foreground="#666666"/>
+                </StackPanel>
+                <Button Grid.Column="1" Content="GENERATE PDF" Height="38" VerticalAlignment="Center"
+                        Background="#1565C0" Foreground="White" BorderThickness="0" FontWeight="Bold"
+                        Click="GeneratePaymentReport_Click"/>
+                <Button Grid.Column="3" Content="PRINT" Height="38" VerticalAlignment="Center"
+                        Background="#FF424BD4" Foreground="White" BorderThickness="0" FontWeight="Bold"
+                        Click="PrintPaymentReport_Click"/>
+            </Grid>
+        </Border>
+
+        <!-- Status -->
+        <Border Background="#F5F5F5" BorderBrush="#DDDDDD" BorderThickness="1" CornerRadius="6"
+                Margin="266,520,40,0" Height="90" VerticalAlignment="Top">
+            <TextBlock x:Name="StatusText" Margin="15" TextWrapping="Wrap" FontSize="12"
+                       Foreground="#444444" Text="No report generated yet."/>
+        </Border>
+
+    </Grid>
+</Window>

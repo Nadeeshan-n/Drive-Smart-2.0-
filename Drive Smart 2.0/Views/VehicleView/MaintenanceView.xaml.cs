@@ -1,4 +1,5 @@
-﻿using Drive_Smart_2._0.Views.VehicleView.Database;
+﻿using Drive_Smart_2._0.Views.Auth.Helpers;
+using Drive_Smart_2._0.Views.VehicleView.Database;
 using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Windows.Controls;
 
 namespace Drive_Smart_2._0.Views.VehicleView
 {
-    public partial class MaintenanceView : Page
+    public partial class MaintenanceView : Window
     {
         private int? _editingId = null;
 
@@ -19,6 +20,7 @@ namespace Drive_Smart_2._0.Views.VehicleView
             LoadVehiclesIntoCombo();
             dpScheduled.SelectedDate = DateTime.Today;
             LoadRecords();
+            SidebarMenu.SetActivePage(ActivePage.VehicleMaintenance);
 
         }
 
@@ -148,7 +150,7 @@ namespace Drive_Smart_2._0.Views.VehicleView
             txtDueSoonCount.Text = dueSoon > 0 ? $"🟡 {dueSoon} Due This Week" : "";
 
             // Sidebar badge
-            int urgent = overdue + dueSoon;
+            /*int urgent = overdue + dueSoon;
             if (urgent > 0)
             {
                 badgeBorder.Visibility = Visibility.Visible;
@@ -157,7 +159,7 @@ namespace Drive_Smart_2._0.Views.VehicleView
             else
             {
                 badgeBorder.Visibility = Visibility.Collapsed;
-            }
+            }*/
         }
 
         // ── Row selected → fill form ──────────────────────────────────────
@@ -580,7 +582,7 @@ namespace Drive_Smart_2._0.Views.VehicleView
             //new AdminVehicleView().Show();
             //this.Close();
 
-            NavigationService.Navigate(new AdminVehicleView());
+            //NavigationService.Navigate(new AdminVehicleView());
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -594,7 +596,7 @@ namespace Drive_Smart_2._0.Views.VehicleView
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AdminVehicleView());
+            //NavigationService.Navigate(new AdminVehicleView());
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -604,7 +606,7 @@ namespace Drive_Smart_2._0.Views.VehicleView
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new PublicVehicleView());
+            //NavigationService.Navigate(new PublicVehicleView());
         }
     }
 

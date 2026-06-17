@@ -4,9 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Drive_Smart_2._0.Views.Customer"
+        xmlns:uc="clr-namespace:Drive_Smart_2._0.UserControls"
         mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
         Title="Customer" Height="700" Width="1200" Background="White">
-    <Grid Margin="0,0,0,-6">
+    <Grid Margin="0,0,0,3">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="93*"/>
             <ColumnDefinition Width="565*"/>
@@ -21,23 +23,27 @@
         </Grid.RowDefinitions>
 
         <!-- Sidebar -->
-        <Border Width="220" Background="#1565C0"
-                HorizontalAlignment="Left" Margin="0,0,0,6"
-                Grid.RowSpan="5" Grid.ColumnSpan="2">
-            <StackPanel Margin="15">
-                <TextBlock Text="RENTAL SYSTEM" FontSize="22" FontWeight="Bold"
-                           Foreground="White" Margin="0,20,0,30"/>
-                <Button Content="Add New Custermer" Height="45" Margin="0,5"
-                        Background="#1E88E5" Foreground="White" BorderThickness="0" Click="Button_Click_1"/>
-                <Button Content="View"  Height="45" Margin="0,5"
-                        Background="#1565C0" Foreground="White" BorderThickness="0" Click="Button_Click_2"/>
-                <Button Content="Update Custermer" Height="45" Margin="0,5"
-                        Background="#1565C0" Foreground="White" BorderThickness="0"/>
-                <Button Content="Delete Account"  Height="45" Margin="0,5"
-                        Background="#1565C0" Foreground="White" BorderThickness="0"/>
-            </StackPanel>
-        </Border>
+        <Border Grid.Column="0"
+            Background="#1565C0"
+            Margin="0,0,443,0" Grid.ColumnSpan="2" Grid.RowSpan="5" Width="215">
 
+            <Grid Margin="15">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Menu -->
+
+                <uc:SideBar x:Name="SidebarMenu" Grid.Row="0"/>
+
+                <!-- Logged User Section -->
+                <uc:SidebarControl Grid.Row="1" Height="184" Margin="14,0,13,0" VerticalAlignment="Top"/>
+
+            </Grid>
+
+        </Border>
         <!-- Page title -->
         <TextBlock FontSize="28" FontWeight="Bold"
                    VerticalAlignment="Top" Margin="451,10,-244,0"
@@ -124,5 +130,7 @@
         <!-- Submit -->
         <Button Content="Submit" Grid.Column="2" Margin="274,220,175,10"
                 Grid.Row="3" Click="Button_Click" FontSize="16"/>
+        <Button x:Name="BtnView" Content="View Cusomers" Grid.Column="2" Margin="44,220,320,10"
+            Grid.Row="3"  FontSize="16" Click="BtnView_Click"/>
     </Grid>
 </Window>
