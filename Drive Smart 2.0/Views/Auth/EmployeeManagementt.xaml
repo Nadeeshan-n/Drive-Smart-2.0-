@@ -19,7 +19,7 @@
         UseLayoutRounding="True">
 
     <Window.Resources>
-        <Style x:Key="SidebarButtonStyle" TargetType="Button">
+        <!--<Style x:Key="SidebarButtonStyle" TargetType="Button">
             <Setter Property="Height" Value="45"/>
             <Setter Property="Margin" Value="0,5"/>
             <Setter Property="Foreground" Value="White"/>
@@ -28,7 +28,7 @@
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="Cursor" Value="Hand"/>
-        </Style>
+        </Style>-->
 
         <Style x:Key="CardStyle" TargetType="Border">
             <Setter Property="Background" Value="White"/>
@@ -107,39 +107,8 @@
                 </Grid.RowDefinitions>
 
                 <!-- Menu -->
-                <StackPanel Grid.Row="0" Height="476" VerticalAlignment="Top">
 
-                    <TextBlock Text="RENTAL SYSTEM"
-                       FontSize="22"
-                       FontWeight="Bold"
-                       Foreground="White"
-                       Margin="0,20,0,30"/>
-
-                    <Button Content="Dashboard"
-                    Background="#1E88E5"
-                    Style="{StaticResource SidebarButtonStyle}"/>
-
-                    <Button Content="Vehicles"
-                    Background="#1565C0"
-                    Style="{StaticResource SidebarButtonStyle}"/>
-
-                    <Button Content="Customers"
-                    Background="#1565C0"
-                    Style="{StaticResource SidebarButtonStyle}"/>
-
-                    <Button Content="Bookings"
-                    Background="#1565C0"
-                    Style="{StaticResource SidebarButtonStyle}"/>
-
-                    <Button Content="Payments"
-                    Background="#1565C0"
-                    Style="{StaticResource SidebarButtonStyle}"/>
-
-                    <Button Content="Reports"
-                    Background="#1565C0"
-                    Style="{StaticResource SidebarButtonStyle}"/>
-
-                </StackPanel>
+                <uc:SideBar x:Name="SidebarMenu" Grid.Row="0"/>
 
                 <!-- Logged User Section -->
                 <uc:SidebarControl Grid.Row="1" Height="184" Margin="14,0,13,0" VerticalAlignment="Top"/>

@@ -13,18 +13,12 @@
         MinHeight="620"
         FontFamily="Segoe UI"
         UseLayoutRounding="True"
+        WindowStartupLocation="CenterScreen"
         SnapsToDevicePixels="True">
 
 
     <Window.Resources>
-        <Style x:Key="SidebarButtonStyle" TargetType="Button">
-            <Setter Property="Height" Value="45"/>
-            <Setter Property="Margin" Value="0,5"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="BorderThickness" Value="0"/>
-            <Setter Property="HorizontalContentAlignment" Value="Center"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-        </Style>
+    
 
         <Style x:Key="FormLabelStyle" TargetType="TextBlock">
             <Setter Property="Foreground" Value="Black"/>
@@ -87,39 +81,7 @@
                 </Grid.RowDefinitions>
 
                 <!-- Menu -->
-                <StackPanel Grid.Row="0">
-
-                    <TextBlock Text="RENTAL SYSTEM"
-                       FontSize="22"
-                       FontWeight="Bold"
-                       Foreground="White"
-                       Margin="0,20,0,30"/>
-
-                    <Button Content="Dashboard"
-                    Background="#1E88E5"
-                    Style="{StaticResource SidebarButtonStyle}"/>
-
-                    <Button Content="Vehicles"
-                    Background="#1565C0"
-                    Style="{StaticResource SidebarButtonStyle}"/>
-
-                    <Button Content="Customers"
-                    Background="#1565C0"
-                    Style="{StaticResource SidebarButtonStyle}"/>
-
-                    <Button Content="Bookings"
-                    Background="#1565C0"
-                    Style="{StaticResource SidebarButtonStyle}"/>
-
-                    <Button Content="Payments"
-                    Background="#1565C0"
-                    Style="{StaticResource SidebarButtonStyle}"/>
-
-                    <Button Content="Reports"
-                    Background="#1565C0"
-                    Style="{StaticResource SidebarButtonStyle}"/>
-
-                </StackPanel>
+                <uc:SideBar Grid.Row="0"/>
 
                 <!-- Logged User Section -->
                 <uc:SidebarControl Grid.Row="1"/>

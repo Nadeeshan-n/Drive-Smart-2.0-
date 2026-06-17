@@ -1,6 +1,9 @@
 ﻿using ClosedXML.Excel;
 using Drive_Smart_2._0.Data;
 using Drive_Smart_2._0.Models;
+using Drive_Smart_2._0.Views.Auth.Helpers;
+using Drive_Smart_2._0.UserControls;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +17,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Microsoft.EntityFrameworkCore;
-using System.Windows;
 
 
 namespace Drive_Smart_2._0.Views.Auth
@@ -29,7 +30,9 @@ namespace Drive_Smart_2._0.Views.Auth
         {
 
             InitializeComponent();
-            //LoadEmployees();
+            // Set the active page in the sidebar to Employees
+            SidebarMenu.SetActivePage(ActivePage.Employees);
+            
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
