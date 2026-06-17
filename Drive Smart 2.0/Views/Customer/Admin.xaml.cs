@@ -11,9 +11,8 @@ namespace Drive_Smart_2._0.Views.Customer
     public partial class Admin : Window
     {
         private readonly CustomerDatabase _db;
-
-        // Full list kept in memory for client-side search filtering
         private List<CustomerModel> _allCustomers = new List<CustomerModel>();
+        private bool _isPanelOpen = false;
 
         public Admin()
         {
@@ -21,21 +20,20 @@ namespace Drive_Smart_2._0.Views.Customer
             _db = new CustomerDatabase();
         }
 
-        // ── Load data as soon as the window is visible ───────────────────────
+        // ── Window loaded ────────────────────────────────────────────────────
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadCustomers();
         }
 
-        // ── Fetch all rows from DB and bind to DataGrid ──────────────────────
+        // ── Load / refresh grid ──────────────────────────────────────────────
         private void LoadCustomers()
         {
             try
             {
                 DataTable table = _db.GetAllCustomers();
-
-                // Convert DataTable rows → list of CustomerModel for easy binding
                 _allCustomers.Clear();
+
                 foreach (DataRow row in table.Rows)
                 {
                     _allCustomers.Add(new CustomerModel
@@ -54,7 +52,6 @@ namespace Drive_Smart_2._0.Views.Customer
 
                 dgCustomers.ItemsSource = null;
                 dgCustomers.ItemsSource = _allCustomers;
-
                 txtStatus.Text = $"Total records: {_allCustomers.Count}";
             }
             catch (Exception ex)
@@ -64,16 +61,12 @@ namespace Drive_Smart_2._0.Views.Customer
             }
         }
 
-        // ── Live search: filter as the user types ────────────────────────────
+        // ── Search ───────────────────────────────────────────────────────────
         private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            ApplyFilter(txtSearch.Text.Trim());
-        }
+            => ApplyFilter(txtSearch.Text.Trim());
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
-        {
-            ApplyFilter(txtSearch.Text.Trim());
-        }
+            => ApplyFilter(txtSearch.Text.Trim());
 
         private void ApplyFilter(string keyword)
         {
@@ -85,7 +78,6 @@ namespace Drive_Smart_2._0.Views.Customer
             }
 
             string lower = keyword.ToLower();
-
             var filtered = _allCustomers.Where(c =>
                 (c.CustomerName?.ToLower().Contains(lower) ?? false) ||
                 (c.ContactNumber?.ToLower().Contains(lower) ?? false) ||
@@ -97,36 +89,34 @@ namespace Drive_Smart_2._0.Views.Customer
             txtStatus.Text = $"Showing {filtered.Count} of {_allCustomers.Count} records";
         }
 
-        // ── Refresh: reload from DB ──────────────────────────────────────────
+        // ── Refresh ──────────────────────────────────────────────────────────
         private void btnRefresh_Click(object sender, RoutedEventArgs e)
         {
             txtSearch.Text = string.Empty;
             LoadCustomers();
         }
 
-        // ── Delete selected customer ─────────────────────────────────────────
+        // ── Delete ───────────────────────────────────────────────────────────
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             if (dgCustomers.SelectedItem is CustomerModel selected)
             {
                 var confirm = MessageBox.Show(
-                    $"Are you sure you want to delete customer:\n\"{selected.CustomerName}\" (ID: {selected.CustomerID})?",
-                    "Confirm Delete",
-                    MessageBoxButton.YesNo,
-                    MessageBoxImage.Warning);
+                    $"Delete \"{selected.CustomerName}\" (ID: {selected.CustomerID})?",
+                    "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
                 if (confirm == MessageBoxResult.Yes)
                 {
                     try
                     {
                         _db.DeleteCustomer(selected.CustomerID);
-                        LoadCustomers(); // refresh grid
+                        LoadCustomers();
                         MessageBox.Show("Customer deleted successfully.", "Deleted",
                             MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show($"Failed to delete customer.\n\nError: {ex.Message}",
+                        MessageBox.Show($"Failed to delete.\n\nError: {ex.Message}",
                             "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
                     }
                 }
@@ -138,35 +128,94 @@ namespace Drive_Smart_2._0.Views.Customer
             }
         }
 
-        // ── Row selection changed ────────────────────────────────────────────
+        // ── Selection changed ────────────────────────────────────────────────
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (dgCustomers.SelectedItem is CustomerModel selected)
                 txtStatus.Text = $"Selected: {selected.CustomerName}  |  ID: {selected.CustomerID}";
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        // ── Toggle panel ─────────────────────────────────────────────────────
+        private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
-            var addWindow = new AddCustomerWindow();
-            if (addWindow.ShowDialog() == true)
+            if (_isPanelOpen) ClosePanel();
+            else OpenPanel();
+        }
+
+        private void OpenPanel()
+        {
+            ClearForm();
+            MainGrid.ColumnDefinitions[1].Width = new GridLength(340); // FIXED: index instead of name
+            AddPanel.Visibility = Visibility.Visible;
+            btnAdd.Content = "✕ Close";
+            _isPanelOpen = true;
+        }
+
+        private void ClosePanel()
+        {
+            MainGrid.ColumnDefinitions[1].Width = new GridLength(0);   // FIXED: index instead of name
+            AddPanel.Visibility = Visibility.Collapsed;
+            btnAdd.Content = "+ Add";
+            _isPanelOpen = false;
+        }
+
+        // ── Save new customer ────────────────────────────────────────────────
+        private void btnSaveCustomer_Click(object sender, RoutedEventArgs e)
+        {
+            txtPanelError.Text = string.Empty;
+
+            if (string.IsNullOrWhiteSpace(txtNewName.Text))
+            { txtPanelError.Text = "Full Name is required."; return; }
+
+            if (string.IsNullOrWhiteSpace(txtNewContact.Text))
+            { txtPanelError.Text = "Contact Number is required."; return; }
+
+            if (string.IsNullOrWhiteSpace(txtNewNIC.Text))
+            { txtPanelError.Text = "NIC Number is required."; return; }
+
+            try
             {
-                try
+                var newCustomer = new CustomerModel
                 {
-                    // AddCustomer returns the new Customer ID
-                    long newCustomerId = _db.AddCustomer(addWindow.NewCustomer);
+                    CustomerName = txtNewName.Text.Trim(),
+                    ContactNumber = txtNewContact.Text.Trim(),
+                    EmailAddress = txtNewEmail.Text.Trim(),
+                    NICNumber = txtNewNIC.Text.Trim(),
+                    DrivingLicense = txtNewLicense.Text.Trim(),
+                    Gender = (cmbGender.SelectedItem as ComboBoxItem)?.Content?.ToString() ?? string.Empty,
+                    Address = txtNewAddress.Text.Trim()
+                };
 
-                    // Refresh the grid to show the new customer
-                    LoadCustomers();
+                long newId = _db.AddCustomer(newCustomer);
+                LoadCustomers();
+                ClosePanel();
 
-                    MessageBox.Show($"Customer added successfully. (ID: {newCustomerId})", "Success",
-                        MessageBoxButton.OK, MessageBoxImage.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Failed to add customer.\n\nError: {ex.Message}",
-                        "Database Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
+                MessageBox.Show($"Customer added successfully. (ID: {newId})", "Success",
+                    MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                txtPanelError.Text = $"Error: {ex.Message}";
             }
         }
+
+        // ── Cancel ───────────────────────────────────────────────────────────
+        private void btnCancelAdd_Click(object sender, RoutedEventArgs e)
+        {
+            ClosePanel();
+        }
+
+        // ── Clear form ───────────────────────────────────────────────────────
+        private void ClearForm()
+        {
+            txtNewName.Text = string.Empty;
+            txtNewContact.Text = string.Empty;
+            txtNewEmail.Text = string.Empty;
+            txtNewNIC.Text = string.Empty;
+            txtNewLicense.Text = string.Empty;
+            txtNewAddress.Text = string.Empty;
+            cmbGender.SelectedIndex = -1;
+            txtPanelError.Text = string.Empty;
+        }
     }
-    }
+}
