@@ -19,94 +19,110 @@
             <RowDefinition Height="1241*"/>
             <RowDefinition Height="399*"/>
         </Grid.RowDefinitions>
-        <Border Width="220"
-            Background="#1565C0"
-            HorizontalAlignment="Left" Margin="0,0,0,6" Grid.RowSpan="5" Grid.ColumnSpan="2">
 
+        <!-- Sidebar -->
+        <Border Width="220" Background="#1565C0"
+                HorizontalAlignment="Left" Margin="0,0,0,6"
+                Grid.RowSpan="5" Grid.ColumnSpan="2">
             <StackPanel Margin="15">
-
-                <TextBlock Text="RENTAL SYSTEM"
-                    FontSize="22"
-                    FontWeight="Bold"
-                    Foreground="White"
-                    Margin="0,20,0,30"/>
-
-                <Button Content="Dashboard"
-                    Height="45"
-                    Margin="0,5"
-                    Background="#1E88E5"
-                    Foreground="White"
-                    BorderThickness="0"/>
-
-                <Button Content="Vehicles"
-                    Height="45"
-                    Margin="0,5"
-                    Background="#1565C0"
-                    Foreground="White"
-                    BorderThickness="0"/>
-
-                <Button Content="Customers"
-                    Height="45"
-                    Margin="0,5"
-                    Background="#1565C0"
-                    Foreground="White"
-                    BorderThickness="0"/>
-
-                <Button Content="Bookings"
-                    Height="45"
-                    Margin="0,5"
-                    Background="#1565C0"
-                    Foreground="White"
-                    BorderThickness="0"/>
-
-                <Button Content="Payments"
-                    Height="45"
-                    Margin="0,5"
-                    Background="#1565C0"
-                    Foreground="White"
-                    BorderThickness="0"/>
-
-                <Button Content="Reports"
-                    Height="45"
-                    Margin="0,5"
-                    Background="#1565C0"
-                    Foreground="White"
-                    BorderThickness="0"/>
+                <TextBlock Text="RENTAL SYSTEM" FontSize="22" FontWeight="Bold"
+                           Foreground="White" Margin="0,20,0,30"/>
+                <Button Content="Add New Custermer" Height="45" Margin="0,5"
+                        Background="#1E88E5" Foreground="White" BorderThickness="0" Click="Button_Click_1"/>
+                <Button Content="View"  Height="45" Margin="0,5"
+                        Background="#1565C0" Foreground="White" BorderThickness="0" Click="Button_Click_2"/>
+                <Button Content="Update Custermer" Height="45" Margin="0,5"
+                        Background="#1565C0" Foreground="White" BorderThickness="0"/>
+                <Button Content="Delete Account"  Height="45" Margin="0,5"
+                        Background="#1565C0" Foreground="White" BorderThickness="0"/>
             </StackPanel>
-
         </Border>
-        <TextBlock
-            FontSize="28"
-            FontWeight="Bold"
-            VerticalAlignment="Top" Margin="451,10,-244,0" Grid.Column="1" Grid.ColumnSpan="2"><Run Text="Custermer Detail"/><Run Language="en-gb" Text="s"/><Run Text="."/></TextBlock>
-        <TextBox HorizontalAlignment="Left" Height="20" Margin="310,121,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.RowSpan="2" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" Margin="170,1,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" TextChanged="TextBox_TextChanged_2" Text="Custermer Name :"/>
-        <TextBox TextWrapping="Wrap" Text="Contact Number :" Margin="173,28,288,0" Grid.Row="1" RenderTransformOrigin="0.5,0.5" Height="23" VerticalAlignment="Top" Grid.Column="1" TextChanged="TextBox_TextChanged_8">
-            <TextBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-0.2"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBox.RenderTransform>
-        </TextBox>
-        <TextBox x:Name="phonenumber" TextWrapping="Wrap" Width="120" Margin="315,25,130,151" Grid.Row="1" Grid.Column="1" TextChanged="TextBox_TextChanged_10"/>
-        <TextBox HorizontalAlignment="Left" Height="0" Margin="490,121,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="122" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <TextBox x:Name="identity" HorizontalAlignment="Left" Margin="315,32,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1" TextChanged="TextBox_TextChanged_11"/>
-        <TextBox HorizontalAlignment="Left" Margin="170,65,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Text="Address :" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" Margin="315,65,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.173,0.628" Grid.Column="1" TextChanged="TextBox_TextChanged_3"/>
-        <TextBox HorizontalAlignment="Left" Margin="170,98,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Gender :" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" Margin="170,135,0,0" Grid.Row="1" TextWrapping="Wrap" Text="Email Address :" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" Margin="170,75,0,0" TextWrapping="Wrap" Text="Custermer Personal Details." VerticalAlignment="Top" Width="290" TextChanged="TextBox_TextChanged_1" FontSize="16" FontFamily="Arial Black" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" Margin="310,135,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <TextBox HorizontalAlignment="Left" Margin="170,32,0,0" Grid.Row="3" TextWrapping="Wrap" Text="NIC Number :" VerticalAlignment="Top" Width="120" Grid.Column="1"/>
-        <TextBox TextWrapping="Wrap" Text="Identity Details." Grid.Column="1" Margin="170,187,161,0" Grid.Row="1" Grid.RowSpan="2" TextChanged="TextBox_TextChanged_4" FontFamily="Arial Black" FontSize="16"/>
-        <TextBox TextWrapping="Wrap" Text="Driving License : Number" Grid.Column="1" Margin="170,66,266,188" Grid.Row="3" TextChanged="TextBox_TextChanged_5" RenderTransformOrigin="0.453,-0.557"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="315,68,0,0" Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TextBox_TextChanged_9"/>
-        <Button Content="Submit" Grid.Column="2" Margin="274,220,175,10" Grid.Row="3" Click="Button_Click" FontSize="16"/>
-        <CheckBox Content="Female" Margin="375,97,97,78" Grid.Column="1" Grid.Row="1"/>
-        <CheckBox Content="Male" Grid.Column="1" Margin="315,96,157,0" Grid.Row="1" Height="23" VerticalAlignment="Top" Checked="CheckBox_Checked"/>
 
+        <!-- Page title -->
+        <TextBlock FontSize="28" FontWeight="Bold"
+                   VerticalAlignment="Top" Margin="451,10,-244,0"
+                   Grid.Column="1" Grid.ColumnSpan="2" Text="Customer Details"/>
+
+        <!-- ── Section header: Personal Details ── -->
+        <TextBlock Text="Customer Personal Details." FontSize="16"
+                   FontFamily="Arial Black" HorizontalAlignment="Left"
+                   Margin="170,75,0,0" VerticalAlignment="Top"
+                   Width="290" Grid.Column="1"/>
+
+        <!-- Customer Name label + INPUT -->
+        <TextBlock Text="Customer Name :" HorizontalAlignment="Left"
+                   Margin="170,1,0,0" Grid.Row="1" VerticalAlignment="Top"
+                   Width="120" Grid.Column="1"/>
+        <TextBox x:Name="txtCustomerName"
+                 HorizontalAlignment="Left" Margin="315,0,0,177"
+                 Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Bottom"
+                 Width="120" Grid.Column="1" TextChanged="txtCustomerName_TextChanged"/>
+
+        <!-- Contact Number label + INPUT -->
+        <TextBlock Text="Contact Number :" HorizontalAlignment="Left"
+                   Margin="170,28,0,0" Grid.Row="1" VerticalAlignment="Top"
+                   Width="120" Grid.Column="1"/>
+        <TextBox x:Name="phonenumber"
+                 HorizontalAlignment="Left" Margin="315,25,0,0"
+                 Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"
+                 Width="120" Grid.Column="1"/>
+
+        <!-- Address label + INPUT -->
+        <TextBlock Text="Address :" HorizontalAlignment="Left"
+                   Margin="170,65,0,0" Grid.Row="1" VerticalAlignment="Top"
+                   Width="120" Grid.Column="1"/>
+        <TextBox x:Name="txtAddress"
+                 HorizontalAlignment="Left" Margin="315,65,0,0"
+                 Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"
+                 Width="120" Grid.Column="1"/>
+
+        <!-- Gender label + CHECKBOXES -->
+        <TextBlock Text="Gender :" HorizontalAlignment="Left"
+                   Margin="170,98,0,0" Grid.Row="1" VerticalAlignment="Top"
+                   Width="120" Grid.Column="1"/>
+        <CheckBox x:Name="chkMale"   Content="Male"
+                  Grid.Column="1" Margin="315,96,0,0" Grid.Row="1"
+                  Height="23" VerticalAlignment="Top"
+                  Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
+        <CheckBox x:Name="chkFemale" Content="Female"
+                  Grid.Column="1" Margin="375,97,0,0" Grid.Row="1"
+                  Height="23" VerticalAlignment="Top"
+                  Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
+
+        <!-- Email label + INPUT -->
+        <TextBlock Text="Email Address :" HorizontalAlignment="Left"
+                   Margin="170,135,0,0" Grid.Row="1" VerticalAlignment="Top"
+                   Width="120" Grid.Column="1"/>
+        <TextBox x:Name="txtEmail"
+                 HorizontalAlignment="Left" Margin="315,135,0,0"
+                 Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top"
+                 Width="120" Grid.Column="1"/>
+
+        <!-- ── Section header: Identity Details ── -->
+        <TextBlock Text="Identity Details." FontSize="16"
+                   FontFamily="Arial Black" Grid.Column="1"
+                   Margin="170,187,161,0" Grid.Row="1" Grid.RowSpan="2"/>
+
+        <!-- NIC Number label + INPUT -->
+        <TextBlock Text="NIC Number :" HorizontalAlignment="Left"
+                   Margin="170,32,0,0" Grid.Row="3" VerticalAlignment="Top"
+                   Width="120" Grid.Column="1"/>
+        <TextBox x:Name="identity"
+                 HorizontalAlignment="Left" Margin="315,32,0,0"
+                 Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top"
+                 Width="120" Grid.Column="1"/>
+
+        <!-- Driving License label + INPUT -->
+        <TextBlock Text="Driving License Number :" HorizontalAlignment="Left"
+                   Margin="170,66,0,0" Grid.Row="3" VerticalAlignment="Top"
+                   Width="150" Grid.Column="1"/>
+        <TextBox x:Name="txtLicense"
+                 HorizontalAlignment="Left" Margin="315,68,0,0"
+                 Grid.Row="3" TextWrapping="Wrap" VerticalAlignment="Top"
+                 Width="120" Grid.Column="1"/>
+
+        <!-- Submit -->
+        <Button Content="Submit" Grid.Column="2" Margin="274,220,175,10"
+                Grid.Row="3" Click="Button_Click" FontSize="16"/>
     </Grid>
 </Window>

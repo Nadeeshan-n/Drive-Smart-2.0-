@@ -16,10 +16,10 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.16" />
     <PackageReference Include="Npgsql" Version="10.0.3" />
     <PackageReference Include="QuestPDF" Version="2026.5.0" />
+    <PackageReference Include="System.Data.SQLite" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Customer\Database\" />
     <Folder Include="Views\VehicleView\Images\" />
   </ItemGroup>
 

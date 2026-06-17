@@ -1,4 +1,5 @@
 ﻿using Drive_Smart_2._0.models;
+using Drive_Smart_2._0.Views.Customer;
 using Drive_Smart_2._0.Views.VehicleView;
 using System.Configuration;
 using System.Data;
@@ -18,9 +19,14 @@ namespace Drive_Smart_2._0
             dash.Show();
 
             // Amishka's code dont put your a@# here
-            VehicleView_V2 window = new VehicleView_V2();
-            window.Show();
+            //VehicleView_V2 window = new VehicleView_V2();
+            //window.Show();
 
+            Customer customer =new Customer();
+            customer.Show();
+            Admin admin = new Admin();  
+            admin.Show();
+           
         }
     }
 
