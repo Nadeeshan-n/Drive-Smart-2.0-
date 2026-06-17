@@ -1,4 +1,7 @@
 ﻿using Drive_Smart_2._0.models;
+using Drive_Smart_2._0.Views.Auth;
+using Drive_Smart_2._0.Views.VehicleView;
+using Drive_Smart_2._0.Views.VehicleView.Database;
 using System.Configuration;
 using System.Data;
 using System.Windows;
@@ -13,8 +16,46 @@ namespace Drive_Smart_2._0
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
-            var dash = new Window1();
-            dash.Show();
+
+            // Open EmployeeRegister window on startup
+            EmployeeRegister employeeRegisterWindow = new EmployeeRegister();
+            employeeRegisterWindow.Show();
+
+
+            login log = new login();
+            log.Show();
+            // This is the dashboard view 
+
+
+
+
+            //---------------------------------------------------------
+            // Amishka's code dont put your a@# here [starts here]   |
+            //---------------------------------------------------------
+
+            VehicleDatabase.InitializeDatabase();
+            MaintenanceDatabase.InitializeDatabase();
+
+
+            //PublicVehicleView publicVehicleView = new PublicVehicleView();
+            //publicVehicleView.Show();
+
+            //AdminVehicleView adminVehicleView = new AdminVehicleView();
+            //adminVehicleView.Show();
+
+            VVMainWindow vVMainWindow = new VVMainWindow();
+            vVMainWindow.Show();
+
+            //AuditLogWindow auditLogWindow = new AuditLogWindow();
+            //auditLogWindow.Show();
+
+
+
+            //---------------------------------------------------------
+            // End of Amishka's Code                                 |
+            //---------------------------------------------------------
+
+
         }
     }
 
