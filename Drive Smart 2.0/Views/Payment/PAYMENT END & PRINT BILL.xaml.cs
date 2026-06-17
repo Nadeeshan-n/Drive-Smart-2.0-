@@ -39,11 +39,25 @@ namespace Drive_Smart_2._0.Views.Payment
         private void PrintInvoiceButton_Click(object sender, RoutedEventArgs e)
         {
             var printDialog = new PrintDialog();
-            if (printDialog.ShowDialog() == true)
+            if (printDialog.ShowDialog() != true)
+                return;
+
+            // WPF's print pipeline can render a blank page for any visual that has
+            // a live Effect applied (ReceiptCard uses DropShadowEffect via the
+            // CardBorder style). Strip the effect off, force a layout pass so the
+            // printed snapshot reflects the effect-free state, print, then restore
+            // it so the on-screen UI is unaffected.
+            var originalEffect = ReceiptCard.Effect;
+            ReceiptCard.Effect = null;
+            ReceiptCard.UpdateLayout();
+
+            try
             {
-                // Prints exactly what's on the receipt card, so the printout
-                // matches what the customer sees on screen.
                 printDialog.PrintVisual(ReceiptCard, $"Receipt {_receiptNumber}");
+            }
+            finally
+            {
+                ReceiptCard.Effect = originalEffect;
             }
         }
 

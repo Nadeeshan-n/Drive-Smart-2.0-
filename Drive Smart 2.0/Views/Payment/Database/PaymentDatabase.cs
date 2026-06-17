@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.IO;
 using System.Linq;
 using Microsoft.Data.Sqlite;
@@ -127,6 +128,23 @@ namespace Drive_Smart_2._0.Views.Payment
             var lastId = connection.CreateCommand();
             lastId.CommandText = "SELECT last_insert_rowid();";
             return (long)lastId.ExecuteScalar();
+        }
+
+        /// <summary>
+        /// Returns every payment, every column - used by the Reports screen.
+        /// </summary>
+        public static DataTable GetAllPayments()
+        {
+            using var connection = new SqliteConnection(ConnectionString);
+            connection.Open();
+
+            var command = connection.CreateCommand();
+            command.CommandText = "SELECT * FROM Payments ORDER BY PaymentDate DESC;";
+
+            using var reader = command.ExecuteReader();
+            var table = new DataTable();
+            table.Load(reader);
+            return table;
         }
     }
 }
