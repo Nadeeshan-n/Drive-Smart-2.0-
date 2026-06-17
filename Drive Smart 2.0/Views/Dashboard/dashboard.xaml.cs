@@ -10,7 +10,10 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using Drive_Smart_2._0.Views.VehicleView.Database;
 using Microsoft.Data.Sqlite;
-using System.Windows;
+using LiveChartsCore;
+using LiveChartsCore.SkiaSharpView;
+using LiveChartsCore.SkiaSharpView.Painting;
+using SkiaSharp;
 
 namespace Drive_Smart_2._0.models
 {
@@ -58,8 +61,11 @@ namespace Drive_Smart_2._0.models
         {
             InitializeComponent();
             VehicleDatabase.InitializeDatabase();
+            RevenueDatabase.InitializeDatabase();
+            RevenueDatabase.SeedSampleDataIfEmpty();
             LoadStats();
             LoadVehicleTable();
+            LoadRevenueCharts();
         }
 
         private void LoadStats()
@@ -83,13 +89,13 @@ namespace Drive_Smart_2._0.models
             int rented = Convert.ToInt32(cmd.ExecuteScalar());
             rentedvehecletxt.Text = rented.ToString();
 
-            // Monthly revenue estimate (rented × avg daily rate × 30)
-            cmd.CommandText = @"SELECT AVG(DailyRate) FROM Vehicles 
-                                 WHERE Status = 'Rented'";
-            var avg = cmd.ExecuteScalar();
-            if (avg != DBNull.Value && avg != null)
+            // Monthly revenue — real figure from logged rental transactions
+            // for the current calendar month (previously this was a rough
+            // guess: avg(DailyRate) * rentedCount * 30, which didn't reflect
+            // actual completed/active rentals).
+            double revenue = RevenueDatabase.GetCurrentMonthRevenue();
+            if (revenue > 0)
             {
-                double revenue = Convert.ToDouble(avg) * rented * 30;
                 monthlyincometxt.Text = "Rs. " +
                     ((int)(revenue / 1000)).ToString() + "K";
             }
@@ -99,11 +105,72 @@ namespace Drive_Smart_2._0.models
             }
         }
 
+        private void LoadRevenueCharts()
+        {
+            // ---- Monthly trend (line chart, last 6 months) ----
+            var monthly = RevenueDatabase.GetMonthlyRevenue(6);
+
+            var trendSeries = new LineSeries<double>
+            {
+                Values = monthly.Select(m => m.Total).ToArray(),
+                Name = "Revenue",
+                Fill = new SolidColorPaint(new SKColor(0x21, 0x96, 0xF3, 60)),
+                Stroke = new SolidColorPaint(new SKColor(0x15, 0x65, 0xC0)) { StrokeThickness = 3 },
+                GeometryStroke = new SolidColorPaint(new SKColor(0x15, 0x65, 0xC0)) { StrokeThickness = 3 },
+                GeometryFill = new SolidColorPaint(SKColors.White),
+                GeometrySize = 8,
+                LineSmoothness = 0.3
+            };
+
+            revenueTrendChart.Series = new ISeries[] { trendSeries };
+            revenueTrendChart.XAxes = new Axis[]
+            {
+                new Axis
+                {
+                    Labels = monthly.Select(m => m.MonthLabel).ToArray(),
+                    LabelsRotation = 0
+                }
+            };
+            revenueTrendChart.YAxes = new Axis[]
+            {
+                new Axis { Labeler = value => "Rs. " + (value / 1000).ToString("N0") + "K" }
+            };
+
+            // ---- Category breakdown (bar chart, last 6 months) ----
+            var byCategory = RevenueDatabase.GetRevenueByCategory(6);
+
+            var categorySeries = new ColumnSeries<double>
+            {
+                Values = byCategory.Select(c => c.Total).ToArray(),
+                Name = "Revenue",
+                Fill = new SolidColorPaint(new SKColor(0x1E, 0x88, 0xE5)),
+                MaxBarWidth = 45
+            };
+
+            revenueCategoryChart.Series = new ISeries[] { categorySeries };
+            revenueCategoryChart.XAxes = new Axis[]
+            {
+                new Axis
+                {
+                    Labels = byCategory.Select(c => c.Category).ToArray(),
+                    LabelsRotation = 0
+                }
+            };
+            revenueCategoryChart.YAxes = new Axis[]
+            {
+                new Axis { Labeler = value => "Rs. " + (value / 1000).ToString("N0") + "K" }
+            };
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //PublicVehicleView publicVehicleView = new PublicVehicleView();
             //publicVehicleView.Show();
             //this.Close();
+
+            // Edited By amishka 
+            DashboardWindowFrame.Navigate(new PublicVehicleView());
+            DashboardWindowFrame.Visibility = Visibility.Visible;
 
         }
     }
