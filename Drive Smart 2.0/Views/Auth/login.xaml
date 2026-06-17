@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Drive_Smart_2._0.Views.Auth"
         mc:Ignorable="d"
-        Title="Drive Smart 2.0 — Login"
+        Title="Drive Smart  — Login"
         Height="700"
         Width="1200"
         WindowStartupLocation="CenterScreen"
@@ -62,7 +62,7 @@
                         Padding="20,18"
                         Margin="0,0,0,28">
                     <StackPanel>
-                        <TextBlock Text="🚗  Drive Smart 2.0"
+                        <TextBlock Text="🚗  Drive Smart"
                                    HorizontalAlignment="Center"
                                    Foreground="White"
                                    FontSize="26"
