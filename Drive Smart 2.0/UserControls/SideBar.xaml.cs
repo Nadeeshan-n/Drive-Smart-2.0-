@@ -199,7 +199,7 @@ namespace Drive_Smart_2._0.UserControls
 
         private void BtnEmployees_Click(object sender, RoutedEventArgs e)
         {
-            EmployeeManagement emp = new EmployeeManagement();
+            EmployeeManagementt emp = new EmployeeManagementt();
             emp.Show();
             Window.GetWindow(this)?.Close();
         }

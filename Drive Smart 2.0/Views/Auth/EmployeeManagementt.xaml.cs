@@ -284,7 +284,7 @@ namespace Drive_Smart_2._0.Views.Auth
                             .ToList();
                         break;
 
-                    case "Salary (Low to High)":
+                    /*case "Salary (Low to High)":
                         DgEmployees.ItemsSource = db.Employees
                             .OrderBy(emp => emp.Salary)
                             .ToList();
@@ -294,7 +294,7 @@ namespace Drive_Smart_2._0.Views.Auth
                         DgEmployees.ItemsSource = db.Employees
                             .OrderByDescending(emp => emp.Salary)
                             .ToList();
-                        break;
+                        break;*/
 
                     case "Joining Date":
                         DgEmployees.ItemsSource = db.Employees

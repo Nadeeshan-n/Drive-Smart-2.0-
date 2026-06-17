@@ -1,7 +1,10 @@
-﻿using System;
+﻿using Drive_Smart_2._0.Data;
+using Drive_Smart_2._0.Views.Auth.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,8 +14,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Drive_Smart_2._0.Data;
-using Drive_Smart_2._0.Views.Auth.Helpers;
 
 namespace Drive_Smart_2._0.Views.Auth
 {
@@ -63,10 +64,29 @@ namespace Drive_Smart_2._0.Views.Auth
                 return;
             }
 
+            
+
             if (newPassword.StartsWith("DS@"))
             {
                 MessageBox.Show(
                     "Please choose a different password.",
+                    "Weak Password",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+                return;
+            }
+
+            if (!Regex.IsMatch(
+                    newPassword,
+                    @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"))
+            {
+                MessageBox.Show(
+                    "Password must contain:\n\n" +
+                    "• At least 8 characters\n" +
+                    "• One uppercase letter\n" +
+                    "• One lowercase letter\n" +
+                    "• One number\n" +
+                    "• One special character",
                     "Weak Password",
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning);

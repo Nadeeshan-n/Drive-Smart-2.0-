@@ -16,7 +16,7 @@ namespace Drive_Smart_2._0.Views.Auth
         {
             InitializeComponent();
             GenerateEmployeeID();
-            
+
         }
 
         // ==========================
@@ -83,7 +83,7 @@ namespace Drive_Smart_2._0.Views.Auth
             SetFieldColor(EmployeeID, IsValidEmployeeID());
         }
 
-        
+
 
 
         private void NIC_TextChanged(object sender, TextChangedEventArgs e)
@@ -203,8 +203,8 @@ namespace Drive_Smart_2._0.Views.Auth
 
         private void Employee_Register_Click(object sender, RoutedEventArgs e)
         {
-            
-            
+
+
             if (string.IsNullOrWhiteSpace(EmployeeID.Text))
             {
                 MessageBox.Show("Employee ID is required.");
@@ -343,7 +343,7 @@ namespace Drive_Smart_2._0.Views.Auth
                 // Check duplicate Employee ID
                 if (db.Employees.Any(x => x.EmployeeID == EmployeeID.Text.Trim()))
                 {
-                    
+
                     MessageBox.Show("Employee ID already exists.");
                     return;
                 }
@@ -362,7 +362,7 @@ namespace Drive_Smart_2._0.Views.Auth
                     return;
                 }
 
-                string username = GenerateUsername(   
+                string username = GenerateUsername(
                     EmployeeID.Text.Trim(),
                     FullName.Text.Trim());
 
@@ -428,6 +428,6 @@ namespace Drive_Smart_2._0.Views.Auth
                 MessageBoxImage.Information);
         }
 
-        
+
     }
 }

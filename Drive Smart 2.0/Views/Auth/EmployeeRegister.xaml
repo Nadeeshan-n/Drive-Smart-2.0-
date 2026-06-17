@@ -18,7 +18,7 @@
 
 
     <Window.Resources>
-    
+
 
         <Style x:Key="FormLabelStyle" TargetType="TextBlock">
             <Setter Property="Foreground" Value="Black"/>
@@ -135,9 +135,11 @@
 
                         <StackPanel Grid.Row="0">
                             <TextBlock Text="Employee ID" Style="{StaticResource FormLabelStyle}"/>
+                            <!-- FIX 1: Added TextChanged="EmployeeID_TextChanged" -->
                             <Border x:Name="EmployeeIDBorder" Style="{StaticResource InputBorderStyle}">
                                 <TextBox x:Name="EmployeeID"
-                                         Style="{StaticResource FormTextBoxStyle}" />
+                                         Style="{StaticResource FormTextBoxStyle}"
+                                         TextChanged="EmployeeID_TextChanged"/>
                             </Border>
                         </StackPanel>
 
@@ -151,9 +153,11 @@
 
                         <StackPanel Grid.Row="4">
                             <TextBlock Text="NIC" Style="{StaticResource FormLabelStyle}"/>
+                            <!-- FIX 2: Added TextChanged="NIC_TextChanged" -->
                             <Border x:Name="NICBorder" Style="{StaticResource InputBorderStyle}">
                                 <TextBox x:Name="NIC"
-                                         Style="{StaticResource FormTextBoxStyle}" />
+                                         Style="{StaticResource FormTextBoxStyle}"
+                                         TextChanged="NIC_TextChanged"/>
                             </Border>
                         </StackPanel>
 
@@ -175,7 +179,8 @@
                             <TextBlock Text="Email Address" Style="{StaticResource FormLabelStyle}"/>
                             <Border x:Name="EmailBorder" Style="{StaticResource InputBorderStyle}">
                                 <TextBox x:Name="EmailAddress"
-                                         Style="{StaticResource FormTextBoxStyle}" TextChanged="EmailAddress_TextChanged"/>
+                                         Style="{StaticResource FormTextBoxStyle}"
+                                         TextChanged="EmailAddress_TextChanged"/>
                             </Border>
                         </StackPanel>
 
@@ -183,7 +188,8 @@
                             <TextBlock Text="Phone Number" Style="{StaticResource FormLabelStyle}"/>
                             <Border x:Name="PhoneNumberBorder" Style="{StaticResource InputBorderStyle}">
                                 <TextBox x:Name="PhoneNumber"
-                                         Style="{StaticResource FormTextBoxStyle}" TextChanged="PhoneNumber_TextChanged"/>
+                                         Style="{StaticResource FormTextBoxStyle}"
+                                         TextChanged="PhoneNumber_TextChanged"/>
                             </Border>
                         </StackPanel>
 
@@ -216,7 +222,6 @@
                                     <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="Manager"/>
                                     <ComboBoxItem Background="{x:Null}" BorderBrush="{x:Null}" Content="Staff"/>
                                     <ComboBoxItem/>
-
                                 </ComboBox>
                             </Border>
                         </StackPanel>
@@ -225,9 +230,10 @@
                             <TextBlock Text="Salary"
                                        IsEnabled="False"
                                        Style="{StaticResource FormLabelStyle}"/>
-                            <Border Style="{StaticResource InputBorderStyle}">
+                            <Border x:Name="SalaryBorder" Style="{StaticResource InputBorderStyle}">
                                 <TextBox x:Name="Salary"
-                                         Style="{StaticResource FormTextBoxStyle}" TextChanged="Salary_TextChanged"/>
+                                         Style="{StaticResource FormTextBoxStyle}"
+                                         TextChanged="Salary_TextChanged"/>
                             </Border>
                         </StackPanel>
 
@@ -266,6 +272,7 @@
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
+                <!-- FIX 3: Added Click="Reset_Click" so the Reset button actually calls the handler -->
                 <Button x:Name="Reset"
                         Grid.Column="1"
                         Content="Reset"
@@ -275,8 +282,10 @@
                         Foreground="#FF1565C0"
                         FontWeight="Bold"
                         FontSize="14"
+                        Click="Reset_Click"
                         IsCancel="True"/>
 
+                <!-- FIX 4: Added Click="Employee_Register_Click" so the Register button works -->
                 <Button x:Name="Employee_Register"
                         Grid.Column="3"
                         Content="Register Employee"
@@ -285,7 +294,8 @@
                         BorderBrush="{x:Null}"
                         Foreground="White"
                         FontWeight="Bold"
-                        FontSize="14"/>
+                        FontSize="14"
+                        Click="Employee_Register_Click"/>
             </Grid>
         </Grid>
         <Grid Grid.Column="1" Margin="0,0,111,144"/>
