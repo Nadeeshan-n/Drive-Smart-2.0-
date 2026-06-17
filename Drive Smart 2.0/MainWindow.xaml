@@ -8,7 +8,7 @@
         FontFamily="Segoe UI"
         Background="#F5F7FA"
         UseLayoutRounding="True"
-        SnapsToDevicePixels="True">
+        SnapsToDevicePixels="True" WindowState="Maximized">
 
     <Window.Resources>
         <Style x:Key="TileStyle" TargetType="Button">

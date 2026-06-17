@@ -4,7 +4,7 @@
       xmlns:uc="clr-namespace:Drive_Smart_2._0.UserControls"
       Title="Maintenance Management"
       WindowStartupLocation="CenterScreen"
-      Background="#F5F9FF">
+      Background="#F5F9FF" WindowState="Maximized">
 
     <Grid Width="1200" Height="700">
         <Grid.ColumnDefinitions>
