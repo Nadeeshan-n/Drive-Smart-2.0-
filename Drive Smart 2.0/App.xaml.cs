@@ -1,6 +1,8 @@
-﻿using Drive_Smart_2._0.models;
+﻿using DocumentFormat.OpenXml.Bibliography;
+using Drive_Smart_2._0.models;
 using Drive_Smart_2._0.Views.Auth;
 using Drive_Smart_2._0.Views.Payment;
+using Drive_Smart_2._0.Views.Reports;
 using Drive_Smart_2._0.Views.VehicleView;
 using Drive_Smart_2._0.Views.VehicleView.Database;
 using System.Configuration;
@@ -27,7 +29,8 @@ namespace Drive_Smart_2._0
             log.Show();
             // This is the dashboard view 
 
-
+            reports report = new reports();
+            report.Show();
 
 
             //---------------------------------------------------------
