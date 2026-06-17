@@ -26,7 +26,9 @@ namespace Drive_Smart_2._0
             log.Show();
             // This is the dashboard view 
 
-
+            
+            dashboard dash = new dashboard();
+            dash.Show();
 
 
             //---------------------------------------------------------
