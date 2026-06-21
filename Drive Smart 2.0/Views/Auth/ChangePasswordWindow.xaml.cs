@@ -22,7 +22,7 @@ namespace Drive_Smart_2._0.Views.Auth
         public ChangePasswordWindow()
         {
             InitializeComponent();
-
+            // prevent window from closing if the user must change their password
             this.Closing += (s, e) =>
             {
                 if (SessionManager.CurrentEmployee != null &&

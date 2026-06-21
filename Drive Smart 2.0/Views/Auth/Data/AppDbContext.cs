@@ -6,6 +6,7 @@ using System.Windows;
 
 namespace Drive_Smart_2._0.Data
 {
+    //used abstraction on here
     public class AppDbContext : DbContext
     {
         public DbSet<Employee> Employees { get; set; } = null!;

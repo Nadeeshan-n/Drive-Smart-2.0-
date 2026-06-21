@@ -67,10 +67,7 @@ namespace Drive_Smart_2._0.Views.Auth
                 ? Brushes.LightGreen
                 : Brushes.LightCoral;
         }
-
-        // ==========================
-        // Real-Time Validation
-        // ==========================
+        // Text Changed Event Handlers
 
         private void EmployeeID_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -153,10 +150,7 @@ namespace Drive_Smart_2._0.Views.Auth
             EmployeeID.Focus();
         }
 
-        // ==========================
-        // Generate the Username
-        // ==========================
-
+        // generate username based on EmployeeID and first name
         private string GenerateUsername(
             string employeeId,
             string fullName)
@@ -170,10 +164,7 @@ namespace Drive_Smart_2._0.Views.Auth
         }
 
 
-        // ==========================
-        // Generate the EmployeeID
-        // ==========================
-
+     
 
         private void GenerateEmployeeID()
         {
@@ -197,10 +188,7 @@ namespace Drive_Smart_2._0.Views.Auth
         }
 
 
-        // ==========================
-        // Register Button
-        // ==========================
-
+  
         private void Employee_Register_Click(object sender, RoutedEventArgs e)
         {
 
@@ -397,7 +385,7 @@ namespace Drive_Smart_2._0.Views.Auth
                     IsApproved = true,
                     MustChangePassword = true
                 };
-
+                //used abstraction in here
                 db.Employees.Add(employee);
                 db.SaveChanges();
 
