@@ -672,3 +672,186 @@ namespace Drive_Smart_2._0.Views.VehicleView
         }
     }
 }
+
+
+/*
+
+MAINTENANCE SYSTEM SUMMARY
+==========================
+
+PURPOSE
+-------
+The system manages vehicle maintenance schedules using:
+
+1. Date-based intervals (e.g., every 90 days)
+2. Mileage-based intervals (e.g., every 5,000 km)
+
+It automatically tracks upcoming, overdue, and completed maintenance records.
+
+------------------------------------------------------------
+1. NEXT MAINTENANCE DATE
+------------------------------------------------------------
+
+Formula:
+
+Next Due Date = Scheduled Date + Interval Days
+
+Example:
+
+Scheduled Date = 20-Jun-2026
+Interval Days  = 90
+
+Result:
+
+Next Due Date = 18-Sep-2026
+
+------------------------------------------------------------
+2. NEXT MAINTENANCE MILEAGE
+------------------------------------------------------------
+
+Formula:
+
+Next Mileage = Current Mileage + Interval Mileage
+
+Example:
+
+Current Mileage  = 50,000 km
+Interval Mileage = 5,000 km
+
+Result:
+
+Next Mileage = 55,000 km
+
+------------------------------------------------------------
+3. REMINDER SYSTEM
+------------------------------------------------------------
+
+The system saves:
+
+- Last Service Date
+- Last Service Mileage
+- Next Due Date
+- Next Due Mileage
+
+This allows maintenance reminders to be generated automatically.
+
+------------------------------------------------------------
+4. MARK AS COMPLETED
+------------------------------------------------------------
+
+When the user clicks:
+
+Mark as Completed
+
+The system:
+
+1. Changes status to Completed
+2. Records completion date
+3. Saves an audit log entry
+4. Automatically schedules the next maintenance
+
+------------------------------------------------------------
+5. AUTO-SCHEDULE FEATURE
+------------------------------------------------------------
+
+After completion, a new maintenance record is created automatically.
+
+Example:
+
+Completed Date = 20-Jun-2026
+Interval Days  = 90
+
+New Scheduled Date = 18-Sep-2026
+
+Current Mileage = 55,000 km
+Next Mileage    = 60,000 km
+
+This creates a continuous maintenance cycle.
+
+------------------------------------------------------------
+6. OVERDUE DETECTION
+------------------------------------------------------------
+
+If:
+
+Scheduled Date < Today
+
+The maintenance becomes:
+
+Overdue
+
+Example:
+
+Scheduled = 01-Jun-2026
+Today     = 20-Jun-2026
+
+Result:
+
+19 days late
+
+------------------------------------------------------------
+7. DUE SOON DETECTION
+------------------------------------------------------------
+
+If maintenance is due within the next 7 days:
+
+Today <= Scheduled Date <= Today + 7 Days
+
+The system marks it as:
+
+Due Soon
+
+------------------------------------------------------------
+8. AUDIT LOG
+------------------------------------------------------------
+
+The system records all important changes:
+
+- Record Created
+- Record Updated
+- Record Deleted
+- Status Changed
+- Mileage Changed
+- Cost Changed
+
+This provides a full maintenance history.
+
+------------------------------------------------------------
+FINAL WORKFLOW
+------------------------------------------------------------
+
+Step 1:
+User creates maintenance record.
+
+Step 2:
+System calculates:
+- Next Due Date
+- Next Due Mileage
+
+Step 3:
+Reminder information is saved.
+
+Step 4:
+Maintenance becomes Due Soon or Overdue when applicable.
+
+Step 5:
+User marks maintenance as Completed.
+
+Step 6:
+System automatically creates the next maintenance record.
+
+Example Cycle:
+
+50,000 km -> 55,000 km -> 60,000 km -> 65,000 km
+
+20-Jun -> 18-Sep -> 17-Dec -> 17-Mar
+
+RESULT
+------
+
+The system automatically manages recurring vehicle maintenance,
+tracks service history, generates reminders, detects overdue
+services, and creates future maintenance records without manual
+user intervention.
+
+*/
