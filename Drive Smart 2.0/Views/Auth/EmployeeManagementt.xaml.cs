@@ -176,21 +176,98 @@ namespace Drive_Smart_2._0.Views.Auth
                 return;
             }
 
+            // ── Basic field validation ────────────────────────────
+            if (string.IsNullOrWhiteSpace(TxtEmployeeID.Text) ||
+                string.IsNullOrWhiteSpace(TxtFullName.Text) ||
+                string.IsNullOrWhiteSpace(TxtNIC.Text) ||
+                string.IsNullOrWhiteSpace(TxtPhone.Text))
+            {
+                MessageBox.Show(
+                    "Employee ID, Full Name, NIC and Phone are required.",
+                    "Validation Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+                return;
+            }
+
             using (var db = new AppDbContext())
             {
+                // ── Check Employee ID already used by another employee ──
+                bool employeeIDExists = db.Employees.Any(x =>
+                    x.EmployeeID == TxtEmployeeID.Text.Trim() &&
+                    x.Id != selectedEmployee.Id);  // exclude current employee
+
+                if (employeeIDExists)
+                {
+                    MessageBox.Show(
+                        $"Employee ID '{TxtEmployeeID.Text.Trim()}' is already " +
+                        $"assigned to another employee.",
+                        "Duplicate Employee ID",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    return;
+                }
+
+                //  Check NIC already used by another employee
+                bool nicExists = db.Employees.Any(x =>
+                    x.NIC == TxtNIC.Text.Trim() &&
+                    x.Id != selectedEmployee.Id);  // exclude current employee
+
+                if (nicExists)
+                {
+                    MessageBox.Show(
+                        $"NIC '{TxtNIC.Text.Trim()}' is already " +
+                        $"registered to another employee.",
+                        "Duplicate NIC",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    return;
+                }
+
+                // Check Phone already used by another employee
+                bool phoneExists = db.Employees.Any(x =>
+                    x.Phone == TxtPhone.Text.Trim() &&
+                    x.Id != selectedEmployee.Id);  // exclude current employee
+
+                if (phoneExists)
+                {
+                    MessageBox.Show(
+                        $"Phone number '{TxtPhone.Text.Trim()}' is already " +
+                        $"registered to another employee.",
+                        "Duplicate Phone Number",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    return;
+                }
+                bool emailExists = db.Employees.Any(x =>
+                    x.Email == TxtEmail.Text.Trim() &&
+                    x.Id != selectedEmployee.Id);  // exclude current employee
+
+                if (emailExists)
+                {
+                    MessageBox.Show(
+                        $"Email '{TxtEmail.Text.Trim()}' is already " +
+                        $"registered to another employee.",
+                        "Duplicate Email",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Warning);
+                    return;
+                }
+
+                // ── All checks passed — update the employee 
                 var employee = db.Employees
                                  .FirstOrDefault(x => x.Id == selectedEmployee.Id);
 
                 if (employee != null)
                 {
-                    employee.EmployeeID = TxtEmployeeID.Text;
-                    employee.FullName = TxtFullName.Text;
-                    employee.NIC = TxtNIC.Text;
+                    employee.EmployeeID = TxtEmployeeID.Text.Trim();
+                    employee.FullName = TxtFullName.Text.Trim();
+                    employee.NIC = TxtNIC.Text.Trim();
                     employee.Gender = CmbGender.Text;
                     employee.Position = CmbPosition.Text;
-                    employee.Phone = TxtPhone.Text;
-                    employee.Email = TxtEmail.Text;
-                    employee.Address = TxtAddress.Text;
+                    employee.Phone = TxtPhone.Text.Trim();
+                    employee.Email = TxtEmail.Text.Trim();
+                    employee.Address = TxtAddress.Text.Trim();
 
                     if (decimal.TryParse(TxtSalary.Text, out decimal salary))
                         employee.Salary = salary;
@@ -199,16 +276,16 @@ namespace Drive_Smart_2._0.Views.Auth
                     employee.JoiningDate = DpJoiningDate.SelectedDate ?? DateTime.Now;
 
                     db.SaveChanges();
+
+                    LoadEmployees();
+
+                    MessageBox.Show(
+                        "Employee updated successfully!",
+                        "Success",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
                 }
             }
-
-            LoadEmployees();
-
-            MessageBox.Show(
-                "Employee updated successfully!",
-                "Success",
-                MessageBoxButton.OK,
-                MessageBoxImage.Information);
         }
         //Search for an employee by ID or name
 

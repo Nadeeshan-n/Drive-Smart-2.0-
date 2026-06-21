@@ -361,7 +361,11 @@ namespace Drive_Smart_2._0.Views.Auth
                     MessageBox.Show("Email already exists.");
                     return;
                 }
-
+                if (db. Employees.Any(x => x.Phone == PhoneNumber.Text.Trim()))
+                {
+                    MessageBox.Show("Phone Number already exists.");
+                    return;
+                }
                 string username = GenerateUsername(
                     EmployeeID.Text.Trim(),
                     FullName.Text.Trim());

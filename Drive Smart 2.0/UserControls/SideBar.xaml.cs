@@ -35,8 +35,8 @@ namespace Drive_Smart_2._0.UserControls
             InitializeComponent();
             ApplyPermissions();
         }
-
-    public void SetActivePage(ActivePage page)
+        // Method to set the active page and highlight the corresponding button
+        public void SetActivePage(ActivePage page)
     {
         Brush normalColor =
             new SolidColorBrush(
@@ -46,7 +46,7 @@ namespace Drive_Smart_2._0.UserControls
             new SolidColorBrush(
             (Color)ColorConverter.ConvertFromString("#1E88E5"));
 
-    // Reset all buttons
+        // Reset all buttons because we will highlight the current page
         BtnDashboard.Background = normalColor;
         BtnVehicles.Background = normalColor;
         BtnCustomers.Background = normalColor;
@@ -98,6 +98,7 @@ namespace Drive_Smart_2._0.UserControls
 
 
     }
+        // Method to apply permissions based on the employee's position
         private void ApplyPermissions()
         {
             var employee = SessionManager.CurrentEmployee;

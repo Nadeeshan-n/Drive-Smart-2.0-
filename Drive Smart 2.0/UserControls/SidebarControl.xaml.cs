@@ -32,6 +32,7 @@ namespace Drive_Smart_2._0.UserControls
 
         private void LoadLoggedEmployee()
         {
+            // Load the logged-in employee's information from the SessionManager
             var emp = SessionManager.CurrentEmployee;
             if (emp == null)
                 return;
@@ -40,6 +41,7 @@ namespace Drive_Smart_2._0.UserControls
             TxtLoggedRole.Text = emp.Position;
 
             var parts = emp.FullName.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+            //name first letter of first and last name, if only one name, just first letter of that name
 
             TxtInitials.Text = parts.Length >= 2
                 ? $"{parts[0][0]}{parts[1][0]}".ToUpper()

@@ -1,4 +1,5 @@
 using Drive_Smart_2._0.Data;
+using Drive_Smart_2._0.models;
 using Drive_Smart_2._0.Views.Auth;
 using Drive_Smart_2._0.Views.VehicleView.Database;
 using System.Windows;
@@ -47,6 +48,9 @@ namespace Drive_Smart_2._0
 
                 //EmployeeManagementt emp = new EmployeeManagementt();
                 //emp.Show();
+
+                //EmployeeRegister reg = new EmployeeRegister();
+                //reg.Show();
 
                 
 

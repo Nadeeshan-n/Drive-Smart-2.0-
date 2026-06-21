@@ -75,6 +75,7 @@ namespace Drive_Smart_2._0.Views.Auth
                     MessageBoxImage.Warning);
                 return;
             }
+            // Enforce strong password: at least 8 characters, one uppercase, one lowercase, one number, one special character with regular expression(regex)
 
             if (!Regex.IsMatch(
                     newPassword,
@@ -102,6 +103,7 @@ namespace Drive_Smart_2._0.Views.Auth
                     MessageBoxImage.Warning);
                 return;
             }
+            // Update password in database
 
             using var db = new AppDbContext();
 
@@ -118,7 +120,7 @@ namespace Drive_Smart_2._0.Views.Auth
                     MessageBoxImage.Error);
                 return;
             }
-
+            // Hash the new password using BCrypt
             emp.PasswordHash =
                 BCrypt.Net.BCrypt.HashPassword(newPassword);
 
