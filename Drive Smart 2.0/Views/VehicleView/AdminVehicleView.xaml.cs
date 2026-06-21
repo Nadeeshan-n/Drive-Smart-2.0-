@@ -17,16 +17,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
     {
         private string _selectedImagePath = null;
 
-        // ════════════════════════════════════════════════════════════════════
-        // SRI LANKA NUMBER PLATE SYSTEM
-        //
-        // OLD FORMAT 1 : 2 letters + 4 digits        AB-1234
-        // OLD FORMAT 2 : 2-3 digits + 4 digits       61-1234  |  100-1234
-        // NEW FORMAT   : 3 letters + 4 digits         CAB-1234
-        //
-        // Separator is optional — auto-inserted if missing (just testing)
-        // ════════════════════════════════════════════════════════════════════
-
         private static readonly Dictionary<string, string> PlateCategoryMap =
             BuildPlateCategoryMap();
 
@@ -37,7 +27,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
             string[] carFirstLetters = { "A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "R", "S", "T", "W", "X", "Y", "Z" };
             string[] allLetters = { "A", "B", "C", "D", "E", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
 
-            // NEW FORMAT: 3 letters
             foreach (var first in carFirstLetters)
                 foreach (var second in allLetters)
                     foreach (var third in allLetters)
@@ -51,12 +40,10 @@ namespace Drive_Smart_2._0.Views.VehicleView
                             map[prefix] = "Car";
                     }
 
-            // OLD FORMAT: 2 letters
             foreach (var first in carFirstLetters)
                 foreach (var second in allLetters)
                     map[first + second] = "Car";
 
-            // NUMERIC SERIES
             for (int i = 50; i <= 59; i++) map[i.ToString()] = "Van";
             for (int i = 60; i <= 79; i++) map[i.ToString()] = "Lorry/Truck";
             for (int i = 80; i <= 99; i++) map[i.ToString()] = "Bus";
@@ -66,7 +53,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
             return map;
         }
 
-        // ── Known Brand → Valid Models ────────────────────────────────────
         private static readonly Dictionary<string, string[]> BrandModelMap =
             new(StringComparer.OrdinalIgnoreCase)
             {
@@ -89,7 +75,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
                 ["Force"] = new[] { "Traveller", "Trax", "Gurkha", "Tempo" },
             };
 
-        // ════════════════════════════════════════════════════════════════════
         public AdminVehicleView()
         {
             InitializeComponent();
@@ -100,22 +85,11 @@ namespace Drive_Smart_2._0.Views.VehicleView
             SidebarMenu.SetActivePage(ActivePage.VehicleRegister);
         }
 
-
-
-        // ── Maintanance Batch ──────────────────────────────────────────────
-
         private void LoadMaintenanceBadge()
         {
             int count = MaintenanceDatabase.GetUrgentCount();
-            /*maintenanceBadge.Visibility = count > 0
-                ? Visibility.Visible
-                : Visibility.Collapsed;
-            maintenanceBadgeCount.Text = count.ToString();*/
         }
 
-
-
-        // ── Category changed ──────────────────────────────────────────────
         private void cmbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UpdatePlateHint();
@@ -138,7 +112,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
             };
         }
 
-        // ── Real-time plate validation ────────────────────────────────────
         private void txtPlate_TextChanged(object sender, TextChangedEventArgs e)
         {
             RunPlateValidation(txtPlate.Text.Trim());
@@ -159,7 +132,7 @@ namespace Drive_Smart_2._0.Views.VehicleView
             {
                 SetIndicator(true);
                 if (!string.IsNullOrEmpty(message))
-                    ShowValidation(message); // info message e.g. category auto-updated
+                    ShowValidation(message);
                 else
                     HideValidation();
 
@@ -173,13 +146,11 @@ namespace Drive_Smart_2._0.Views.VehicleView
             }
         }
 
-        // ── Core Sri Lankan plate validation ─────────────────────────────
         private (bool valid, string message, string detectedCategory) ValidateSriLankanPlate(string raw)
         {
             if (string.IsNullOrWhiteSpace(raw))
                 return (false, "Plate number is required.", null);
 
-            // Normalize
             string plate = raw.ToUpper().Trim()
                 .Replace(" ", "-")
                 .Replace("–", "-")
@@ -188,7 +159,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
             while (plate.Contains("--"))
                 plate = plate.Replace("--", "-");
 
-            // Auto-insert dash if missing
             if (!plate.Contains("-"))
             {
                 if (Regex.IsMatch(plate, @"^[A-Z]{3}[0-9]{4}$"))
@@ -216,7 +186,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
             string prefix = parts[0];
             string digits = parts[1];
 
-            // Digits must be exactly 4
             if (!Regex.IsMatch(digits, @"^[0-9]{4}$"))
                 return (false,
                     $"The number part must be exactly 4 digits.\nYou entered: '{digits}'\nExample: AB-1234",
@@ -234,7 +203,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
                     "• 2-3 digits (61, 100) — numeric series",
                     null);
 
-            // Letter prefix rules
             if (isLetterPrefix)
             {
                 if (prefix.Length == 1)
@@ -242,11 +210,8 @@ namespace Drive_Smart_2._0.Views.VehicleView
                         "Single-letter prefix is not valid in Sri Lanka.\n" +
                         "Use AB-1234 (old) or CAB-1234 (new).",
                         null);
-
-                // 2 letters = old format, 3 letters = new format — both valid
             }
 
-            // Numeric prefix rules
             if (isNumericPrefix && int.TryParse(prefix, out int num))
             {
                 if (num < 50)
@@ -268,7 +233,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
                         null);
             }
 
-            // Detect category
             string detectedCategory = PlateCategoryMap.TryGetValue(prefix, out string cat) ? cat : null;
             string selectedCategory = GetSelectedCategory();
 
@@ -280,7 +244,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
             return (true, null, detectedCategory);
         }
 
-        // ── Brand + Model cross validation ───────────────────────────────
         private void txtBrand_TextChanged(object sender, TextChangedEventArgs e)
             => CrossValidateBrandModel();
 
@@ -311,7 +274,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
             HideValidation();
         }
 
-        // ── UI helpers ────────────────────────────────────────────────────
         private void SetIndicator(bool? valid)
         {
             if (txtPlateIndicator == null) return;
@@ -349,7 +311,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
                 { cmbCategory.SelectedItem = item; return; }
         }
 
-        // ── Pick Image ────────────────────────────────────────────────────
         private void btnPickImage_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new OpenFileDialog
@@ -376,7 +337,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
             return Path.Combine("Views", "VehicleView", "Images", fileName);
         }
 
-        // ── Load vehicles ─────────────────────────────────────────────────
         private void LoadVehicles()
         {
             var list = new List<Vehicle>();
@@ -404,7 +364,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
             dgVehicles.ItemsSource = list;
         }
 
-        // ── Row selected → fill form ──────────────────────────────────────
         private void dgVehicles_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (dgVehicles.SelectedItem is Vehicle v)
@@ -437,7 +396,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
             }
         }
 
-        // ── ADD ───────────────────────────────────────────────────────────
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             if (!ValidateForm()) return;
@@ -473,7 +431,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
             }
         }
 
-        // ── MODIFY ────────────────────────────────────────────────────────
         private void btnModify_Click(object sender, RoutedEventArgs e)
         {
             if (dgVehicles.SelectedItem is not Vehicle selected)
@@ -516,7 +473,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
             }
         }
 
-        // ── DUPLICATE ─────────────────────────────────────────────────────
         private void btnDuplicate_Click(object sender, RoutedEventArgs e)
         {
             if (dgVehicles.SelectedItem is not Vehicle selected)
@@ -550,7 +506,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
             }
         }
 
-        // ── REMOVE ────────────────────────────────────────────────────────
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
             if (dgVehicles.SelectedItem is not Vehicle selected)
@@ -577,7 +532,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
             }
         }
 
-        // ── TOGGLE STATUS ─────────────────────────────────────────────────
         private void btnToggleStatus_Click(object sender, RoutedEventArgs e)
         {
             if (dgVehicles.SelectedItem is not Vehicle selected)
@@ -604,7 +558,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
             }
         }
 
-        // ── CLEAR ─────────────────────────────────────────────────────────
         private void btnClear_Click(object sender, RoutedEventArgs e) => ClearForm();
 
         private void ClearForm()
@@ -620,7 +573,6 @@ namespace Drive_Smart_2._0.Views.VehicleView
             HideValidation();
         }
 
-        // ── FORM VALIDATION on submit ─────────────────────────────────────
         private bool ValidateForm()
         {
             if (string.IsNullOrWhiteSpace(txtBrand.Text) ||
@@ -657,29 +609,16 @@ namespace Drive_Smart_2._0.Views.VehicleView
             return true;
         }
 
-        // ── NAV ───────────────────────────────────────────────────────────
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            //PublicVehicleView publicVehicleView = new PublicVehicleView();
+        private void Button_Click_1(object sender, RoutedEventArgs e) { }
 
-            //NavigationService.Navigate(new PublicVehicleView());
+        private void Button_Click(object sender, RoutedEventArgs e) { }
 
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_2(object sender, RoutedEventArgs e)
-        {
-            
-        }
+        private void Button_Click_2(object sender, RoutedEventArgs e) { }
 
         private void BtnHelp_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationService.Navigate(new AdminHelpView());
+            AdminHelpView adminHelpView = new AdminHelpView();
+            adminHelpView.Show();  // ← added missing semicolon
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
@@ -687,13 +626,9 @@ namespace Drive_Smart_2._0.Views.VehicleView
             System.Environment.Exit(0);
         }
 
-        private void Button_Click_4(object sender, RoutedEventArgs e)
-        {
-            //NavigationService.Navigate(new MaintenanceView());
-        }
+        private void Button_Click_4(object sender, RoutedEventArgs e) { }
     }
 
-    // ── Vehicle model class ───────────────────────────────────────────────
     public class Vehicle
     {
         public int Id { get; set; }
