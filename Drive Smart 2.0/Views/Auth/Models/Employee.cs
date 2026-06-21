@@ -1,4 +1,5 @@
 ﻿namespace Drive_Smart_2._0.Models
+// This class represents an employee in the system with various properties related to personal information, job details, and authentication.
 {
     public class Employee
     {
@@ -22,3 +23,8 @@
         public bool MustChangePassword { get; set; } = true;
     }
 }
+
+/*
+ * This class represents an employee in the system with various properties related to personal information, job details, and authentication.
+ * It is used in conjunction with Entity Framework Core to perform CRUD operations on employee records in the database.
+ */

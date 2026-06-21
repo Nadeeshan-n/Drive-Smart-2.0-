@@ -9,16 +9,15 @@
         MinHeight="700" MinWidth="1100"
         Background="#F5F9FF">
 
-    <Grid Margin="0,0,60,50">
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="97*"/>
-            <ColumnDefinition Width="303*"/>
+            <ColumnDefinition Width="280"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
         <!-- Sidebar -->
         <Border Grid.Column="0"
-Background="#1565C0"
-Margin="0,0,41,-48">
+        Background="#1565C0">
 
             <Grid Margin="15">
 
@@ -39,7 +38,8 @@ Margin="0,0,41,-48">
         </Border>
 
         <!-- Main Content -->
-        <Grid Margin="240,20,20,20" Grid.ColumnSpan="2">
+        <Grid Grid.Column="1"
+      Margin="20">
 
             <Grid.RowDefinitions>
                 <RowDefinition Height="70"/>
@@ -73,8 +73,10 @@ Margin="0,0,41,-48">
                 <StackPanel>
 
                     <!-- Statistics Cards -->
-                    <Grid Height="150" Margin="0,0,0,20">
-
+                    <Grid Margin="0,0,0,20">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="150"/>
+    </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
                             <ColumnDefinition/>
@@ -210,7 +212,7 @@ Margin="0,0,41,-48">
                     <Border
                     Background="White"
                     CornerRadius="12"
-                    Padding="15">
+                    Padding="15" >
 
                         <StackPanel>
 
@@ -221,11 +223,10 @@ Margin="0,0,41,-48">
 
                             <DataGrid x:Name="dgVehicles"
           AutoGenerateColumns="False"
-          Height="300"
           IsReadOnly="True"
-          AlternatingRowBackground="#F5F9FF"
-          GridLinesVisibility="Horizontal"
-          HeadersVisibility="Column">
+          MinHeight="250"
+          HorizontalAlignment="Stretch"
+          VerticalAlignment="Stretch">
 
                                 <DataGrid.Columns>
                                     <DataGridTextColumn Header="ID"

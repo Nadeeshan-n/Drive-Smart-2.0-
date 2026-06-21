@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Drive_Smart_2._0.Views.Auth.Helpers
 {
+    // Enum to represent the active page in the application
     public enum ActivePage
     {
         Home,
