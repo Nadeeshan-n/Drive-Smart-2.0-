@@ -170,8 +170,7 @@
                             <TextBlock Grid.Row="0" Grid.Column="0" Text="Customer ID" Style="{StaticResource FieldLabel}"/>
                             <TextBox Grid.Row="1" Grid.Column="0" x:Name="CustomerIdTextBox"
                                      Style="{StaticResource FormTextBox}" TextChanged="TextBox_TextChanged"/>
-                            <Button Grid.Row="1" Grid.Column="2" x:Name="LOOK_UP1" Content="Look up"
-                                    Style="{StaticResource SecondaryButton}" Height="38"/>
+                            
                         </Grid>
 
                         <StackPanel Margin="0,0,0,16">
